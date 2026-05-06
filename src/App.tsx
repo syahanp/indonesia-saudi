@@ -7,9 +7,10 @@ import { motion } from "motion/react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import TentangKami from "./pages/TentangKami";
 import ProgramDetail from "./pages/ProgramDetail";
-import Proyek from "./pages/Proyek";
+import Proyek, { initialProjects } from "./pages/Proyek";
 import ProyekDetail from "./pages/ProyekDetail";
 import DampakLaporan from "./pages/DampakLaporan";
+import ProyekCard from "./components/ProyekCard";
 import { 
   ArrowRight, 
   Heart, 
@@ -94,13 +95,13 @@ const Navbar = () => {
 const Hero = () => (
   <section className="relative pt-20">
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f8f9fa] via-[#f8f9fa]/20 to-transparent lg:z-10"></div>
+      <div className="absolute inset-0 z-0">
         <img 
           src="https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070" 
           alt="Children on bridge" 
-          className="w-full h-full object-cover lg:object-right"
+          className="w-full h-full object-cover object-center"
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 lg:via-white/80 to-transparent"></div>
       </div>
     </div>
 
@@ -304,33 +305,33 @@ const ProgramSection = () => {
   );
 };
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
 const ProgressSection = () => {
-  const projects = [
-    {
-      title: "Jembatan Desa Lembah Harapan",
-      loc: "Sulawesi Tengah",
-      progress: 80,
-      target: "Mei 2025",
-      status: "Berjalan",
-      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070"
-    },
-    {
-      title: "Listrik Masuk Desa Suka Maju",
-      loc: "Nusa Tenggara Barat",
-      progress: 100,
-      target: "Selesai",
-      status: "Selesai",
-      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070"
-    },
-    {
-      title: "Jembatan Desa Watu Mori",
-      loc: "Nusa Tenggara Timur",
-      progress: 45,
-      target: "Juli 2025",
-      status: "Berjalan",
-      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070"
-    }
-  ];
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
+  };
 
   return (
     <section className="py-24 bg-[#f8f9fa]">
@@ -345,51 +346,14 @@ const ProgressSection = () => {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 relative">
-          {projects.map((p, idx) => (
-            <motion.div 
-              key={idx}
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm transition-all hover:shadow-xl group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className={`absolute top-6 left-6 px-5 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase bg-primary-light text-primary-deep`}>
-                  {p.status}
-                </div>
+        <div className="pb-8 px-4">
+          <Slider {...settings}>
+            {initialProjects.slice(0, 6).map((p, idx) => (
+              <div key={idx} className="px-3 h-full">
+                <ProyekCard project={p} />
               </div>
-              
-              <div className="p-10">
-                <h3 className="text-xl font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary-deep transition-colors">{p.title}</h3>
-                <div className="flex items-center gap-2 text-slate-400 text-sm mb-8">
-                  <MapPin size={16} className="text-slate-400" />
-                  <span className="font-medium text-slate-500">{p.loc}</span>
-                </div>
-                
-                <p className="text-sm text-slate-500 mb-8 leading-relaxed font-medium">
-                  {p.status === 'Selesai' ? '120 rumah kini telah mendapatkan akses listrik.' : `Progres pembangunan telah mencapai ${p.progress}%. Target selesai: ${p.target}`}
-                </p>
-
-                <div className="space-y-4">
-                  <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${p.progress}%` }}
-                      transition={{ duration: 1.2, ease: "circOut" }}
-                      className={`h-full bg-brand-accent`}
-                    />
-                  </div>
-                  <div className="flex justify-end text-[12px] font-bold text-slate-900 tracking-wider">
-                    {p.progress}%
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-          
-          <button className="absolute -right-7 top-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center border border-slate-50 hover:bg-slate-50 transition-all hover:scale-110 active:scale-95 hidden xl:flex z-10 group">
-            <ChevronRight size={28} className="text-slate-900" />
-          </button>
+            ))}
+          </Slider>
         </div>
       </div>
     </section>

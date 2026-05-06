@@ -36,3 +36,47 @@
 .btn-secondary {
   @apply bg-white text-primary-deep border border-slate-200 px-6 py-3 rounded-lg font-medium transition-all hover:border-primary-deep flex items-center gap-2;
 }
+
+/* slick slider equal height fix */
+.slick-track {
+  display: flex !important;
+  gap: 16px;
+}
+.slick-slide {
+  height: auto !important;
+}
+.slick-slide > div {
+  height: 100%;
+}
+.slick-prev, .slick-next {
+  width: 40px !important;
+  height: 40px !important;
+  z-index: 10;
+  background: white !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.slick-prev:hover, .slick-next:hover {
+  background: #f8f9fa !important;
+}
+.slick-prev {
+  left: -20px !important;
+}
+.slick-next {
+  right: -20px !important;
+}
+.slick-prev:before, .slick-next:before {
+  color: var(--color-primary-deep) !important;
+  opacity: 1 !important;
+  font-size: 20px !important;
+}
+.slick-dots li button:before {
+  font-size: 10px !important;
+  color: var(--color-primary-mid) !important;
+}
+.slick-dots li.slick-active button:before {
+  color: var(--color-primary-deep) !important;
+}
