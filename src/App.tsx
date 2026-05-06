@@ -4,6 +4,7 @@
  */
 
 import { motion } from "motion/react";
+import { Routes, Route, Link } from "react-router-dom";
 import { 
   ArrowRight, 
   Heart, 
@@ -21,7 +22,9 @@ import {
   TrendingUp,
   Award,
   ShieldCheck,
-  TreePine
+  TreePine,
+  Home,
+  Coins
 } from "lucide-react";
 
 const Navbar = () => (
@@ -126,53 +129,60 @@ const Hero = () => (
     </div>
 
     {/* Stats Card Overlay */}
-    <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-[-60px] lg:mt-[-100px]">
+    <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 translate-y-12 lg:translate-y-24">
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="bg-white rounded-3xl p-8 lg:p-12 shadow-2xl flex flex-wrap lg:flex-nowrap justify-between gap-8 border border-white"
+        className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-xl flex flex-col gap-8 border border-slate-100"
       >
-        <div className="flex flex-col gap-1 min-w-[200px]">
-          <h3 className="text-sm font-medium text-slate-400 mb-2">Dampak Kami <span className="text-brand-accent text-[10px] ml-1 uppercase">(Update April 2025)</span></h3>
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-primary-light rounded-2xl flex items-center justify-center text-primary-deep">
-              <Users size={24} />
+        <h3 className="text-[22px] font-bold text-[#14532d] flex items-center gap-3">
+          Dampak Kami <span className="text-[#166534] text-[13px] font-bold leading-none tracking-wide">(Update April 2025)</span>
+        </h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+          <div className="flex items-center gap-5 lg:pr-8 pt-4 md:pt-0">
+            <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
+              <Users size={32} strokeWidth={1.5} />
             </div>
             <div>
-              <p className="text-3xl font-bold text-slate-800">2.450+</p>
-              <p className="text-xs text-slate-500 leading-tight">Penerima Manfaat di berbagai wilayah Indonesia</p>
+              <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">2.450+</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">Penerima Manfaat</p>
+              <p className="text-[12px] text-slate-500 leading-tight">Di berbagai wilayah<br className="hidden lg:block"/>Indonesia</p>
             </div>
           </div>
-        </div>
 
-        <div className="flex items-center gap-4 min-w-[200px]">
-          <div className="w-12 h-12 bg-primary-light rounded-2xl flex items-center justify-center text-primary-deep">
-            <Milestone size={24} />
+          <div className="flex items-center gap-5 lg:px-8 pt-4 md:pt-0">
+            <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
+              <Milestone size={32} strokeWidth={1.5} />
+            </div>
+            <div>
+              <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">18</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">Proyek Selesai</p>
+              <p className="text-[12px] text-slate-500 leading-tight">Jembatan & Listrik</p>
+            </div>
           </div>
-          <div>
-            <p className="text-3xl font-bold text-slate-800">18</p>
-            <p className="text-xs text-slate-500 leading-tight">Proyek Selesai Jembatan & Listrik</p>
-          </div>
-        </div>
 
-        <div className="flex items-center gap-4 min-w-[200px]">
-          <div className="w-12 h-12 bg-primary-light rounded-2xl flex items-center justify-center text-primary-deep">
-            <TrendingUp size={24} />
+          <div className="flex items-center gap-5 lg:px-8 pt-4 md:pt-0">
+            <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
+              <Home size={32} strokeWidth={1.5} />
+            </div>
+            <div>
+              <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">12</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">Desa Terdampak</p>
+              <p className="text-[12px] text-slate-500 leading-tight">Di 6 Provinsi</p>
+            </div>
           </div>
-          <div>
-            <p className="text-3xl font-bold text-slate-800">12</p>
-            <p className="text-xs text-slate-500 leading-tight">Desa Terdampak Di 6 Provinsi</p>
-          </div>
-        </div>
 
-        <div className="flex items-center gap-4 min-w-[200px]">
-          <div className="w-12 h-12 bg-primary-light rounded-2xl flex items-center justify-center text-primary-deep">
-            <Award size={24} />
-          </div>
-          <div>
-            <p className="text-3xl font-bold text-slate-800">SAR 6.2M+</p>
-            <p className="text-xs text-slate-500 leading-tight">Donasi Terkumpul Dari para donatur</p>
+          <div className="flex items-center gap-5 lg:pl-8 pt-4 md:pt-0">
+            <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
+              <Coins size={32} strokeWidth={1.5} />
+            </div>
+            <div>
+              <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">SAR 6.2M+</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">Donasi Terkumpul</p>
+              <p className="text-[12px] text-slate-500 leading-tight">Dari para donatur</p>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -209,7 +219,7 @@ const ProgramSection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
+    <section className="pt-32 pb-24 lg:pt-48 lg:pb-32 bg-white relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-12">
           <div>
@@ -470,15 +480,25 @@ const Footer = () => (
   </footer>
 );
 
+const Home = () => {
+  return (
+    <>
+      <Hero />
+      <ProgramSection />
+      <ProgressSection />
+      <AboutSection />
+    </>
+  );
+};
+
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main>
-        <Hero />
-        <ProgramSection />
-        <ProgressSection />
-        <AboutSection />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
       </main>
       <Footer />
     </div>
