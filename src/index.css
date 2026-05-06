@@ -5,15 +5,19 @@
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Poppins", sans-serif;
   
-  /* Primary navy-blue ramp */
-  --color-primary-deep: #1A4F8A;   /* main CTA, navbar */
-  --color-primary-mid: #5595D6;    /* hover, secondary btn */
-  --color-primary-light: #EBF4FD;  /* icon bg, badges */
-  --color-primary-border: #C6DFF8; /* icon borders */
-  --color-primary-dark: #0D3361;   /* footer, dark sections */
+  /* Primary — navy blue */
+  --color-primary-deep: #167ce1;    /* navbar, headings, icons */
+  --color-primary-mid:  #153456;    /* secondary buttons, hover */
+  --color-primary-light: #eefaff;   /* icon bg, stat cards, badges */
+  --color-primary-border: #C6DFF8;  /* icon circle borders */
+  --color-primary-dark: #0D3361;    /* footer, dark sections */
+  --color-primary-darkest: #061E3B; /* footer deep bg */
 
-  /* Teal-blue accent */
-  --color-brand-accent: #2BA4C0;   /* progress, highlights */
+  /* Accent — violet purple (CTA, progress, highlights) */
+  --color-brand-accent: #7C3AED;    /* Donasi button, progress fill */
+  --color-brand-accent-mid: #8B5CF6;/* hover state */
+  --color-brand-accent-light: #EDE9FE; /* progress track, badge bg */
+  --color-brand-accent-text: #5B21B6;  /* text on accent-light bg */
 }
 
 @layer base {

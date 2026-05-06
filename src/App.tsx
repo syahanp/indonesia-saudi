@@ -28,7 +28,7 @@ import {
   TrendingUp,
   Award,
   ShieldCheck,
-  TreePine,
+  Moon,
   Home as HomeIcon,
   Coins,
   Phone
@@ -44,13 +44,13 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-primary-deep rounded-xl flex items-center justify-center text-white mb-1 group-hover:bg-primary-dark transition-colors shadow-lg">
-              <TreePine size={26} strokeWidth={1.5} />
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-20 h-20">
+              <img src="/bulan_sabit_biru_icon.png" alt="Bulan Sabit Biru Logo" className="w-full h-full object-contain" />
             </div>
             <div>
-              <h1 className="text-[20px] font-bold text-primary-deep leading-none uppercase tracking-wide">YAYASAN</h1>
-              <p className="text-[20px] font-extrabold text-primary-deep leading-none uppercase tracking-widest mt-0.5">BULAN SABIT BIRU</p>
+              <h1 className="text-[20px] font-bold text-primary-deep leading-none uppercase tracking-wide">BULAN</h1>
+              <p className="text-[20px] font-extrabold text-primary-deep leading-none uppercase tracking-widest mt-0.5">SABIT BIRU</p>
               <p className="text-[10px] text-slate-500 font-semibold tracking-wider mt-1">Berbagi untuk Negeri</p>
             </div>
           </Link>
@@ -83,7 +83,7 @@ const Navbar = () => {
             </button>
             <button className="bg-primary-deep text-white px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary-deep/20 hover:-translate-y-0.5">
               <Heart size={16} fill="currentColor" />
-              <span className="hidden sm:inline">Donasi Sekarang</span>
+              <span className="hidden sm:inline">Donasi</span>
             </button>
           </div>
         </div>
@@ -115,7 +115,6 @@ const Hero = () => (
         >
           <Users size={14} />
           <span className="text-xs font-semibold">Didukung oleh para donatur dari Arab Saudi</span>
-          <div className="w-4 h-3 bg-primary-deep rounded-sm"></div>
         </motion.div>
         
         <motion.h1 
@@ -142,14 +141,14 @@ const Hero = () => (
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-wrap gap-4"
         >
-          <button className="btn-primary">
+          <Link to="/proyek" className="btn-primary">
             <Globe size={18} />
             Lihat Proyek
-          </button>
-          <button className="btn-secondary">
+          </Link>
+          <Link to="/proyek" className="btn-secondary">
             <Heart size={18} className="text-primary-deep" />
             Donasi Sekarang
-          </button>
+          </Link>
         </motion.div>
       </div>
     </div>
@@ -448,14 +447,14 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-16 mb-20 items-start">
         {/* Brand */}
-        <div className="col-span-2 lg:col-span-1 space-y-6">
+         <div className="col-span-2 lg:col-span-1 space-y-6">
           <div className="flex items-center gap-3">
-             <div className="w-12 h-12 bg-primary-deep shadow-inner rounded-xl flex items-center justify-center text-white border border-primary-border/20">
-                <TreePine size={28} strokeWidth={1.5} />
+             <div className="w-12 h-12 bg-white shadow-inner rounded-xl flex items-center justify-center border border-primary-border/20 p-2">
+                <img src="/bulan_sabit_biru_icon.png" alt="Bulan Sabit Biru Logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <p className="text-[18px] font-bold tracking-wide uppercase leading-none">YAYASAN</p>
-                <p className="text-[18px] font-extrabold tracking-widest uppercase leading-none mt-0.5">BULAN SABIT BIRU</p>
+                <p className="text-[18px] font-bold tracking-wide uppercase leading-none text-white">BULAN</p>
+                <p className="text-[18px] font-extrabold tracking-widest uppercase leading-none mt-0.5 text-white">SABIT BIRU</p>
                 <p className="text-[10px] text-slate-300 font-medium tracking-wider mt-1 block">Berbagi untuk Negeri</p>
               </div>
           </div>
