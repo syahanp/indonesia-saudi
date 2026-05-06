@@ -4,7 +4,12 @@
  */
 
 import { motion } from "motion/react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
+import TentangKami from "./pages/TentangKami";
+import ProgramDetail from "./pages/ProgramDetail";
+import Proyek from "./pages/Proyek";
+import ProyekDetail from "./pages/ProyekDetail";
+import DampakLaporan from "./pages/DampakLaporan";
 import { 
   ArrowRight, 
   Heart, 
@@ -24,49 +29,67 @@ import {
   ShieldCheck,
   TreePine,
   Home as HomeIcon,
-  Coins
+  Coins,
+  Phone
 } from "lucide-react";
 
-const Navbar = () => (
-  <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center h-20">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary-deep rounded-lg flex items-center justify-center text-white">
-            <TreePine size={24} />
-          </div>
-          <div>
-            <h1 className="text-xl font-bold text-primary-deep leading-tight uppercase tracking-wide">YAYASAN</h1>
-            <p className="text-xl font-bold text-primary-deep leading-tight uppercase tracking-widest mt-[-4px]">KRISNA</p>
-            <p className="text-[10px] text-slate-500 font-medium">Berbagi untuk Negeri</p>
-          </div>
-        </div>
-        
-        <div className="hidden md:flex items-center gap-8">
-          {["Beranda", "Proyek", "Program", "Dampak & Laporan", "Tentang Kami"].map((item) => (
-            <a 
-              key={item} 
-              href={`#${item.toLowerCase().replace(/ /g, "-")}`}
-              className={`text-sm font-medium transition-colors ${item === "Beranda" ? "text-primary-deep border-b-2 border-primary-deep pb-1" : "text-slate-600 hover:text-primary-deep"}`}
-            >
-              {item}
-            </a>
-          ))}
-        </div>
+const Navbar = () => {
+  const location = useLocation();
+  const isTentangKami = location.pathname === "/tentang-kami";
+  const isProyek = location.pathname.startsWith("/proyek");
+  const isDampakLaporan = location.pathname === "/dampak-laporan";
 
-        <div className="flex items-center gap-4">
-          <button className="p-2 text-slate-600 hover:text-primary-deep transition-colors">
-            <Globe size={20} />
-          </button>
-          <button className="bg-primary-deep text-white px-5 py-2.5 rounded-full font-semibold flex items-center gap-2 hover:bg-primary-mid transition-all shadow-lg shadow-primary-deep/20">
-            <Heart size={18} fill="currentColor" />
-            <span className="hidden sm:inline">Donasi</span>
-          </button>
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-24">
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-12 h-12 bg-[#14532d] rounded-xl flex items-center justify-center text-white mb-1 group-hover:bg-[#064e3b] transition-colors shadow-lg">
+              <TreePine size={26} strokeWidth={1.5} />
+            </div>
+            <div>
+              <h1 className="text-[20px] font-bold text-[#14532d] leading-none uppercase tracking-wide">YAYASAN</h1>
+              <p className="text-[20px] font-extrabold text-[#14532d] leading-none uppercase tracking-widest mt-0.5">KRISNA</p>
+              <p className="text-[10px] text-slate-500 font-semibold tracking-wider mt-1">Berbagi untuk Negeri</p>
+            </div>
+          </Link>
+          
+          <div className="hidden lg:flex items-center gap-10">
+            {["Beranda", "Proyek", "Dampak & Laporan", "Tentang Kami"].map((item) => {
+              const isActive = (item === "Tentang Kami" && isTentangKami) || 
+                               (item === "Proyek" && isProyek) || 
+                               (item === "Dampak & Laporan" && isDampakLaporan) || 
+                               (item === "Beranda" && !isTentangKami && !isProyek && !isDampakLaporan && location.pathname === "/");
+              const path = item === "Tentang Kami" ? "/tentang-kami" : 
+                           item === "Proyek" ? "/proyek" : 
+                           item === "Dampak & Laporan" ? "/dampak-laporan" : 
+                           item === "Beranda" ? "/" : `/#${item.toLowerCase().replace(/ /g, "-")}`;
+              return (
+                <Link 
+                  key={item} 
+                  to={path}
+                  className={`text-[13px] font-bold transition-all ${isActive ? "text-[#14532d] border-b-2 border-[#14532d] pb-2" : "text-slate-600 hover:text-[#14532d]"}`}
+                >
+                  {item}
+                </Link>
+              )
+            })}
+          </div>
+
+          <div className="flex items-center gap-4">
+            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#14532d] hover:border-[#14532d] transition-all">
+              <Globe size={18} />
+            </button>
+            <button className="bg-[#14532d] text-white px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-[#064e3b] transition-all shadow-lg shadow-[#14532d]/20 hover:-translate-y-0.5">
+              <Heart size={16} fill="currentColor" />
+              <span className="hidden sm:inline">Donasi Sekarang</span>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 const Hero = () => (
   <section className="relative pt-20">
@@ -203,7 +226,7 @@ const ProgramSection = () => {
         { label: "Proyek Berjalan", val: "4" },
         { label: "Penerima Manfaat", val: "1.850+" },
       ],
-      img: "https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?auto=format&fit=crop&q=80&w=1080",
+      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070",
       icon: <Milestone className="text-primary-deep" size={24} />
     },
     {
@@ -215,7 +238,7 @@ const ProgramSection = () => {
         { label: "Proyek Berjalan", val: "2" },
         { label: "Rumah Tangga Terdampak", val: "600+" },
       ],
-      img: "https://images.unsplash.com/photo-1509391366360-fe58f967ad76?auto=format&fit=crop&q=80&w=1080",
+      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070",
       icon: <Zap className="text-primary-deep" size={24} />
     }
   ];
@@ -258,9 +281,9 @@ const ProgramSection = () => {
 
                 {/* Arrow Button */}
                 <div className="absolute bottom-10 right-8">
-                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:bg-slate-50 transition-all hover:scale-105 group">
+                  <Link to="/program/jembatan-gantung" className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:bg-slate-50 transition-all hover:scale-105 group">
                     <ArrowRight size={22} className="text-slate-900 group-hover:translate-x-0.5 transition-transform" />
-                  </div>
+                  </Link>
                 </div>
               </div>
 
@@ -289,7 +312,7 @@ const ProgressSection = () => {
       progress: 80,
       target: "Mei 2025",
       status: "Berjalan",
-      img: "https://images.unsplash.com/photo-1544063259-26d03f05f77a?auto=format&fit=crop&q=80&w=640"
+      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070"
     },
     {
       title: "Listrik Masuk Desa Suka Maju",
@@ -297,7 +320,7 @@ const ProgressSection = () => {
       progress: 100,
       target: "Selesai",
       status: "Selesai",
-      img: "https://images.unsplash.com/photo-1594819047050-99def0f5444b?auto=format&fit=crop&q=80&w=640"
+      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070"
     },
     {
       title: "Jembatan Desa Watu Mori",
@@ -305,7 +328,7 @@ const ProgressSection = () => {
       progress: 45,
       target: "Juli 2025",
       status: "Berjalan",
-      img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=640"
+      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070"
     }
   ];
 
@@ -317,9 +340,9 @@ const ProgressSection = () => {
             <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display text-2xl lg:text-3xl">Perkembangan Terbaru</h2>
             <p className="text-slate-600 text-sm leading-relaxed">Lihat bagaimana dukungan Anda memberikan perubahan nyata di lapangan.</p>
           </div>
-          <a href="#" className="flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-primary-deep transition-colors group">
+          <Link to="/proyek" className="flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-primary-deep transition-colors group">
             Lihat semua proyek <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 relative">
@@ -378,7 +401,7 @@ const AboutSection = () => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid lg:grid-cols-2 gap-16 items-center">
         <div className="bg-white/50 p-8 lg:p-12 rounded-[2rem] border border-white flex items-center justify-center">
-           <img src="https://cdni.iconscout.com/illustration/premium/thumb/charity-social-service-illustration-download-in-svg-png-gif-formats--giving-help-donation-voluntary-pack-people-illustrations-3721338.png" alt="About" className="max-w-full h-auto" />
+           <img src="https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070" alt="About" className="max-w-full h-auto rounded-3xl" />
         </div>
         
         <div className="space-y-12">
@@ -430,55 +453,71 @@ const AboutSection = () => (
 );
 
 const Footer = () => (
-  <footer className="bg-primary-deep text-white pt-20 pb-8 overflow-hidden relative">
+  <footer className="bg-[#033120] text-white pt-24 pb-12 overflow-hidden relative border-t border-[#14532d]">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid lg:grid-cols-3 gap-12 lg:gap-24 mb-16 items-start">
-        <div className="space-y-6">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-16 mb-20 items-start">
+        {/* Brand */}
+        <div className="col-span-2 lg:col-span-1 space-y-6">
           <div className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white border border-white/20">
-                <TreePine size={24} />
+             <div className="w-12 h-12 bg-[#14532d] shadow-inner rounded-xl flex items-center justify-center text-white border border-[#166534]">
+                <TreePine size={28} strokeWidth={1.5} />
               </div>
-              <p className="text-xl font-bold tracking-widest uppercase">YAYASAN KRISNA</p>
+              <div>
+                <p className="text-[18px] font-bold tracking-wide uppercase leading-none">YAYASAN</p>
+                <p className="text-[18px] font-extrabold tracking-widest uppercase leading-none mt-0.5">KRISNA</p>
+                <p className="text-[10px] text-slate-300 font-medium tracking-wider mt-1 block">Berbagi untuk Negeri</p>
+              </div>
           </div>
-          <p className="text-4xl italic font-serif leading-tight opacity-90 max-w-sm">
-            "Dan apa saja yang kamu infakkan, maka Allah akan menggantinya..."
-          </p>
-          <p className="text-sm opacity-60 font-medium">(QS. Saba: 39)</p>
         </div>
 
+        {/* Tautan Cepat */}
         <div className="space-y-6">
-          <h4 className="text-sm font-bold uppercase tracking-widest text-brand-accent">Kemitraan Strategis</h4>
-          <p className="text-lg leading-relaxed opacity-90">
-            Dipercaya oleh para donatur dari Arab Saudi
-          </p>
-          <p className="text-sm opacity-60 leading-relaxed">
-            Kami berterima kasih atas kepercayaan dan dukungan yang berkelanjutan dari para donatur dan mitra.
-          </p>
+          <h4 className="text-[15px] font-bold text-white mb-6">Tautan Cepat</h4>
+          <ul className="space-y-4 text-[13px] text-slate-300 font-medium">
+            <li><Link to="/" className="hover:text-white transition-colors">Beranda</Link></li>
+            <li><Link to="/proyek" className="hover:text-white transition-colors">Proyek</Link></li>
+            <li><Link to="/dampak-laporan" className="hover:text-white transition-colors">Dampak & Laporan</Link></li>
+            <li><Link to="/tentang-kami" className="hover:text-white flex items-center gap-2 group transition-colors">
+              Tentang Kami <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Link></li>
+          </ul>
         </div>
 
+        {/* Hubungi Kami */}
         <div className="space-y-6">
-          <h4 className="text-sm font-bold uppercase tracking-widest text-brand-accent">Ikuti Perjalanan Kami</h4>
+          <h4 className="text-[15px] font-bold text-white mb-6">Hubungi Kami</h4>
+          <ul className="space-y-4 text-[13px] text-slate-300 font-medium">
+            <li className="flex gap-3 items-center"><Phone size={16} className="text-[#a7f3d0]"/> +62 21 1234 5678</li>
+            <li className="flex gap-3 items-center"><Mail size={16} className="text-[#a7f3d0]"/> info@yayasankrisna.org</li>
+            <li className="flex gap-3 items-start"><MapPin size={16} className="text-[#a7f3d0] shrink-0 mt-0.5"/> 
+              <span className="leading-relaxed">Jl. Kebon Nanas No. 10<br/>Jakarta Selatan 12345</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Ikuti Kami */}
+        <div className="space-y-6">
+          <h4 className="text-[15px] font-bold text-white mb-6">Ikuti Kami</h4>
           <div className="flex gap-4">
             {[Facebook, Instagram, Youtube, Mail].map((Icon, idx) => (
-              <a key={idx} href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors">
-                <Icon size={20} />
+              <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 hover:border-white transition-all text-slate-300 hover:text-white">
+                <Icon size={18} strokeWidth={1.5} />
               </a>
             ))}
           </div>
         </div>
-      </div>
 
-      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase font-bold tracking-widest opacity-40">
-        <p>© 2025 Yayasan KRISNA. Semua Hak Dilindungi.</p>
-        <div className="flex gap-8">
-          <a href="#" className="hover:opacity-100 transition-opacity">Kebijakan Privasi</a>
-          <a href="#" className="hover:opacity-100 transition-opacity">Syarat & Ketentuan</a>
+        {/* Didukung oleh */}
+        <div className="col-span-2 lg:col-span-1 border border-white/10 p-6 rounded-2xl bg-white/5 backdrop-blur-sm self-stretch flex flex-col justify-center">
+          <h4 className="text-[13px] font-bold text-white mb-4 leading-relaxed">Didukung oleh para donatur<br/>dari Arab Saudi <span className="bg-green-700 text-[10px] px-1.5 py-0.5 rounded ml-2 font-bold !text-white align-middle">SA</span></h4>
+          <p className="text-xl font-bold font-serif text-[#a7f3d0] text-right mt-2 drop-shadow-sm" style={{fontFamily: "Arial, sans-serif"}}>شكراً لدعمكم المستمر</p>
         </div>
       </div>
-    </div>
 
-    {/* Abstract background element */}
-    <div className="absolute top-0 right-0 w-96 h-96 bg-brand-accent/10 blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
+      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center md:items-center text-center text-[11px] font-medium tracking-wide text-slate-400">
+        <p>© 2025 Yayasan KRISNA. Semua Hak Dilindungi.</p>
+      </div>
+    </div>
   </footer>
 );
 
@@ -495,11 +534,16 @@ const Home = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col font-sans">
       <Navbar />
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/tentang-kami" element={<TentangKami />} />
+          <Route path="/program/:id" element={<ProgramDetail />} />
+          <Route path="/proyek" element={<Proyek />} />
+          <Route path="/proyek/:id" element={<ProyekDetail />} />
+          <Route path="/dampak-laporan" element={<DampakLaporan />} />
         </Routes>
       </main>
       <Footer />

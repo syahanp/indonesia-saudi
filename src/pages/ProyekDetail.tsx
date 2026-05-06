@@ -1,0 +1,439 @@
+import { 
+  MapPin, 
+  Image as ImageIcon, 
+  CalendarDays, 
+  Target, 
+  Barcode, 
+  FileText, 
+  Activity, 
+  History, 
+  LayoutList, 
+  ImagePlus, 
+  HeartHandshake, 
+  Users, 
+  GraduationCap, 
+  Clock, 
+  TrendingUp, 
+  Heart, 
+  Share2,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  ListTodo
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+
+export default function ProyekDetail() {
+  const genericImg = "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070";
+
+  return (
+    <div className="pt-24 pb-20">
+      {/* Hero Header Context */}
+      <div className="bg-[#f8f9fa] pt-6 pb-6 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-[13px] text-slate-500 font-medium flex items-center gap-2">
+            <Link to="/" className="hover:text-[#14532d] transition-colors">Beranda</Link>
+            <span>&gt;</span>
+            <Link to="/proyek" className="hover:text-[#14532d] transition-colors">Proyek</Link>
+            <span>&gt;</span>
+            <span className="text-slate-800">Jembatan Desa Lembah Harapan</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          
+          {/* Main Content Area */}
+          <div className="flex-[2] w-full">
+            <div className="mb-8">
+              <span className="inline-block px-3 py-1.5 rounded-full text-[12px] font-bold tracking-widest uppercase bg-[#e8f5ed] text-[#14532d] mb-6 shadow-sm">
+                Berjalan
+              </span>
+              <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-[1.1] mb-4 font-display">
+                Jembatan Desa<br/>Lembah Harapan
+              </h1>
+              <div className="flex items-center gap-2 text-slate-600 mb-6 font-medium text-[15px]">
+                <MapPin size={18} className="text-slate-400" />
+                <span>Sulawesi Tengah</span>
+              </div>
+              <p className="text-[15px] text-slate-600 leading-relaxed font-medium max-w-2xl">
+                Pembangunan jembatan gantung untuk menghubungkan desa dengan akses sekolah, layanan kesehatan, dan aktivitas ekonomi masyarakat.
+              </p>
+            </div>
+
+            {/* Quick Info Grid inside Main */}
+            <div className="flex flex-wrap gap-x-12 gap-y-6 pt-4 pb-12 mb-8 items-start border-b border-slate-100">
+               <div className="flex items-start gap-4">
+                 <div className="bg-[#f8f9fa] p-2.5 rounded-xl border border-slate-200 text-slate-500">
+                    <ListTodo size={20} />
+                 </div>
+                 <div>
+                   <p className="text-[11px] font-bold text-slate-500 mb-1 tracking-wider uppercase">Kategori</p>
+                   <p className="text-[14px] font-bold text-slate-900">Jembatan Gantung</p>
+                 </div>
+               </div>
+               
+               <div className="flex items-start gap-4">
+                 <div className="bg-[#f8f9fa] p-2.5 rounded-xl border border-slate-200 text-slate-500">
+                    <CalendarDays size={20} />
+                 </div>
+                 <div>
+                   <p className="text-[11px] font-bold text-slate-500 mb-1 tracking-wider uppercase">Mulai Proyek</p>
+                   <p className="text-[14px] font-bold text-slate-900">Jan 2025</p>
+                 </div>
+               </div>
+
+               <div className="flex items-start gap-4">
+                 <div className="bg-[#f8f9fa] p-2.5 rounded-xl border border-slate-200 text-slate-500">
+                    <Target size={20} />
+                 </div>
+                 <div>
+                   <p className="text-[11px] font-bold text-slate-500 mb-1 tracking-wider uppercase">Target Selesai</p>
+                   <p className="text-[14px] font-bold text-slate-900">Mei 2025</p>
+                 </div>
+               </div>
+
+               <div className="flex items-start gap-4">
+                 <div className="bg-[#f8f9fa] p-2.5 rounded-xl border border-slate-200 text-slate-500">
+                    <Barcode size={20} />
+                 </div>
+                 <div>
+                   <p className="text-[11px] font-bold text-slate-500 mb-1 tracking-wider uppercase">ID Proyek</p>
+                   <p className="text-[14px] font-bold text-slate-900">KJ-2025-0012</p>
+                 </div>
+               </div>
+            </div>
+
+            {/* Main Image */}
+            <div className="relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-200 h-[400px] lg:h-[500px] mb-16">
+              <img src={genericImg} alt="Hero" className="w-full h-full object-cover" />
+              <button className="absolute bottom-6 right-6 bg-black/50 hover:bg-black/70 backdrop-blur-md text-white px-5 py-2.5 rounded-xl text-[13px] font-bold flex items-center gap-2 transition-colors border border-white/20 shadow-lg">
+                <ImageIcon size={16} /> Lihat Semua Foto
+              </button>
+            </div>
+
+            <div className="space-y-16">
+              {/* Tentang Proyek */}
+              <section>
+                <h3 className="text-xl font-bold flex items-center gap-3 text-slate-900 mb-6 font-display">
+                  <FileText size={24} className="text-slate-400" />
+                  Tentang Proyek
+                </h3>
+                <div className="text-[15px] text-slate-600 font-medium leading-relaxed bg-[#f8f9fa] p-8 rounded-3xl border border-slate-100">
+                  Besar Lembah Harapan selama ini hanya dapat diakses menggunakan rakit bambu yang berbahaya, 
+                  terutama saat musim hujan. Jembatan gantung ini akan menjadi akses utama yang aman dan andal 
+                  bagi lebih dari 350 warga untuk beraktivitas sehari-hari.
+                </div>
+              </section>
+
+              {/* Progress Proyek */}
+              <section>
+                <h3 className="text-xl font-bold flex items-center gap-3 text-slate-900 mb-8 font-display">
+                  <Activity size={24} className="text-slate-400" />
+                  Progres Proyek
+                </h3>
+                
+                {/* Stepper */}
+                <div className="mb-12 relative px-4 lg:px-8">
+                  <div className="absolute top-6 left-8 right-8 h-1 bg-slate-100 -z-10 rounded-full"></div>
+                  <div className="absolute top-6 left-8 right-1/2 h-1 bg-[#14532d] -z-10 rounded-full"></div>
+                  
+                  <div className="flex justify-between relative text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-[#14532d] text-white flex items-center justify-center border-4 border-white shadow-sm mb-3">
+                        <CheckCircle2 size={20} />
+                      </div>
+                      <p className="text-[12px] font-bold text-slate-900">Perencanaan</p>
+                      <p className="text-[11px] font-medium text-slate-500">Des 2024</p>
+                      <p className="text-[10px] font-bold text-[#14532d] mt-1 tracking-wider uppercase">Selesai</p>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-[#14532d] text-white flex items-center justify-center border-4 border-white shadow-sm mb-3">
+                        <CheckCircle2 size={20} />
+                      </div>
+                      <p className="text-[12px] font-bold text-slate-900">Penggalangan Dana</p>
+                      <p className="text-[11px] font-medium text-slate-500">Jan 2025</p>
+                      <p className="text-[10px] font-bold text-[#14532d] mt-1 tracking-wider uppercase">Selesai</p>
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 rounded-full bg-[#14532d] text-white flex items-center justify-center border-4 border-[#e8f5ed] shadow-md mb-3 ring-4 ring-[#14532d]/10">
+                        <History size={20} />
+                      </div>
+                      <p className="text-[12px] font-bold text-slate-900">Pembangunan</p>
+                      <p className="text-[11px] font-medium text-slate-500">Feb 2025 - Apr 2025</p>
+                      <p className="text-[10px] font-bold text-[#f59e0b] mt-1 tracking-wider uppercase">Berjalan</p>
+                    </div>
+
+                    <div className="flex flex-col items-center opacity-40">
+                      <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center border-4 border-white shadow-sm mb-3">
+                        <ListTodo size={20} />
+                      </div>
+                      <p className="text-[12px] font-bold text-slate-900">Finishing</p>
+                      <p className="text-[11px] font-medium text-slate-500">Mei 2025</p>
+                      <p className="text-[10px] font-bold text-slate-400 mt-1 tracking-wider uppercase">Menunggu</p>
+                    </div>
+
+                    <div className="flex flex-col items-center opacity-40">
+                      <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center border-4 border-white shadow-sm mb-3">
+                         <Target size={20} />
+                      </div>
+                      <p className="text-[12px] font-bold text-slate-900">Selesai</p>
+                      <p className="text-[11px] font-medium text-slate-500">Mei 2025</p>
+                      <p className="text-[10px] font-bold text-slate-400 mt-1 tracking-wider uppercase">Menunggu</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Overall bar */}
+                <div className="flex justify-between text-[13px] font-bold text-slate-700 mb-3 items-end">
+                  <span>Progres Keseluruhan</span>
+                  <span className="text-2xl font-bold text-slate-900 tracking-wider">80%</span>
+                </div>
+                <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden shadow-inner">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `80%` }}
+                    transition={{ duration: 1.2, ease: "circOut" }}
+                    className="h-full bg-[#14532d]"
+                  />
+                </div>
+              </section>
+
+              {/* Pembaruan Proyek */}
+              <section>
+                <div className="flex justify-between items-end mb-6">
+                  <h3 className="text-xl font-bold flex items-center gap-3 text-slate-900 font-display">
+                    <ImagePlus size={24} className="text-slate-400" />
+                    Pembaruan Proyek
+                  </h3>
+                   <button className="text-[12px] font-bold text-slate-500 hover:text-[#14532d] flex items-center gap-1 transition-colors">
+                      Lihat Semua Pembaruan <ArrowRight size={14} />
+                   </button>
+                </div>
+                <p className="text-[13px] font-medium text-slate-500 mb-6">Dokumentasi perkembangan proyek dari waktu ke waktu.</p>
+                
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative">
+                  {[
+                    { d: "20 Apr 2025", p: "Pembangunan", t: "Pemasangan kabel utama jembatan hampir selesai." },
+                    { d: "5 Apr 2025", p: "Pembangunan", t: "Pemasangan lantai kayu sepanjang 120 meter." },
+                    { d: "18 Mar 2025", p: "Pondasi", t: "Pembuatan pondasi sisi utara telah selesai." },
+                    { d: "28 Feb 2025", p: "Struktur", t: "Pemasangan tiang penyangga utama selesai." }
+                  ].map((item, idx) => (
+                    <div key={idx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm group hover:shadow-md transition-shadow">
+                      <div className="h-32 bg-slate-100 relative shrink-0">
+                        <img src={genericImg} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <div className="absolute top-2 left-2 bg-black/60 backdrop-blur text-white text-[10px] font-bold px-2 py-1 rounded shadow-sm">
+                          {item.d}
+                        </div>
+                      </div>
+                      <div className="p-4 flex flex-col justify-between h-auto">
+                        <p className="text-[12px] font-semibold text-slate-800 leading-snug mb-4">{item.t}</p>
+                        <span className="text-[10px] font-bold tracking-widest text-[#14532d] uppercase bg-[#f0fdf4] px-2 py-1 rounded w-max">
+                          {item.p}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+
+                  <button className="absolute -right-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg border border-slate-100 text-slate-600 hover:text-slate-900 z-10 hover:scale-105 transition-transform">
+                     <ArrowRight size={20} />
+                  </button>
+                </div>
+              </section>
+
+              {/* Dampak yang Diharapkan */}
+              <section>
+                <h3 className="text-xl font-bold flex items-center gap-3 text-slate-900 mb-4 font-display">
+                  <Target size={24} className="text-slate-400" />
+                  Dampak yang Diharapkan
+                </h3>
+                <p className="text-[13px] font-medium text-slate-500 mb-6">Setelah proyek ini selesai, manfaat yang akan dirasakan oleh masyarakat.</p>
+                
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
+                    <Users size={24} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                    <div>
+                      <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">350+</p>
+                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Warga Terbantu</p>
+                      <p className="text-[10px] text-slate-500 leading-tight">Akses aman setiap hari</p>
+                    </div>
+                  </div>
+                  <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
+                    <GraduationCap size={24} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                    <div>
+                      <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">120</p>
+                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Anak Sekolah</p>
+                      <p className="text-[10px] text-slate-500 leading-tight">Bisa berangkat sekolah dengan aman</p>
+                    </div>
+                  </div>
+                  <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
+                    <Clock size={24} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                    <div>
+                      <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">2 Jam</p>
+                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Waktu Tempuh</p>
+                      <p className="text-[10px] text-slate-500 leading-tight">Lebih cepat ke sekolah dan fasilitas kesehatan</p>
+                    </div>
+                  </div>
+                  <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
+                    <TrendingUp size={24} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                    <div>
+                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Peningkatan Ekonomi</p>
+                      <p className="text-[10px] text-slate-500 leading-tight">Mempermudah distribusi hasil pertanian dan aktivitas ekonomi</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Didukung oleh */}
+              <section className="bg-white border text-sm border-slate-200 rounded-[2rem] p-8 lg:p-10 shadow-sm relative overflow-hidden">
+                 <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end mb-8 relative z-10">
+                   <div>
+                     <h3 className="text-[18px] font-bold text-slate-900 mb-2 font-display">Didukung oleh Para Donatur</h3>
+                     <p className="text-[13px] font-medium text-slate-500">Terima kasih kepada para donatur dari Arab Saudi dan semua pihak yang telah berkontribusi.</p>
+                   </div>
+                    <button className="text-[12px] font-bold text-slate-500 hover:text-[#14532d] flex items-center gap-1 transition-colors mt-4 md:mt-0">
+                      Lihat Semua Donatur <ArrowRight size={14} />
+                   </button>
+                 </div>
+                 
+                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
+                    <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+                       <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
+                       <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Al-Ataa Charity Foundation<br/><span className="opacity-50 text-[10px]">مؤسسة العطاء الخيري</span></p>
+                    </div>
+                    <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+                       <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
+                       <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Ihsan Foundation<br/><span className="opacity-50 text-[10px]">إحسان</span></p>
+                    </div>
+                     <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+                       <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
+                       <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Albarakah Charity<br/><span className="opacity-50 text-[10px]">البركة الخيرية</span></p>
+                    </div>
+                     <div className="bg-[#f8f9fa] border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer group">
+                       <div className="w-8 h-8 bg-white border border-slate-200 rounded-full shrink-0 flex items-center justify-center group-hover:border-slate-400">
+                         <Users size={14} />
+                       </div>
+                       <p className="text-[12px] font-bold">+ 42 Donatur<br/>Lainnya</p>
+                    </div>
+                 </div>
+              </section>
+
+              {/* Bottom Quotes */}
+              <div className="grid md:grid-cols-[1.5fr_1fr] gap-6">
+                <div className="bg-[#033120] text-white p-10 rounded-[2rem] shadow-xl relative overflow-hidden flex flex-col justify-center">
+                   <div className="absolute right-0 top-0 w-32 h-32 bg-[#166534] rounded-full blur-[60px] opacity-60 pointer-events-none"></div>
+                   <p className="text-[16px] font-bold mb-4 leading-relaxed italic pr-8 relative z-10 opacity-90 text-[#bbf7d0]">
+                    "Dan apa saja yang kamu infakkan, maka Allah akan menggantinya. Dan Dialah Pemberi rezeki yang sebaik-baiknya."
+                  </p>
+                  <p className="text-[12px] font-bold opacity-60 uppercase tracking-widest relative z-10">(QS. Saba: 39)</p>
+                </div>
+                <div className="bg-[#f0fdf4] text-[#14532d] border border-[#bbf7d0] p-10 rounded-[2rem] flex flex-col justify-center items-center text-center">
+                   <p className="text-[14px] font-bold mb-6 leading-relaxed">
+                     Setiap donasi adalah investasi akhirat dan harapan baru bagi mereka.
+                   </p>
+                    <button className="bg-[#14532d] text-white px-8 py-3.5 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-[#064e3b] transition-all shadow-lg hover:shadow-xl w-full justify-center">
+                      <Heart size={16} fill="currentColor" /> Donasi Sekarang
+                    </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Right Sticky Column */}
+          <div className="flex-1 w-full lg:max-w-[400px]">
+            <div className="sticky top-28 space-y-6">
+              
+              {/* Box Pendanaan */}
+              <div className="bg-[#fcfdfd] border border-slate-200 rounded-[2rem] p-8 shadow-sm">
+                <h3 className="text-[17px] font-bold text-slate-900 mb-6 font-display border-b border-slate-100 pb-4">Ringkasan Pendanaan</h3>
+                
+                <div className="space-y-6">
+                  <div>
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Dana Dibutuhkan</p>
+                    <p className="text-3xl font-bold text-slate-900">SAR 420.000</p>
+                  </div>
+                  
+                  <div>
+                    <div className="flex justify-between items-end mb-2">
+                       <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Dana Terkumpul</p>
+                       <p className="text-[14px] font-bold text-slate-900">(80%)</p>
+                    </div>
+                    <p className="text-2xl font-bold text-slate-900 mb-3">SAR 336.000</p>
+                    <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden shadow-inner">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: `80%` }}
+                        transition={{ duration: 1.5, ease: "circOut" }}
+                        className="h-full bg-[#14532d]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-4 border-t border-slate-100">
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-1">Sisa Kebutuhan</p>
+                    <p className="text-[16px] font-bold text-slate-900">SAR 84.000</p>
+                  </div>
+
+                  <div className="pt-6 border-t border-slate-100">
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-4">Rincian Penggunaan Dana</p>
+                    <ul className="space-y-3">
+                      <li className="flex justify-between items-center text-[13px]">
+                        <span className="text-slate-600 font-medium">Konstruksi & Material</span>
+                        <span className="font-bold text-slate-900">78%</span>
+                      </li>
+                      <li className="flex justify-between items-center text-[13px]">
+                        <span className="text-slate-600 font-medium">Transportasi & Logistik</span>
+                        <span className="font-bold text-slate-900">12%</span>
+                      </li>
+                      <li className="flex justify-between items-center text-[13px]">
+                        <span className="text-slate-600 font-medium">Tenaga Kerja Lokal</span>
+                        <span className="font-bold text-slate-900">7%</span>
+                      </li>
+                      <li className="flex justify-between items-center text-[13px]">
+                        <span className="text-slate-600 font-medium">Administrasi</span>
+                        <span className="font-bold text-slate-900">3%</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="pt-6">
+                    <div className="bg-[#f0fdf4] border border-[#bbf7d0] rounded-xl p-4 flex gap-3 text-[#166534]">
+                      <ShieldCheck size={20} className="shrink-0 mt-0.5" />
+                      <p className="text-[12px] font-semibold leading-relaxed">
+                        100% donasi digunakan sesuai tujuan proyek.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to action Sticky Box */}
+              <div className="bg-white border border-slate-200 rounded-[2rem] p-8 shadow-sm">
+                <h3 className="text-[17px] font-bold text-slate-900 mb-3 font-display">Dukung Proyek Ini</h3>
+                <p className="text-[13px] font-medium text-slate-500 mb-6 leading-relaxed">
+                  Bantuan Anda akan mempercepat penyelesaian proyek dan memberikan manfaat bagi lebih banyak masyarakat.
+                </p>
+                
+                <div className="space-y-3">
+                  <button className="w-full bg-[#14532d] text-white px-6 py-4 rounded-xl text-[14px] font-bold flex justify-center items-center gap-2 hover:bg-[#064e3b] transition-all shadow-md hover:shadow-lg">
+                    <Heart size={16} fill="currentColor" /> Donasi Sekarang
+                  </button>
+                  <button className="w-full bg-white text-slate-700 border border-slate-200 px-6 py-4 rounded-xl text-[14px] font-bold flex justify-center items-center gap-2 hover:bg-slate-50 transition-all shadow-sm">
+                    <Share2 size={16} /> Bagikan Proyek
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
