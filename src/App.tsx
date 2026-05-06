@@ -44,12 +44,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-[#14532d] rounded-xl flex items-center justify-center text-white mb-1 group-hover:bg-[#064e3b] transition-colors shadow-lg">
+            <div className="w-12 h-12 bg-primary-deep rounded-xl flex items-center justify-center text-white mb-1 group-hover:bg-primary-dark transition-colors shadow-lg">
               <TreePine size={26} strokeWidth={1.5} />
             </div>
             <div>
-              <h1 className="text-[20px] font-bold text-[#14532d] leading-none uppercase tracking-wide">YAYASAN</h1>
-              <p className="text-[20px] font-extrabold text-[#14532d] leading-none uppercase tracking-widest mt-0.5">KRISNA</p>
+              <h1 className="text-[20px] font-bold text-primary-deep leading-none uppercase tracking-wide">YAYASAN</h1>
+              <p className="text-[20px] font-extrabold text-primary-deep leading-none uppercase tracking-widest mt-0.5">BULAN SABIT BIRU</p>
               <p className="text-[10px] text-slate-500 font-semibold tracking-wider mt-1">Berbagi untuk Negeri</p>
             </div>
           </Link>
@@ -68,7 +68,7 @@ const Navbar = () => {
                 <Link 
                   key={item} 
                   to={path}
-                  className={`text-[13px] font-bold transition-all ${isActive ? "text-[#14532d] border-b-2 border-[#14532d] pb-2" : "text-slate-600 hover:text-[#14532d]"}`}
+                  className={`text-[13px] font-bold transition-all ${isActive ? "text-primary-deep border-b-2 border-primary-deep pb-2" : "text-slate-600 hover:text-primary-deep"}`}
                 >
                   {item}
                 </Link>
@@ -77,10 +77,10 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#14532d] hover:border-[#14532d] transition-all">
+            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary-deep hover:border-primary-deep transition-all">
               <Globe size={18} />
             </button>
-            <button className="bg-[#14532d] text-white px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-[#064e3b] transition-all shadow-lg shadow-[#14532d]/20 hover:-translate-y-0.5">
+            <button className="bg-primary-deep text-white px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary-deep/20 hover:-translate-y-0.5">
               <Heart size={16} fill="currentColor" />
               <span className="hidden sm:inline">Donasi Sekarang</span>
             </button>
@@ -104,7 +104,7 @@ const Hero = () => (
       </div>
     </div>
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pt-32 lg:pb-56 relative z-10">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 lg:pt-20 lg:pb-20 relative z-10">
       <div className="max-w-2xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -114,7 +114,7 @@ const Hero = () => (
         >
           <Users size={14} />
           <span className="text-xs font-semibold">Didukung oleh para donatur dari Arab Saudi</span>
-          <div className="w-4 h-3 bg-green-700 rounded-sm"></div>
+          <div className="w-4 h-3 bg-primary-deep rounded-sm"></div>
         </motion.div>
         
         <motion.h1 
@@ -161,13 +161,13 @@ const Hero = () => (
         viewport={{ once: true }}
         className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-xl flex flex-col gap-8 border border-slate-100"
       >
-        <h3 className="text-[22px] font-bold text-[#14532d] flex items-center gap-3">
-          Dampak Kami <span className="text-[#166534] text-[13px] font-bold leading-none tracking-wide">(Update April 2025)</span>
+        <h3 className="text-[22px] font-bold text-primary-deep flex items-center gap-3">
+          Dampak Kami <span className="text-primary-mid text-[13px] font-bold leading-none tracking-wide">(Update April 2025)</span>
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
           <div className="flex items-center gap-5 lg:pr-8 pt-4 md:pt-0">
-            <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
+            <div className="w-[68px] h-[68px] rounded-full bg-primary-light flex items-center justify-center text-primary-deep shrink-0 border border-primary-border">
               <Users size={32} strokeWidth={1.5} />
             </div>
             <div>
@@ -178,7 +178,7 @@ const Hero = () => (
           </div>
 
           <div className="flex items-center gap-5 lg:px-8 pt-4 md:pt-0">
-            <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
+            <div className="w-[68px] h-[68px] rounded-full bg-primary-light flex items-center justify-center text-primary-deep shrink-0 border border-primary-border">
               <Milestone size={32} strokeWidth={1.5} />
             </div>
             <div>
@@ -189,7 +189,7 @@ const Hero = () => (
           </div>
 
           <div className="flex items-center gap-5 lg:px-8 pt-4 md:pt-0">
-            <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
+            <div className="w-[68px] h-[68px] rounded-full bg-primary-light flex items-center justify-center text-primary-deep shrink-0 border border-primary-border">
               <HomeIcon size={32} strokeWidth={1.5} />
             </div>
             <div>
@@ -200,7 +200,7 @@ const Hero = () => (
           </div>
 
           <div className="flex items-center gap-5 lg:pl-8 pt-4 md:pt-0">
-            <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
+            <div className="w-[68px] h-[68px] rounded-full bg-primary-light flex items-center justify-center text-primary-deep shrink-0 border border-primary-border">
               <Coins size={32} strokeWidth={1.5} />
             </div>
             <div>
@@ -354,7 +354,7 @@ const ProgressSection = () => {
             >
               <div className="relative h-64 overflow-hidden">
                 <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className={`absolute top-6 left-6 px-5 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase ${p.status === 'Selesai' ? 'bg-[#dcfce7] text-[#166534]' : 'bg-[#e8f5ed] text-[#14532d]'}`}>
+                <div className={`absolute top-6 left-6 px-5 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase bg-primary-light text-primary-deep`}>
                   {p.status}
                 </div>
               </div>
@@ -376,7 +376,7 @@ const ProgressSection = () => {
                       initial={{ width: 0 }}
                       whileInView={{ width: `${p.progress}%` }}
                       transition={{ duration: 1.2, ease: "circOut" }}
-                      className={`h-full ${p.status === 'Selesai' ? 'bg-[#14532d]' : 'bg-[#14532d]'}`}
+                      className={`h-full bg-brand-accent`}
                     />
                   </div>
                   <div className="flex justify-end text-[12px] font-bold text-slate-900 tracking-wider">
@@ -406,9 +406,9 @@ const AboutSection = () => (
         
         <div className="space-y-12">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Tentang Yayasan KRISNA</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-6">Tentang Yayasan Bulan Sabit Biru</h2>
             <p className="text-slate-600 leading-relaxed mb-6">
-              Yayasan KRISNA adalah organisasi nirlaba yang berkomitmen meningkatkan kualitas hidup masyarakat di daerah terpencil melalui pembangunan infrastruktur dan program pengembangan komunitas.
+              Yayasan Bulan Sabit Biru adalah organisasi nirlaba yang berkomitmen meningkatkan kualitas hidup masyarakat di daerah terpencil melalui pembangunan infrastruktur dan program pengembangan komunitas.
             </p>
             <button className="flex items-center gap-2 text-primary-deep font-bold border-b-2 border-primary-deep pb-1 hover:text-primary-mid hover:border-primary-mid transition-all">
               Pelajari Lebih Lanjut <ArrowRight size={18} />
@@ -453,18 +453,18 @@ const AboutSection = () => (
 );
 
 const Footer = () => (
-  <footer className="bg-[#033120] text-white pt-24 pb-12 overflow-hidden relative border-t border-[#14532d]">
+  <footer className="bg-primary-dark text-white pt-24 pb-12 overflow-hidden relative border-t border-primary-deep">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-16 mb-20 items-start">
         {/* Brand */}
         <div className="col-span-2 lg:col-span-1 space-y-6">
           <div className="flex items-center gap-3">
-             <div className="w-12 h-12 bg-[#14532d] shadow-inner rounded-xl flex items-center justify-center text-white border border-[#166534]">
+             <div className="w-12 h-12 bg-primary-deep shadow-inner rounded-xl flex items-center justify-center text-white border border-primary-border/20">
                 <TreePine size={28} strokeWidth={1.5} />
               </div>
               <div>
                 <p className="text-[18px] font-bold tracking-wide uppercase leading-none">YAYASAN</p>
-                <p className="text-[18px] font-extrabold tracking-widest uppercase leading-none mt-0.5">KRISNA</p>
+                <p className="text-[18px] font-extrabold tracking-widest uppercase leading-none mt-0.5">BULAN SABIT BIRU</p>
                 <p className="text-[10px] text-slate-300 font-medium tracking-wider mt-1 block">Berbagi untuk Negeri</p>
               </div>
           </div>
@@ -487,9 +487,9 @@ const Footer = () => (
         <div className="space-y-6">
           <h4 className="text-[15px] font-bold text-white mb-6">Hubungi Kami</h4>
           <ul className="space-y-4 text-[13px] text-slate-300 font-medium">
-            <li className="flex gap-3 items-center"><Phone size={16} className="text-[#a7f3d0]"/> +62 21 1234 5678</li>
-            <li className="flex gap-3 items-center"><Mail size={16} className="text-[#a7f3d0]"/> info@yayasankrisna.org</li>
-            <li className="flex gap-3 items-start"><MapPin size={16} className="text-[#a7f3d0] shrink-0 mt-0.5"/> 
+            <li className="flex gap-3 items-center"><Phone size={16} className="text-primary-light"/> +62 21 1234 5678</li>
+            <li className="flex gap-3 items-center"><Mail size={16} className="text-primary-light"/> info@yayasanbulansabitbiru.org</li>
+            <li className="flex gap-3 items-start"><MapPin size={16} className="text-primary-light shrink-0 mt-0.5"/> 
               <span className="leading-relaxed">Jl. Kebon Nanas No. 10<br/>Jakarta Selatan 12345</span>
             </li>
           </ul>
@@ -509,13 +509,13 @@ const Footer = () => (
 
         {/* Didukung oleh */}
         <div className="col-span-2 lg:col-span-1 border border-white/10 p-6 rounded-2xl bg-white/5 backdrop-blur-sm self-stretch flex flex-col justify-center">
-          <h4 className="text-[13px] font-bold text-white mb-4 leading-relaxed">Didukung oleh para donatur<br/>dari Arab Saudi <span className="bg-green-700 text-[10px] px-1.5 py-0.5 rounded ml-2 font-bold !text-white align-middle">SA</span></h4>
-          <p className="text-xl font-bold font-serif text-[#a7f3d0] text-right mt-2 drop-shadow-sm" style={{fontFamily: "Arial, sans-serif"}}>شكراً لدعمكم المستمر</p>
+          <h4 className="text-[13px] font-bold text-white mb-4 leading-relaxed">Didukung oleh para donatur<br/>dari Arab Saudi <span className="bg-brand-accent text-[10px] px-1.5 py-0.5 rounded ml-2 font-bold !text-white align-middle">SA</span></h4>
+          <p className="text-xl font-bold font-serif text-brand-accent text-right mt-2 drop-shadow-sm" style={{fontFamily: "Arial, sans-serif"}}>شكراً لدعمكم المستمر</p>
         </div>
       </div>
 
       <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center md:items-center text-center text-[11px] font-medium tracking-wide text-slate-400">
-        <p>© 2025 Yayasan KRISNA. Semua Hak Dilindungi.</p>
+        <p>© 2025 Yayasan Bulan Sabit Biru. Semua Hak Dilindungi.</p>
       </div>
     </div>
   </footer>

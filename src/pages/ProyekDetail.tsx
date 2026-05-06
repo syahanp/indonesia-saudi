@@ -29,15 +29,90 @@ export default function ProyekDetail() {
 
   return (
     <div className="pt-24 pb-20">
-      {/* Hero Header Context */}
-      <div className="bg-[#f8f9fa] pt-6 pb-6 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-[13px] text-slate-500 font-medium flex items-center gap-2">
-            <Link to="/" className="hover:text-[#14532d] transition-colors">Beranda</Link>
-            <span>&gt;</span>
-            <Link to="/proyek" className="hover:text-[#14532d] transition-colors">Proyek</Link>
-            <span>&gt;</span>
-            <span className="text-slate-800">Jembatan Desa Lembah Harapan</span>
+      {/* Hero Section */}
+      <div className="relative pt-10 pb-16 lg:pb-16 mb-12">
+        <div className="absolute inset-0 z-0">
+           <img src={genericImg} alt="Hero" className="w-full h-full object-cover object-center" />
+           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 lg:via-white/80 to-transparent"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-[12px] text-slate-600 font-bold mb-8 flex items-center gap-2">
+            <Link to="/" className="hover:text-primary-deep transition-colors">Beranda</Link>
+            <span className="opacity-50">&gt;</span>
+            <Link to="/proyek" className="hover:text-primary-deep transition-colors">Proyek</Link>
+            <span className="opacity-50">&gt;</span>
+            <span className="text-slate-900">Jembatan Desa Lembah Harapan</span>
+          </div>
+
+          <div className="max-w-2xl">
+            <span className="inline-block px-4 py-2 rounded-xl text-[13px] font-bold text-primary-deep mb-6 bg-primary-light">
+                Berjalan
+            </span>
+            <h1 className="text-4xl lg:text-6xl font-bold text-primary-deep leading-[1.1] mb-6 font-display">
+              Jembatan Desa<br/>Lembah Harapan
+            </h1>
+            <div className="flex items-center gap-2 text-slate-800 mb-6 font-semibold text-[16px]">
+              <MapPin size={20} className="text-slate-800 shrink-0" />
+              <span>Sulawesi Tengah</span>
+            </div>
+            <p className="text-[15px] lg:text-[16px] text-slate-800 leading-relaxed font-semibold max-w-xl">
+              Pembangunan jembatan gantung untuk menghubungkan desa dengan akses sekolah, layanan kesehatan, dan aktivitas ekonomi masyarakat.
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row justify-between items-end gap-6 mt-16 w-full">
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl border border-white p-5 lg:px-8 shadow-sm flex flex-wrap gap-x-10 gap-y-6 items-center">
+               <div className="flex items-center gap-3">
+                 <div className="text-primary-deep shrink-0">
+                    <ListTodo size={22} strokeWidth={2} />
+                 </div>
+                 <div>
+                   <p className="text-[10px] font-bold text-slate-500 mb-0.5">Kategori</p>
+                   <p className="text-[13px] font-bold text-slate-900">Jembatan Gantung</p>
+                 </div>
+               </div>
+               
+               <div className="w-px h-8 bg-slate-200 hidden md:block shrink-0"></div>
+               
+               <div className="flex items-center gap-3">
+                 <div className="text-primary-deep shrink-0">
+                    <CalendarDays size={22} strokeWidth={2} />
+                 </div>
+                 <div>
+                   <p className="text-[10px] font-bold text-slate-500 mb-0.5">Mulai Proyek</p>
+                   <p className="text-[13px] font-bold text-slate-900">Jan 2025</p>
+                 </div>
+               </div>
+
+               <div className="w-px h-8 bg-slate-200 hidden md:block shrink-0"></div>
+
+               <div className="flex items-center gap-3">
+                 <div className="text-primary-deep shrink-0">
+                    <Target size={22} strokeWidth={2} />
+                 </div>
+                 <div>
+                   <p className="text-[10px] font-bold text-slate-500 mb-0.5">Target Selesai</p>
+                   <p className="text-[13px] font-bold text-slate-900">Mei 2025</p>
+                 </div>
+               </div>
+
+               <div className="w-px h-8 bg-slate-200 hidden lg:block shrink-0"></div>
+
+               <div className="flex items-center gap-3">
+                 <div className="text-primary-deep shrink-0">
+                    <Barcode size={22} strokeWidth={2} />
+                 </div>
+                 <div>
+                   <p className="text-[10px] font-bold text-slate-500 mb-0.5">ID Proyek</p>
+                   <p className="text-[13px] font-bold text-slate-900">KJ-2025-0012</p>
+                 </div>
+               </div>
+            </div>
+            
+            <button className="bg-black/90 hover:bg-black backdrop-blur-md text-white px-5 py-3 rounded-xl text-[13px] font-bold flex items-center gap-2 transition-colors shadow-xl border border-white/10 shrink-0">
+                <ImageIcon size={16} /> Lihat Semua Foto
+            </button>
           </div>
         </div>
       </div>
@@ -47,73 +122,6 @@ export default function ProyekDetail() {
           
           {/* Main Content Area */}
           <div className="flex-[2] w-full">
-            <div className="mb-8">
-              <span className="inline-block px-3 py-1.5 rounded-full text-[12px] font-bold tracking-widest uppercase bg-[#e8f5ed] text-[#14532d] mb-6 shadow-sm">
-                Berjalan
-              </span>
-              <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-[1.1] mb-4 font-display">
-                Jembatan Desa<br/>Lembah Harapan
-              </h1>
-              <div className="flex items-center gap-2 text-slate-600 mb-6 font-medium text-[15px]">
-                <MapPin size={18} className="text-slate-400" />
-                <span>Sulawesi Tengah</span>
-              </div>
-              <p className="text-[15px] text-slate-600 leading-relaxed font-medium max-w-2xl">
-                Pembangunan jembatan gantung untuk menghubungkan desa dengan akses sekolah, layanan kesehatan, dan aktivitas ekonomi masyarakat.
-              </p>
-            </div>
-
-            {/* Quick Info Grid inside Main */}
-            <div className="flex flex-wrap gap-x-12 gap-y-6 pt-4 pb-12 mb-8 items-start border-b border-slate-100">
-               <div className="flex items-start gap-4">
-                 <div className="bg-[#f8f9fa] p-2.5 rounded-xl border border-slate-200 text-slate-500">
-                    <ListTodo size={20} />
-                 </div>
-                 <div>
-                   <p className="text-[11px] font-bold text-slate-500 mb-1 tracking-wider uppercase">Kategori</p>
-                   <p className="text-[14px] font-bold text-slate-900">Jembatan Gantung</p>
-                 </div>
-               </div>
-               
-               <div className="flex items-start gap-4">
-                 <div className="bg-[#f8f9fa] p-2.5 rounded-xl border border-slate-200 text-slate-500">
-                    <CalendarDays size={20} />
-                 </div>
-                 <div>
-                   <p className="text-[11px] font-bold text-slate-500 mb-1 tracking-wider uppercase">Mulai Proyek</p>
-                   <p className="text-[14px] font-bold text-slate-900">Jan 2025</p>
-                 </div>
-               </div>
-
-               <div className="flex items-start gap-4">
-                 <div className="bg-[#f8f9fa] p-2.5 rounded-xl border border-slate-200 text-slate-500">
-                    <Target size={20} />
-                 </div>
-                 <div>
-                   <p className="text-[11px] font-bold text-slate-500 mb-1 tracking-wider uppercase">Target Selesai</p>
-                   <p className="text-[14px] font-bold text-slate-900">Mei 2025</p>
-                 </div>
-               </div>
-
-               <div className="flex items-start gap-4">
-                 <div className="bg-[#f8f9fa] p-2.5 rounded-xl border border-slate-200 text-slate-500">
-                    <Barcode size={20} />
-                 </div>
-                 <div>
-                   <p className="text-[11px] font-bold text-slate-500 mb-1 tracking-wider uppercase">ID Proyek</p>
-                   <p className="text-[14px] font-bold text-slate-900">KJ-2025-0012</p>
-                 </div>
-               </div>
-            </div>
-
-            {/* Main Image */}
-            <div className="relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-200 h-[400px] lg:h-[500px] mb-16">
-              <img src={genericImg} alt="Hero" className="w-full h-full object-cover" />
-              <button className="absolute bottom-6 right-6 bg-black/50 hover:bg-black/70 backdrop-blur-md text-white px-5 py-2.5 rounded-xl text-[13px] font-bold flex items-center gap-2 transition-colors border border-white/20 shadow-lg">
-                <ImageIcon size={16} /> Lihat Semua Foto
-              </button>
-            </div>
-
             <div className="space-y-16">
               {/* Tentang Proyek */}
               <section>
@@ -138,29 +146,29 @@ export default function ProyekDetail() {
                 {/* Stepper */}
                 <div className="mb-12 relative px-4 lg:px-8">
                   <div className="absolute top-6 left-8 right-8 h-1 bg-slate-100 -z-10 rounded-full"></div>
-                  <div className="absolute top-6 left-8 right-1/2 h-1 bg-[#14532d] -z-10 rounded-full"></div>
+                  <div className="absolute top-6 left-8 right-1/2 h-1 bg-primary-deep -z-10 rounded-full"></div>
                   
                   <div className="flex justify-between relative text-center">
                     <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 rounded-full bg-[#14532d] text-white flex items-center justify-center border-4 border-white shadow-sm mb-3">
+                      <div className="w-12 h-12 rounded-full bg-primary-deep text-white flex items-center justify-center border-4 border-white shadow-sm mb-3">
                         <CheckCircle2 size={20} />
                       </div>
                       <p className="text-[12px] font-bold text-slate-900">Perencanaan</p>
                       <p className="text-[11px] font-medium text-slate-500">Des 2024</p>
-                      <p className="text-[10px] font-bold text-[#14532d] mt-1 tracking-wider uppercase">Selesai</p>
+                      <p className="text-[10px] font-bold text-primary-deep mt-1 tracking-wider uppercase">Selesai</p>
                     </div>
 
                     <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 rounded-full bg-[#14532d] text-white flex items-center justify-center border-4 border-white shadow-sm mb-3">
+                      <div className="w-12 h-12 rounded-full bg-primary-deep text-white flex items-center justify-center border-4 border-white shadow-sm mb-3">
                         <CheckCircle2 size={20} />
                       </div>
                       <p className="text-[12px] font-bold text-slate-900">Penggalangan Dana</p>
                       <p className="text-[11px] font-medium text-slate-500">Jan 2025</p>
-                      <p className="text-[10px] font-bold text-[#14532d] mt-1 tracking-wider uppercase">Selesai</p>
+                      <p className="text-[10px] font-bold text-primary-deep mt-1 tracking-wider uppercase">Selesai</p>
                     </div>
 
                     <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 rounded-full bg-[#14532d] text-white flex items-center justify-center border-4 border-[#e8f5ed] shadow-md mb-3 ring-4 ring-[#14532d]/10">
+                      <div className="w-12 h-12 rounded-full bg-primary-deep text-white flex items-center justify-center border-4 border-primary-border shadow-md mb-3 ring-4 ring-primary-deep/10">
                         <History size={20} />
                       </div>
                       <p className="text-[12px] font-bold text-slate-900">Pembangunan</p>
@@ -198,7 +206,7 @@ export default function ProyekDetail() {
                     initial={{ width: 0 }}
                     whileInView={{ width: `80%` }}
                     transition={{ duration: 1.2, ease: "circOut" }}
-                    className="h-full bg-[#14532d]"
+                    className="h-full bg-primary-deep"
                   />
                 </div>
               </section>
@@ -210,7 +218,7 @@ export default function ProyekDetail() {
                     <ImagePlus size={24} className="text-slate-400" />
                     Pembaruan Proyek
                   </h3>
-                   <button className="text-[12px] font-bold text-slate-500 hover:text-[#14532d] flex items-center gap-1 transition-colors">
+                   <button className="text-[12px] font-bold text-slate-500 hover:text-primary-deep flex items-center gap-1 transition-colors">
                       Lihat Semua Pembaruan <ArrowRight size={14} />
                    </button>
                 </div>
@@ -232,7 +240,7 @@ export default function ProyekDetail() {
                       </div>
                       <div className="p-4 flex flex-col justify-between h-auto">
                         <p className="text-[12px] font-semibold text-slate-800 leading-snug mb-4">{item.t}</p>
-                        <span className="text-[10px] font-bold tracking-widest text-[#14532d] uppercase bg-[#f0fdf4] px-2 py-1 rounded w-max">
+                        <span className="text-[10px] font-bold tracking-widest text-primary-deep uppercase bg-primary-light px-2 py-1 rounded w-max">
                           {item.p}
                         </span>
                       </div>
@@ -255,7 +263,7 @@ export default function ProyekDetail() {
                 
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                   <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
-                    <Users size={24} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                    <Users size={24} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">350+</p>
                       <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Warga Terbantu</p>
@@ -263,7 +271,7 @@ export default function ProyekDetail() {
                     </div>
                   </div>
                   <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
-                    <GraduationCap size={24} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                    <GraduationCap size={24} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">120</p>
                       <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Anak Sekolah</p>
@@ -271,7 +279,7 @@ export default function ProyekDetail() {
                     </div>
                   </div>
                   <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
-                    <Clock size={24} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                    <Clock size={24} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">2 Jam</p>
                       <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Waktu Tempuh</p>
@@ -279,7 +287,7 @@ export default function ProyekDetail() {
                     </div>
                   </div>
                   <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
-                    <TrendingUp size={24} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                    <TrendingUp size={24} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Peningkatan Ekonomi</p>
                       <p className="text-[10px] text-slate-500 leading-tight">Mempermudah distribusi hasil pertanian dan aktivitas ekonomi</p>
@@ -289,58 +297,6 @@ export default function ProyekDetail() {
               </section>
 
               {/* Didukung oleh */}
-              <section className="bg-white border text-sm border-slate-200 rounded-[2rem] p-8 lg:p-10 shadow-sm relative overflow-hidden">
-                 <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end mb-8 relative z-10">
-                   <div>
-                     <h3 className="text-[18px] font-bold text-slate-900 mb-2 font-display">Didukung oleh Para Donatur</h3>
-                     <p className="text-[13px] font-medium text-slate-500">Terima kasih kepada para donatur dari Arab Saudi dan semua pihak yang telah berkontribusi.</p>
-                   </div>
-                    <button className="text-[12px] font-bold text-slate-500 hover:text-[#14532d] flex items-center gap-1 transition-colors mt-4 md:mt-0">
-                      Lihat Semua Donatur <ArrowRight size={14} />
-                   </button>
-                 </div>
-                 
-                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
-                    <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
-                       <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
-                       <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Al-Ataa Charity Foundation<br/><span className="opacity-50 text-[10px]">مؤسسة العطاء الخيري</span></p>
-                    </div>
-                    <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
-                       <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
-                       <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Ihsan Foundation<br/><span className="opacity-50 text-[10px]">إحسان</span></p>
-                    </div>
-                     <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
-                       <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
-                       <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Albarakah Charity<br/><span className="opacity-50 text-[10px]">البركة الخيرية</span></p>
-                    </div>
-                     <div className="bg-[#f8f9fa] border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer group">
-                       <div className="w-8 h-8 bg-white border border-slate-200 rounded-full shrink-0 flex items-center justify-center group-hover:border-slate-400">
-                         <Users size={14} />
-                       </div>
-                       <p className="text-[12px] font-bold">+ 42 Donatur<br/>Lainnya</p>
-                    </div>
-                 </div>
-              </section>
-
-              {/* Bottom Quotes */}
-              <div className="grid md:grid-cols-[1.5fr_1fr] gap-6">
-                <div className="bg-[#033120] text-white p-10 rounded-[2rem] shadow-xl relative overflow-hidden flex flex-col justify-center">
-                   <div className="absolute right-0 top-0 w-32 h-32 bg-[#166534] rounded-full blur-[60px] opacity-60 pointer-events-none"></div>
-                   <p className="text-[16px] font-bold mb-4 leading-relaxed italic pr-8 relative z-10 opacity-90 text-[#bbf7d0]">
-                    "Dan apa saja yang kamu infakkan, maka Allah akan menggantinya. Dan Dialah Pemberi rezeki yang sebaik-baiknya."
-                  </p>
-                  <p className="text-[12px] font-bold opacity-60 uppercase tracking-widest relative z-10">(QS. Saba: 39)</p>
-                </div>
-                <div className="bg-[#f0fdf4] text-[#14532d] border border-[#bbf7d0] p-10 rounded-[2rem] flex flex-col justify-center items-center text-center">
-                   <p className="text-[14px] font-bold mb-6 leading-relaxed">
-                     Setiap donasi adalah investasi akhirat dan harapan baru bagi mereka.
-                   </p>
-                    <button className="bg-[#14532d] text-white px-8 py-3.5 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-[#064e3b] transition-all shadow-lg hover:shadow-xl w-full justify-center">
-                      <Heart size={16} fill="currentColor" /> Donasi Sekarang
-                    </button>
-                </div>
-              </div>
-
             </div>
           </div>
 
@@ -369,7 +325,7 @@ export default function ProyekDetail() {
                         initial={{ width: 0 }}
                         animate={{ width: `80%` }}
                         transition={{ duration: 1.5, ease: "circOut" }}
-                        className="h-full bg-[#14532d]"
+                        className="h-full bg-primary-deep"
                       />
                     </div>
                   </div>
@@ -402,7 +358,7 @@ export default function ProyekDetail() {
                   </div>
 
                   <div className="pt-6">
-                    <div className="bg-[#f0fdf4] border border-[#bbf7d0] rounded-xl p-4 flex gap-3 text-[#166534]">
+                    <div className="bg-primary-light border border-primary-border rounded-xl p-4 flex gap-3 text-primary-deep">
                       <ShieldCheck size={20} className="shrink-0 mt-0.5" />
                       <p className="text-[12px] font-semibold leading-relaxed">
                         100% donasi digunakan sesuai tujuan proyek.
@@ -420,7 +376,7 @@ export default function ProyekDetail() {
                 </p>
                 
                 <div className="space-y-3">
-                  <button className="w-full bg-[#14532d] text-white px-6 py-4 rounded-xl text-[14px] font-bold flex justify-center items-center gap-2 hover:bg-[#064e3b] transition-all shadow-md hover:shadow-lg">
+                  <button className="w-full bg-primary-deep text-white px-6 py-4 rounded-xl text-[14px] font-bold flex justify-center items-center gap-2 hover:bg-primary-dark transition-all shadow-md hover:shadow-lg">
                     <Heart size={16} fill="currentColor" /> Donasi Sekarang
                   </button>
                   <button className="w-full bg-white text-slate-700 border border-slate-200 px-6 py-4 rounded-xl text-[14px] font-bold flex justify-center items-center gap-2 hover:bg-slate-50 transition-all shadow-sm">
@@ -432,6 +388,65 @@ export default function ProyekDetail() {
             </div>
           </div>
 
+        </div>
+
+        {/* FULL WIDTH SECTIONS BEOLOW COLUMNS */}
+        <div className="mt-16 space-y-6">
+          <section className="bg-white border text-sm border-slate-200 rounded-[2rem] p-8 lg:p-10 shadow-sm relative overflow-hidden">
+             <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end mb-8 relative z-10">
+               <div>
+                 <h3 className="text-[18px] font-bold text-slate-900 mb-2 font-display">Didukung oleh Para Donatur</h3>
+                 <p className="text-[13px] font-medium text-slate-500">Terima kasih kepada para donatur dari Arab Saudi dan semua pihak yang telah berkontribusi.</p>
+               </div>
+                <button className="text-[12px] font-bold text-slate-500 hover:text-primary-deep flex items-center gap-1 transition-colors mt-4 md:mt-0">
+                  Lihat Semua Donatur <ArrowRight size={14} />
+               </button>
+             </div>
+             
+             <div className="grid grid-cols-2 md:grid-cols-5 gap-6 relative z-10">
+                <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+                   <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
+                   <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Al-Ataa Charity Foundation<br/><span className="opacity-50 text-[10px]">مؤسسة العطاء الخيري</span></p>
+                </div>
+                <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+                   <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
+                   <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Ihsan Foundation<br/><span className="opacity-50 text-[10px]">إحسان</span></p>
+                </div>
+                 <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+                   <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
+                   <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Albarakah Charity<br/><span className="opacity-50 text-[10px]">البركة الخيرية</span></p>
+                </div>
+                <div className="bg-white border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 shadow-sm hover:-translate-y-1 transition-transform">
+                   <div className="w-8 h-8 bg-slate-100 rounded-full shrink-0"></div>
+                   <p className="text-[11px] font-bold text-slate-700 font-serif leading-tight text-right w-full">Nama Charity Association<br/><span className="opacity-50 text-[10px]">جمعية نماء الخيرية</span></p>
+                </div>
+                 <div className="bg-[#f8f9fa] border border-slate-100 rounded-xl p-4 flex items-center justify-center gap-3 text-slate-500 hover:text-slate-800 transition-colors cursor-pointer group">
+                   <div className="w-8 h-8 bg-white border border-slate-200 rounded-full shrink-0 flex items-center justify-center group-hover:border-slate-400">
+                     <Users size={14} />
+                   </div>
+                   <p className="text-[12px] font-bold">+ 42 Donatur<br/>Lainnya</p>
+                </div>
+             </div>
+          </section>
+
+          {/* Bottom Quotes */}
+          <div className="grid md:grid-cols-[1.5fr_1fr] gap-6">
+            <div className="bg-primary-dark text-white p-10 rounded-[2rem] shadow-xl relative overflow-hidden flex flex-col justify-center">
+               <div className="absolute right-0 top-0 w-32 h-32 bg-primary-deep rounded-full blur-[60px] opacity-60 pointer-events-none"></div>
+               <p className="text-[16px] font-bold mb-4 leading-relaxed italic pr-8 relative z-10 opacity-90 text-primary-border">
+                "Dan apa saja yang kamu infakkan, maka Allah akan menggantinya...<br/>Dan Dialah Pemberi rezeki yang sebaik-baiknya."
+              </p>
+              <p className="text-[12px] font-bold opacity-60 uppercase tracking-widest relative z-10">(QS. Saba: 39)</p>
+            </div>
+            <div className="bg-primary-light text-primary-deep border border-primary-border p-10 rounded-[2rem] flex flex-col justify-center items-center text-center">
+               <p className="text-[14px] font-bold mb-6 leading-relaxed">
+                 Setiap donasi adalah investasi akhirat<br/>dan harapan baru bagi mereka.
+               </p>
+                <button className="bg-primary-deep text-white px-8 py-3.5 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl justify-center">
+                  <Heart size={16} fill="currentColor" /> Donasi Sekarang
+                </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

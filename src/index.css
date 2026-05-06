@@ -5,10 +5,15 @@
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Poppins", sans-serif;
   
-  --color-primary-deep: #064e3b;
-  --color-primary-mid: #14532d;
-  --color-primary-light: #f0fdf4;
-  --color-brand-accent: #22c55e;
+  /* Primary navy-blue ramp */
+  --color-primary-deep: #1A4F8A;   /* main CTA, navbar */
+  --color-primary-mid: #5595D6;    /* hover, secondary btn */
+  --color-primary-light: #EBF4FD;  /* icon bg, badges */
+  --color-primary-border: #C6DFF8; /* icon borders */
+  --color-primary-dark: #0D3361;   /* footer, dark sections */
+
+  /* Teal-blue accent */
+  --color-brand-accent: #2BA4C0;   /* progress, highlights */
 }
 
 @layer base {

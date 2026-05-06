@@ -27,7 +27,7 @@ export default function DampakLaporan() {
   const genericImg = "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=640";
 
   const chartData = [
-    { name: 'Program & Proyek', value: 83, color: '#14532d' },
+    { name: 'Program & Proyek', value: 83, color: 'var(--color-primary-deep)' },
     { name: 'Operasional', value: 10, color: '#86efac' },
     { name: 'Penggalangan Dana', value: 5, color: '#cbd5e1' },
     { name: 'Cadangan', value: 2, color: '#f1f5f9' },
@@ -52,7 +52,7 @@ export default function DampakLaporan() {
             <div className="flex flex-col gap-2 w-full lg:w-auto">
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Pilih Periode</span>
               <div className="flex bg-white rounded-lg border border-slate-200 p-1 flex-wrap gap-1 shadow-sm w-full lg:w-auto">
-                <button className="flex-1 lg:flex-none px-4 py-2 bg-[#f0fdf4] text-[#14532d] shadow-sm rounded border border-[#bbf7d0] text-[13px] font-bold flex justify-center items-center gap-2">
+                <button className="flex-1 lg:flex-none px-4 py-2 bg-primary-light text-primary-deep shadow-sm rounded border border-primary-border text-[13px] font-bold flex justify-center items-center gap-2">
                   <Clock size={14} /> Semua Waktu
                 </button>
                 <button className="flex-1 lg:flex-none px-4 py-2 text-slate-500 hover:text-slate-800 text-[13px] font-bold flex justify-center items-center transition-colors">
@@ -75,7 +75,7 @@ export default function DampakLaporan() {
                 <button className="px-4 py-2 bg-white border border-slate-200 shadow-sm rounded-lg text-slate-700 text-[13px] font-bold flex items-center gap-2 hover:bg-slate-50 transition-colors">
                   <Download size={14} /> Unduh Laporan
                 </button>
-                <Link to="/proyek" className="px-4 py-2 bg-[#14532d] border border-[#14532d] shadow-sm rounded-lg text-white text-[13px] font-bold flex items-center gap-2 hover:bg-[#064e3b] transition-colors">
+                <Link to="/proyek" className="px-4 py-2 bg-primary-deep border border-primary-deep shadow-sm rounded-lg text-white text-[13px] font-bold flex items-center gap-2 hover:bg-primary-dark transition-colors">
                   Lihat Proyek <ArrowRight size={14} />
                 </Link>
               </div>
@@ -92,7 +92,7 @@ export default function DampakLaporan() {
             <p className="text-2xl font-bold text-slate-900 mb-1">10.000+</p>
             <p className="text-[13px] font-bold text-slate-800 mb-1">Penerima Manfaat</p>
             <p className="text-[11px] font-medium text-slate-500 mb-4">di berbagai wilayah Indonesia</p>
-            <div className="mt-auto px-3 py-1 bg-[#f0fdf4] rounded-full text-[11px] font-bold text-[#166534] flex items-center gap-1 w-max">
+            <div className="mt-auto px-3 py-1 bg-primary-light rounded-full text-[11px] font-bold text-primary-deep flex items-center gap-1 w-max">
               <ArrowUp size={10} strokeWidth={3} /> 12% <span className="opacity-70 font-semibold ml-0.5">dari periode sebelumnya</span>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function DampakLaporan() {
             <p className="text-2xl font-bold text-slate-900 mb-1">30+</p>
             <p className="text-[13px] font-bold text-slate-800 mb-1">Proyek Selesai</p>
             <p className="text-[11px] font-medium text-slate-500 mb-4">Jembatan & Listrik</p>
-            <div className="mt-auto px-3 py-1 bg-[#f0fdf4] rounded-full text-[11px] font-bold text-[#166534] flex items-center gap-1 w-max">
+            <div className="mt-auto px-3 py-1 bg-primary-light rounded-full text-[11px] font-bold text-primary-deep flex items-center gap-1 w-max">
               <ArrowUp size={10} strokeWidth={3} /> 8% <span className="opacity-70 font-semibold ml-0.5">dari periode sebelumnya</span>
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function DampakLaporan() {
             <p className="text-2xl font-bold text-slate-900 mb-1">12</p>
             <p className="text-[13px] font-bold text-slate-800 mb-1">Desa Terdampak</p>
             <p className="text-[11px] font-medium text-slate-500 mb-4">di 6 Provinsi</p>
-            <div className="mt-auto px-3 py-1 bg-[#f0fdf4] rounded-full text-[11px] font-bold text-[#166534] flex items-center gap-1 w-max">
+            <div className="mt-auto px-3 py-1 bg-primary-light rounded-full text-[11px] font-bold text-primary-deep flex items-center gap-1 w-max">
               <ArrowUp size={10} strokeWidth={3} /> 9% <span className="opacity-70 font-semibold ml-0.5">dari periode sebelumnya</span>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function DampakLaporan() {
             <p className="text-2xl font-bold text-slate-900 mb-1">18</p>
             <p className="text-[13px] font-bold text-slate-800 mb-1">Desa Berlistrik</p>
             <p className="text-[11px] font-medium text-slate-500 mb-4">Akses listrik andal</p>
-            <div className="mt-auto px-3 py-1 bg-[#f0fdf4] rounded-full text-[11px] font-bold text-[#166534] flex items-center gap-1 w-max">
+            <div className="mt-auto px-3 py-1 bg-primary-light rounded-full text-[11px] font-bold text-primary-deep flex items-center gap-1 w-max">
               <ArrowUp size={10} strokeWidth={3} /> 15% <span className="opacity-70 font-semibold ml-0.5">dari periode sebelumnya</span>
             </div>
           </div>
@@ -140,7 +140,7 @@ export default function DampakLaporan() {
             <p className="text-2xl font-bold text-slate-900 mb-1">SAR 6.2M+</p>
             <p className="text-[13px] font-bold text-slate-800 mb-1">Total Donasi Terkumpul</p>
             <p className="text-[11px] font-medium text-slate-500 mb-4">dari para donatur</p>
-            <div className="mt-auto px-3 py-1 bg-[#f0fdf4] rounded-full text-[11px] font-bold text-[#166534] flex items-center gap-1 w-max">
+            <div className="mt-auto px-3 py-1 bg-primary-light rounded-full text-[11px] font-bold text-primary-deep flex items-center gap-1 w-max">
               <ArrowUp size={10} strokeWidth={3} /> 10% <span className="opacity-70 font-semibold ml-0.5">dari periode sebelumnya</span>
             </div>
           </div>
@@ -193,7 +193,7 @@ export default function DampakLaporan() {
             </div>
 
             <div className="bg-[#f8f9fa] border border-slate-100 rounded-xl p-5 flex items-start gap-4">
-               <ShieldCheck size={24} className="text-[#14532d] shrink-0 mt-0.5" strokeWidth={1.5} />
+               <ShieldCheck size={24} className="text-primary-deep shrink-0 mt-0.5" strokeWidth={1.5} />
                <p className="text-[13px] font-medium text-slate-700 leading-relaxed">
                  <span className="font-bold text-slate-900 blo">100% dana donasi digunakan untuk pelaksanaan program dan proyek.</span> <br/> Biaya operasional dijaga seminimal mungkin untuk memastikan dampak maksimal.
                </p>
@@ -235,7 +235,7 @@ export default function DampakLaporan() {
                </div>
              </div>
              
-             <div className="pt-6 border-t border-slate-200 mt-8 flex justify-between items-center bg-[#f0fdf4] p-5 rounded-2xl border-b-[3px] border-b-[#bbf7d0]">
+             <div className="pt-6 border-t border-slate-200 mt-8 flex justify-between items-center bg-primary-light p-5 rounded-2xl border-b-[3px] border-b-primary-border">
                <span className="text-[18px] font-bold text-slate-900">Total</span>
                <span className="text-[20px] font-bold text-slate-900">SAR 6.200.000</span>
              </div>
@@ -249,7 +249,7 @@ export default function DampakLaporan() {
               <h2 className="text-xl font-bold text-slate-900 mb-2 font-display">Laporan Berkala</h2>
               <p className="text-[13px] font-medium text-slate-500">Unduh laporan keuangan, program, dan dampak kami secara berkala.</p>
             </div>
-            <button className="text-[13px] font-bold text-slate-600 hover:text-[#14532d] flex items-center gap-2 transition-colors">
+            <button className="text-[13px] font-bold text-slate-600 hover:text-primary-deep flex items-center gap-2 transition-colors">
               Lihat Semua Laporan <ArrowRight size={14} />
             </button>
           </div>
@@ -263,11 +263,11 @@ export default function DampakLaporan() {
             ].map((lap, idx) => (
               <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex items-center justify-between group cursor-pointer group hover:border-slate-300">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[#f8f9fa] rounded-xl flex items-center justify-center font-bold text-slate-400 group-hover:text-[#14532d] group-hover:bg-[#f0fdf4] transition-colors">
+                  <div className="w-12 h-12 bg-[#f8f9fa] rounded-xl flex items-center justify-center font-bold text-slate-400 group-hover:text-primary-deep group-hover:bg-primary-light transition-colors">
                     PDF
                   </div>
                   <div>
-                    <h4 className="text-[13px] font-bold text-slate-900 mb-1 leading-tight group-hover:text-[#14532d] transition-colors">{lap.t}</h4>
+                    <h4 className="text-[13px] font-bold text-slate-900 mb-1 leading-tight group-hover:text-primary-deep transition-colors">{lap.t}</h4>
                     <p className="text-[11px] font-medium text-slate-500 mb-1">{lap.p}</p>
                     <p className="text-[11px] font-bold text-slate-400">{lap.s}</p>
                   </div>
@@ -287,7 +287,7 @@ export default function DampakLaporan() {
               <h2 className="text-xl font-bold text-slate-900 mb-2 font-display">Ringkasan Perkembangan Proyek</h2>
               <p className="text-[13px] font-medium text-slate-500">Status kemajuan proyek utama yang sedang berjalan.</p>
             </div>
-            <Link to="/proyek" className="text-[13px] font-bold text-slate-600 hover:text-[#14532d] flex items-center gap-2 transition-colors">
+            <Link to="/proyek" className="text-[13px] font-bold text-slate-600 hover:text-primary-deep flex items-center gap-2 transition-colors">
               Lihat Semua Proyek <ArrowRight size={14} />
             </Link>
           </div>
@@ -318,12 +318,12 @@ export default function DampakLaporan() {
                       <div className="flex items-center gap-4">
                          <span className="text-[13px] font-bold text-slate-900 w-10">80%</span>
                          <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
-                            <div className="w-[80%] h-full bg-[#14532d]"></div>
+                            <div className="w-[80%] h-full bg-primary-deep"></div>
                          </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 text-center">
-                       <span className="text-[12px] font-bold text-[#14532d]">Berjalan</span>
+                       <span className="text-[12px] font-bold text-primary-deep">Berjalan</span>
                     </td>
                   </tr>
 
@@ -362,12 +362,12 @@ export default function DampakLaporan() {
                       <div className="flex items-center gap-4">
                          <span className="text-[13px] font-bold text-slate-900 w-10">45%</span>
                          <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
-                            <div className="w-[45%] h-full bg-[#14532d]"></div>
+                            <div className="w-[45%] h-full bg-primary-deep"></div>
                          </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 text-center">
-                       <span className="text-[12px] font-bold text-[#14532d]">Berjalan</span>
+                       <span className="text-[12px] font-bold text-primary-deep">Berjalan</span>
                     </td>
                   </tr>
 
@@ -442,8 +442,8 @@ export default function DampakLaporan() {
         </div>
 
         {/* CTA Banner */}
-        <div className="bg-[#0f2c1f] rounded-[2rem] border border-[#166534] p-8 lg:p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
-          <div className="absolute right-0 top-0 w-64 h-64 bg-[#14532d] blur-[80px] rounded-full opacity-50 pointer-events-none"></div>
+        <div className="bg-[#0f2c1f] rounded-[2rem] border border-primary-border p-8 lg:p-10 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
+          <div className="absolute right-0 top-0 w-64 h-64 bg-primary-deep blur-[80px] rounded-full opacity-50 pointer-events-none"></div>
           <div className="relative z-10 w-full md:w-auto">
             <h3 className="text-xl font-bold text-white mb-2">Bersama, Kita Ciptakan Dampak yang Berkelanjutan</h3>
             <p className="text-[13px] text-slate-300 font-medium">Setiap donasi Anda adalah amanah yang membawa perubahan nyata bagi masyarakat di pelosok Indonesia.</p>
@@ -452,7 +452,7 @@ export default function DampakLaporan() {
              <Link to="/proyek" className="flex-1 md:flex-none bg-white text-slate-800 px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:bg-slate-50 transition-all shadow-sm">
               Lihat Proyek <ArrowRight size={16} />
             </Link>
-            <button className="flex-1 md:flex-none bg-[#14532d] border border-[#166534] text-white px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:bg-[#064e3b] transition-all shadow-md">
+            <button className="flex-1 md:flex-none bg-primary-deep border border-primary-border text-white px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:bg-primary-dark transition-all shadow-md">
               <Heart size={16} /> Donasi Sekarang
             </button>
           </div>

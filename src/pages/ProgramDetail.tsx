@@ -91,9 +91,9 @@ export default function ProgramDetail() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         <div className="text-[13px] text-slate-500 mb-10 font-medium">
-          <Link to="/" className="hover:text-[#14532d] transition-colors">Beranda</Link>
+          <Link to="/" className="hover:text-primary-deep transition-colors">Beranda</Link>
           <span className="mx-2">&gt;</span>
-          <span className="hover:text-[#14532d] transition-colors cursor-pointer">Program</span>
+          <span className="hover:text-primary-deep transition-colors cursor-pointer">Program</span>
           <span className="mx-2">&gt;</span>
           <span className="text-slate-800">Jembatan Gantung</span>
         </div>
@@ -109,7 +109,7 @@ export default function ProgramDetail() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl">
             <p className="text-sm font-bold text-slate-600 tracking-widest uppercase mb-4">PROGRAM</p>
-            <h1 className="text-5xl lg:text-6xl font-bold text-[#14532d] leading-[1.1] mb-6 font-display">
+            <h1 className="text-5xl lg:text-6xl font-bold text-primary-deep leading-[1.1] mb-6 font-display">
               Jembatan Gantung
             </h1>
             <p className="text-[18px] text-slate-800 leading-relaxed font-semibold mb-6 max-w-xl">
@@ -122,7 +122,7 @@ export default function ProgramDetail() {
             {/* Stats row */}
             <div className="flex flex-wrap gap-8 lg:gap-12 items-center">
               <div className="flex items-center gap-3">
-                <Milestone size={32} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                <Milestone size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                 <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">12</p>
                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Jembatan Terbangun</p>
@@ -131,7 +131,7 @@ export default function ProgramDetail() {
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <Milestone size={32} className="text-slate-400 shrink-0" strokeWidth={1.5} />
-                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#14532d] rounded-full flex items-center justify-center">
+                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-primary-deep rounded-full flex items-center justify-center">
                     <History size={10} className="text-white" />
                   </div>
                 </div>
@@ -141,14 +141,14 @@ export default function ProgramDetail() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <Users size={32} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                <Users size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                 <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">1.850+</p>
                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Penerima Manfaat</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <MapPin size={32} className="text-[#14532d] shrink-0" strokeWidth={1.5} />
+                <MapPin size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                 <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">6</p>
                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Provinsi</p>
@@ -178,23 +178,23 @@ export default function ProgramDetail() {
             <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">Manfaat Utama</h3>
             <ul className="space-y-4">
               <li className="flex gap-4 items-start">
-                <GraduationCap size={20} className="text-[#14532d] shrink-0 mt-0.5" />
+                <GraduationCap size={20} className="text-primary-deep shrink-0 mt-0.5" />
                 <span className="text-[14px] text-slate-700 font-medium">Akses pendidikan lebih mudah bagi anak-anak</span>
               </li>
               <li className="flex gap-4 items-start">
-                <HeartPulse size={20} className="text-[#14532d] shrink-0 mt-0.5" />
+                <HeartPulse size={20} className="text-primary-deep shrink-0 mt-0.5" />
                 <span className="text-[14px] text-slate-700 font-medium">Akses layanan kesehatan lebih cepat dan aman</span>
               </li>
               <li className="flex gap-4 items-start">
-                <Activity size={20} className="text-[#14532d] shrink-0 mt-0.5" />
+                <Activity size={20} className="text-primary-deep shrink-0 mt-0.5" />
                 <span className="text-[14px] text-slate-700 font-medium">Peningkatan aktivitas ekonomi dan perdagangan</span>
               </li>
               <li className="flex gap-4 items-start">
-                <UsersRound size={20} className="text-[#14532d] shrink-0 mt-0.5" />
+                <UsersRound size={20} className="text-primary-deep shrink-0 mt-0.5" />
                 <span className="text-[14px] text-slate-700 font-medium">Mempererat konektivitas antar desa</span>
               </li>
               <li className="flex gap-4 items-start">
-                <Building size={20} className="text-[#14532d] shrink-0 mt-0.5" />
+                <Building size={20} className="text-primary-deep shrink-0 mt-0.5" />
                 <span className="text-[14px] text-slate-700 font-medium">Mendorong pembangunan wilayah secara menyeluruh</span>
               </li>
             </ul>
@@ -206,7 +206,7 @@ export default function ProgramDetail() {
            <h3 className="text-lg font-bold text-slate-900 mb-8 font-display">Dampak Program</h3>
            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 divide-x divide-slate-100">
               <div className="flex flex-col gap-3">
-                <Milestone size={28} className="text-[#14532d]" strokeWidth={1.5} />
+                <Milestone size={28} className="text-primary-deep" strokeWidth={1.5} />
                 <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">12</p>
                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Jembatan<br/>Terbangun</p>
@@ -215,7 +215,7 @@ export default function ProgramDetail() {
               <div className="flex flex-col gap-3 pl-8">
                 <div className="relative w-max">
                   <Milestone size={28} className="text-slate-400" strokeWidth={1.5} />
-                  <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-[#14532d] rounded-full flex items-center justify-center">
+                  <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-primary-deep rounded-full flex items-center justify-center">
                     <History size={8} className="text-white" />
                   </div>
                 </div>
@@ -225,28 +225,28 @@ export default function ProgramDetail() {
                 </div>
               </div>
               <div className="flex flex-col gap-3 pl-8">
-                <Users size={28} className="text-[#14532d]" strokeWidth={1.5} />
+                <Users size={28} className="text-primary-deep" strokeWidth={1.5} />
                 <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">1.850+</p>
                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Penerima<br/>Manfaat</p>
                 </div>
               </div>
               <div className="flex flex-col gap-3 pl-8">
-                <UsersRound size={28} className="text-[#14532d]" strokeWidth={1.5} />
+                <UsersRound size={28} className="text-primary-deep" strokeWidth={1.5} />
                  <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">350+</p>
                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Keluarga<br/>Terhubung</p>
                 </div>
               </div>
                <div className="flex flex-col gap-3 pl-8">
-                <MapPin size={28} className="text-[#14532d]" strokeWidth={1.5} />
+                <MapPin size={28} className="text-primary-deep" strokeWidth={1.5} />
                 <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">6</p>
                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Provinsi<br/>&nbsp;</p>
                 </div>
               </div>
                <div className="flex flex-col gap-3 pl-8">
-                <Building size={28} className="text-[#14532d]" strokeWidth={1.5} />
+                <Building size={28} className="text-primary-deep" strokeWidth={1.5} />
                  <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">20+</p>
                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Desa<br/>Terdampak</p>
@@ -285,23 +285,23 @@ export default function ProgramDetail() {
                 <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">Status</p>
                 <div className="space-y-3">
                   <label className="flex items-center gap-3 cursor-pointer group">
-                    <div className="w-4 h-4 rounded bg-[#14532d] flex items-center justify-center">
+                    <div className="w-4 h-4 rounded bg-primary-deep flex items-center justify-center">
                       <Check size={12} className="text-white" />
                     </div>
                     <span className="font-semibold text-slate-800 text-[13px]">Semua Status</span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
-                    <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-[#14532d] transition-colors bg-white"></div>
+                    <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-primary-deep transition-colors bg-white"></div>
                     <div className="w-2 h-2 rounded-full bg-[#f59e0b]"></div>
                     <span className="font-semibold text-slate-600 text-[13px]">Perencanaan</span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
-                    <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-[#14532d] transition-colors bg-white"></div>
+                    <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-primary-deep transition-colors bg-white"></div>
                     <div className="w-2 h-2 rounded-full bg-[#22c55e]"></div>
                     <span className="font-semibold text-slate-600 text-[13px]">Berjalan</span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
-                    <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-[#14532d] transition-colors bg-white"></div>
+                    <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-primary-deep transition-colors bg-white"></div>
                     <div className="w-2 h-2 rounded-full bg-[#0f172a]"></div>
                     <span className="font-semibold text-slate-600 text-[13px]">Selesai</span>
                   </label>
@@ -310,7 +310,7 @@ export default function ProgramDetail() {
 
               <div className="mb-6">
                 <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">Provinsi</p>
-                <select className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] font-semibold text-slate-700 bg-[#f8f9fa] focus:outline-none focus:border-[#14532d] focus:ring-1 focus:ring-[#14532d]">
+                <select className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] font-semibold text-slate-700 bg-[#f8f9fa] focus:outline-none focus:border-primary-deep focus:ring-1 focus:ring-primary-deep">
                   <option>Semua Provinsi</option>
                   <option>Sulawesi Tengah</option>
                   <option>Nusa Tenggara Timur</option>
@@ -321,7 +321,7 @@ export default function ProgramDetail() {
               <div className="mb-8">
                 <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">Cari Proyek</p>
                 <div className="relative">
-                  <input type="text" placeholder="Cari nama proyek..." className="w-full border border-slate-200 rounded-lg pl-3 pr-9 py-2.5 text-[13px] font-semibold text-slate-700 bg-[#f8f9fa] focus:outline-none focus:border-[#14532d] focus:ring-1 focus:ring-[#14532d]" />
+                  <input type="text" placeholder="Cari nama proyek..." className="w-full border border-slate-200 rounded-lg pl-3 pr-9 py-2.5 text-[13px] font-semibold text-slate-700 bg-[#f8f9fa] focus:outline-none focus:border-primary-deep focus:ring-1 focus:ring-primary-deep" />
                   <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 </div>
               </div>
@@ -344,16 +344,16 @@ export default function ProgramDetail() {
                     <div className="relative h-[200px] shrink-0">
                       <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-sm ${
-                        p.status === 'Selesai' ? 'bg-[#dcfce7] text-[#166534]' : 
+                        p.status === 'Selesai' ? 'bg-primary-light text-primary-deep' : 
                         p.status === 'Perencanaan' ? 'bg-[#fef3c7] text-[#b45309]' :
-                        'bg-[#e8f5ed] text-[#14532d]'
+                        'bg-primary-light text-primary-deep'
                       }`}>
                         {p.status}
                       </div>
                     </div>
                     
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="text-[15px] font-bold text-slate-900 mb-2 leading-tight group-hover:text-[#14532d] transition-colors">{p.title}</h3>
+                      <h3 className="text-[15px] font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary-deep transition-colors">{p.title}</h3>
                       <div className="flex items-center gap-1.5 text-slate-400 text-[12px] mb-4">
                         <MapPin size={14} className="text-slate-400 shrink-0" />
                         <span className="font-semibold text-slate-500">{p.loc}</span>
@@ -378,7 +378,7 @@ export default function ProgramDetail() {
                               initial={{ width: 0 }}
                               whileInView={{ width: `${p.progress}%` }}
                               transition={{ duration: 1.2, ease: "circOut" }}
-                              className={`h-full ${p.status === 'Selesai' ? 'bg-[#14532d]' : p.status === 'Perencanaan' ? 'bg-[#f59e0b]' : 'bg-[#14532d]'}`}
+                              className={`h-full ${p.status === 'Selesai' ? 'bg-primary-deep' : p.status === 'Perencanaan' ? 'bg-[#f59e0b]' : 'bg-primary-deep'}`}
                             />
                           </div>
                           <div className="flex justify-end text-[11px] font-bold text-slate-900 tracking-wider">
@@ -386,7 +386,7 @@ export default function ProgramDetail() {
                           </div>
                         </div>
 
-                        <Link to="/proyek/jembatan-desa-lembah-harapan" className="relative z-20 flex items-center gap-2 text-[13px] font-bold text-slate-800 hover:text-[#14532d] group/btn transition-colors pt-2">
+                        <Link to="/proyek/jembatan-desa-lembah-harapan" className="relative z-20 flex items-center gap-2 text-[13px] font-bold text-slate-800 hover:text-primary-deep group/btn transition-colors pt-2">
                           Lihat Detail <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                         </Link>
                       </div>
@@ -410,7 +410,7 @@ export default function ProgramDetail() {
         <div className="bg-[#f8f9fa] rounded-[2rem] border border-slate-200 p-8 lg:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-6">
             <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-100 shrink-0">
-               <Heart size={32} className="text-[#14532d]" strokeWidth={1.5} />
+               <Heart size={32} className="text-primary-deep" strokeWidth={1.5} />
             </div>
             <div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Dukung Program Jembatan Gantung</h3>
@@ -418,10 +418,10 @@ export default function ProgramDetail() {
             </div>
           </div>
           <div className="flex gap-4 shrink-0 w-full md:w-auto">
-            <button className="flex-1 md:flex-none bg-[#14532d] text-white px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:bg-[#064e3b] transition-all shadow-md hover:shadow-lg">
+            <button className="flex-1 md:flex-none bg-primary-deep text-white px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:bg-primary-dark transition-all shadow-md hover:shadow-lg">
               <Heart size={16} /> Donasi Sekarang
             </button>
-            <button className="flex-1 md:flex-none bg-white text-[#14532d] border border-slate-200 px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:border-[#14532d] hover:bg-slate-50 transition-all shadow-sm">
+            <button className="flex-1 md:flex-none bg-white text-primary-deep border border-slate-200 px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:border-primary-deep hover:bg-slate-50 transition-all shadow-sm">
               Lihat Cara Berdonasi
             </button>
           </div>
