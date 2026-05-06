@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { useState, useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import ProyekCard from "../components/ProyekCard";
 import L from 'leaflet';
 

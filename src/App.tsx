@@ -308,6 +308,31 @@ const ProgramSection = () => {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { ChevronLeft } from "lucide-react";
+
+const NextArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <button 
+      onClick={onClick}
+      className="absolute -right-7 top-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center border border-slate-50 hover:bg-slate-50 transition-all hover:scale-110 active:scale-95 hidden xl:flex z-30 group"
+    >
+      <ChevronRight size={28} className="text-slate-900" />
+    </button>
+  );
+};
+
+const PrevArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <button 
+      onClick={onClick}
+      className="absolute -left-7 top-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center border border-slate-50 hover:bg-slate-50 transition-all hover:scale-110 active:scale-95 hidden xl:flex z-30 group"
+    >
+      <ChevronLeft size={28} className="text-slate-900" />
+    </button>
+  );
+};
 
 const ProgressSection = () => {
   const settings = {
@@ -317,6 +342,8 @@ const ProgressSection = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
