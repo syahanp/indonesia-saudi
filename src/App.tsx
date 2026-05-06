@@ -23,7 +23,7 @@ import {
   Award,
   ShieldCheck,
   TreePine,
-  Home,
+  Home as HomeIcon,
   Coins
 } from "lucide-react";
 
@@ -69,7 +69,18 @@ const Navbar = () => (
 );
 
 const Hero = () => (
-  <section className="relative pt-20 overflow-hidden">
+  <section className="relative pt-20">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full z-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f8f9fa] via-[#f8f9fa]/20 to-transparent lg:z-10"></div>
+        <img 
+          src="https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070" 
+          alt="Children on bridge" 
+          className="w-full h-full object-cover lg:object-right"
+        />
+      </div>
+    </div>
+
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pt-32 lg:pb-56 relative z-10">
       <div className="max-w-2xl">
         <motion.div 
@@ -118,18 +129,9 @@ const Hero = () => (
         </motion.div>
       </div>
     </div>
-    
-    <div className="absolute top-0 right-0 w-full lg:w-3/5 h-full z-0">
-      <div className="absolute inset-0 bg-gradient-to-r from-[#f8f9fa] via-[#f8f9fa]/20 to-transparent lg:z-10"></div>
-      <img 
-        src="https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070" 
-        alt="Children on bridge" 
-        className="w-full h-full object-cover lg:object-right"
-      />
-    </div>
 
     {/* Stats Card Overlay */}
-    <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 translate-y-12 lg:translate-y-24">
+    <div className="relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 translate-y-12 lg:translate-y-24">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -165,7 +167,7 @@ const Hero = () => (
 
           <div className="flex items-center gap-5 lg:px-8 pt-4 md:pt-0">
             <div className="w-[68px] h-[68px] rounded-full bg-[#f0fdf4] flex items-center justify-center text-[#14532d] shrink-0 border border-[#bbf7d0]">
-              <Home size={32} strokeWidth={1.5} />
+              <HomeIcon size={32} strokeWidth={1.5} />
             </div>
             <div>
               <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">12</p>
@@ -219,7 +221,7 @@ const ProgramSection = () => {
   ];
 
   return (
-    <section className="pt-32 pb-24 lg:pt-48 lg:pb-32 bg-white relative z-10">
+    <section className="pt-32 pb-24 lg:pt-48 lg:pb-32 bg-white z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-12">
           <div>
