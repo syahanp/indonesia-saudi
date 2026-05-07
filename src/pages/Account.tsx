@@ -26,16 +26,16 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const donations = [
-  { id: 1, date: '2025-04-15', amount: 5000, program: 'Jembatan Gantung', status: 'Selesai' },
-  { id: 2, date: '2025-03-22', amount: 2500, program: 'Listrik', status: 'Selesai' },
-  { id: 3, date: '2025-02-10', amount: 10000, program: 'Jembatan Gantung', status: 'Selesai' },
-  { id: 4, date: '2025-01-05', amount: 1500, program: 'Listrik', status: 'Selesai' },
+  { id: 1, date: '2025-04-15', amount: 5000, program: 'programs.jembatan.title', status: 'proyek.status_selesai' },
+  { id: 2, date: '2025-03-22', amount: 2500, program: 'programs.listrik.title', status: 'proyek.status_selesai' },
+  { id: 3, date: '2025-02-10', amount: 10000, program: 'programs.jembatan.title', status: 'proyek.status_selesai' },
+  { id: 4, date: '2025-01-05', amount: 1500, program: 'programs.listrik.title', status: 'proyek.status_selesai' },
 ];
 
 const COLORS = ['#0047FF', '#00D1FF', '#00E096', '#FFB800', '#FF3D77'];
 
 const Account: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -135,7 +135,7 @@ const Account: React.FC = () => {
                 </div>
                 <div className="hidden sm:flex items-center gap-2 text-primary-deep bg-[#eef4ff] px-4 py-2 rounded-xl text-sm font-bold">
                   <PieIcon size={16} />
-                  <span>{chartData.length} Kategori</span>
+                  <span>{chartData.length.toLocaleString(i18n.language)} {t('account.chart_categories')}</span>
                 </div>
               </div>
 
@@ -162,7 +162,7 @@ const Account: React.FC = () => {
                         boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
                         fontWeight: 'bold'
                       }}
-                      formatter={(value: number) => [`${value}%`, 'Distribusi']}
+                      formatter={(value: number) => [`${value}%`, t('account.distribution')]}
                     />
                     <Legend 
                       verticalAlign="bottom" 
@@ -176,8 +176,8 @@ const Account: React.FC = () => {
                 {/* Central Label */}
                 <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
                    <p className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest leading-none mb-1">{t('account.label_total')}</p>
-                   <p className="text-2xl font-black text-primary-deep leading-none">{user.totalDonation.toLocaleString()}</p>
-                   <p className="text-[10px] font-extrabold text-primary-deep uppercase tracking-widest leading-none mt-1">AED</p>
+                   <p className="text-2xl font-black text-primary-deep leading-none">{user.totalDonation.toLocaleString(i18n.language)}</p>
+                   <p className="text-[10px] font-extrabold text-primary-deep uppercase tracking-widest leading-none mt-1">{t('dampak_laporan.currency')}</p>
                 </div>
               </div>
             </motion.div>
@@ -205,19 +205,19 @@ const Account: React.FC = () => {
                           <Heart size={20} fill="currentColor" />
                         </div>
                         <div>
-                          <p className="text-[15px] font-extrabold text-[#0D2451] mb-1">{donation.program}</p>
+                          <p className="text-[15px] font-extrabold text-[#0D2451] mb-1">{t(donation.program)}</p>
                           <div className="flex items-center gap-3 text-xs font-bold text-slate-400">
                             <span className="flex items-center gap-1">
                               <Calendar size={12} />
-                              {donation.date}
+                              {new Date(donation.date).toLocaleDateString(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' })}
                             </span>
                             <span className="w-1.5 h-1.5 rounded-full bg-slate-200"></span>
-                            <span className="text-emerald-500">{donation.status}</span>
+                            <span className="text-emerald-500">{t(donation.status)}</span>
                           </div>
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-[16px] font-extrabold text-[#0D2451]">{donation.amount.toLocaleString()} AED</p>
+                        <p className="text-[16px] font-extrabold text-[#0D2451]">{donation.amount.toLocaleString(i18n.language)} {t('dampak_laporan.currency')}</p>
                         <button className="text-[12px] font-bold text-primary-deep flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity ml-auto">
                           {t('account.certificate')} <ChevronRight size={14} />
                         </button>
@@ -239,15 +239,15 @@ const Account: React.FC = () => {
                className="bg-primary-deep rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-xl shadow-blue-600/20"
             >
                <div className="relative z-10">
-                  <h4 className="text-xl font-extrabold mb-6">Mulai Kebaikan Baru</h4>
-                  <p className="text-blue-100 text-sm font-bold leading-relaxed mb-8">Lihat program terbaru kami yang membutuhkan dukungan Anda saat ini.</p>
+                  <h4 className="text-xl font-extrabold mb-6">{t('account.new_goodness')}</h4>
+                  <p className="text-blue-100 text-sm font-bold leading-relaxed mb-8">{t('account.new_goodness_desc')}</p>
                   
                   <button 
                     onClick={() => navigate('/proyek')}
                     className="w-full py-4 bg-white text-primary-deep font-extrabold rounded-2xl text-sm hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
                   >
                      <Grid size={16} />
-                     Lihat Proyek
+                     {t('account.view_projects')}
                   </button>
                </div>
                
@@ -276,9 +276,9 @@ const Account: React.FC = () => {
                transition={{ delay: 0.6 }}
                className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-sm"
             >
-               <h4 className="text-lg font-extrabold text-[#0D2451] mb-3">Keamanan Data</h4>
+               <h4 className="text-lg font-extrabold text-[#0D2451] mb-3">{t('account.data_security')}</h4>
                <p className="text-xs text-slate-400 font-bold leading-relaxed">
-                 Data akun Anda dienkripsi secara aman. Kami berkomitmen menjaga privasi setiap donatur kami sesuai standar internasional.
+                 {t('account.data_security_desc')}
                </p>
             </motion.div>
 

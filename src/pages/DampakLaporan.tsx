@@ -32,7 +32,7 @@ import { useTranslation } from "react-i18next";
 import { initialProjects } from "./Proyek";
 
 export default function DampakLaporan() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const periodKeys = ['all', '3m', '6m', '12m'] as const;
   type PeriodKey = typeof periodKeys[number];
   
@@ -51,18 +51,23 @@ export default function DampakLaporan() {
   const reportData = {
     all: {
       stats: {
-        beneficiaries: "10.000+", beneficiariesTrend: "+ 12%",
-        completed: "30+", completedTrend: "+ 8%",
-        villages: "12", villagesTrend: "+ 9%",
-        electricity: "18", electricityTrend: "+ 15%",
-        totalDonation: "AED 6.2M+", donationTrend: "+ 10%",
+        beneficiaries: t("dampak_laporan.number_plus", { val: (10000).toLocaleString(i18n.language) }), 
+        beneficiariesTrend: t("dampak_laporan.trend_up", { val: "12" }),
+        completed: t("dampak_laporan.number_plus", { val: (30).toLocaleString(i18n.language) }), 
+        completedTrend: t("dampak_laporan.trend_up", { val: "8" }),
+        villages: (12).toLocaleString(i18n.language), 
+        villagesTrend: t("dampak_laporan.trend_up", { val: "9" }),
+        electricity: (18).toLocaleString(i18n.language), 
+        electricityTrend: t("dampak_laporan.trend_up", { val: "15" }),
+        totalDonation: t("dampak_laporan.million_plus", { amount: "6.2" }), 
+        donationTrend: t("dampak_laporan.trend_up", { val: "10" }),
         totalAmountRaw: 6200000
       },
       chart: [
-        { name: t("dampak_laporan.transparency.categories.program"), value: 83, color: '#167ce1', amount: "AED 5.146.000" },
-        { name: t("dampak_laporan.transparency.categories.operational"), value: 10, color: '#7C3AED', amount: "AED 620.000" },
-        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "AED 310.000" },
-        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "AED 124.000" },
+        { name: t("dampak_laporan.transparency.categories.program"), value: 83, color: '#167ce1', amount: t("dampak_laporan.million_plus", { amount: "5.1" }) },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 10, color: '#7C3AED', amount: `${t("dampak_laporan.currency")} 620${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: `${t("dampak_laporan.currency")} 310${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: `${t("dampak_laporan.currency")} 124${t("dampak_laporan.thousand")}` },
       ],
       projects: [
         { id: "KJ-2025-0012", progress: 80, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[0] },
@@ -76,18 +81,23 @@ export default function DampakLaporan() {
     },
     '12m': {
       stats: {
-        beneficiaries: "6.200+", beneficiariesTrend: "+ 15%",
-        completed: "14+", completedTrend: "+ 10%",
-        villages: "5", villagesTrend: "+ 7%",
-        electricity: "8", electricityTrend: "+ 12%",
-        totalDonation: "AED 3.5M+", donationTrend: "+ 11%",
+        beneficiaries: t("dampak_laporan.number_plus", { val: (6200).toLocaleString(i18n.language) }), 
+        beneficiariesTrend: t("dampak_laporan.trend_up", { val: "15" }),
+        completed: t("dampak_laporan.number_plus", { val: (14).toLocaleString(i18n.language) }), 
+        completedTrend: t("dampak_laporan.trend_up", { val: "10" }),
+        villages: (5).toLocaleString(i18n.language), 
+        villagesTrend: t("dampak_laporan.trend_up", { val: "7" }),
+        electricity: (8).toLocaleString(i18n.language), 
+        electricityTrend: t("dampak_laporan.trend_up", { val: "12" }),
+        totalDonation: t("dampak_laporan.million_plus", { amount: "3.5" }),
+        donationTrend: t("dampak_laporan.trend_up", { val: "11" }),
         totalAmountRaw: 3500000
       },
       chart: [
-        { name: t("dampak_laporan.transparency.categories.program"), value: 85, color: '#167ce1', amount: "AED 2.975.000" },
-        { name: t("dampak_laporan.transparency.categories.operational"), value: 8, color: '#7C3AED', amount: "AED 280.000" },
-        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "AED 175.000" },
-        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "AED 70.000" },
+        { name: t("dampak_laporan.transparency.categories.program"), value: 85, color: '#167ce1', amount: t("dampak_laporan.million_plus", { amount: "2.9" }) },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 8, color: '#7C3AED', amount: `${t("dampak_laporan.currency")} 280${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: `${t("dampak_laporan.currency")} 175${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: `${t("dampak_laporan.currency")} 70${t("dampak_laporan.thousand")}` },
       ],
       projects: [
         { id: "KJ-2025-0012", progress: 80, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[4] },
@@ -96,18 +106,23 @@ export default function DampakLaporan() {
     },
     '6m': {
       stats: {
-        beneficiaries: "3.400+", beneficiariesTrend: "+ 18%",
-        completed: "8+", completedTrend: "+ 12%",
-        villages: "3", villagesTrend: "+ 5%",
-        electricity: "4", electricityTrend: "+ 20%",
-        totalDonation: "AED 1.8M+", donationTrend: "+ 14%",
+        beneficiaries: t("dampak_laporan.number_plus", { val: (3400).toLocaleString(i18n.language) }), 
+        beneficiariesTrend: t("dampak_laporan.trend_up", { val: "18" }),
+        completed: t("dampak_laporan.number_plus", { val: (8).toLocaleString(i18n.language) }), 
+        completedTrend: t("dampak_laporan.trend_up", { val: "12" }),
+        villages: (3).toLocaleString(i18n.language), 
+        villagesTrend: t("dampak_laporan.trend_up", { val: "5" }),
+        electricity: (4).toLocaleString(i18n.language), 
+        electricityTrend: t("dampak_laporan.trend_up", { val: "20" }),
+        totalDonation: t("dampak_laporan.million_plus", { amount: "1.8" }),
+        donationTrend: t("dampak_laporan.trend_up", { val: "14" }),
         totalAmountRaw: 1800000
       },
       chart: [
-        { name: t("dampak_laporan.transparency.categories.program"), value: 82, color: '#167ce1', amount: "AED 1.476.000" },
-        { name: t("dampak_laporan.transparency.categories.operational"), value: 11, color: '#7C3AED', amount: "AED 198.000" },
-        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "AED 90.000" },
-        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "AED 36.000" },
+        { name: t("dampak_laporan.transparency.categories.program"), value: 82, color: '#167ce1', amount: t("dampak_laporan.million_plus", { amount: "1.4" }) },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 11, color: '#7C3AED', amount: `${t("dampak_laporan.currency")} 198${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: `${t("dampak_laporan.currency")} 90${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: `${t("dampak_laporan.currency")} 36${t("dampak_laporan.thousand")}` },
       ],
       projects: [
         { id: "KJ-2025-0014", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[6] },
@@ -116,18 +131,23 @@ export default function DampakLaporan() {
     },
     '3m': {
       stats: {
-        beneficiaries: "1.800+", beneficiariesTrend: "+ 22%",
-        completed: "4+", completedTrend: "+ 15%",
-        villages: "2", villagesTrend: "+ 3%",
-        electricity: "2", electricityTrend: "+ 25%",
-        totalDonation: "AED 950K+", donationTrend: "+ 18%",
+        beneficiaries: t("dampak_laporan.number_plus", { val: (1800).toLocaleString(i18n.language) }), 
+        beneficiariesTrend: t("dampak_laporan.trend_up", { val: "22" }),
+        completed: t("dampak_laporan.number_plus", { val: (4).toLocaleString(i18n.language) }), 
+        completedTrend: t("dampak_laporan.trend_up", { val: "15" }),
+        villages: (2).toLocaleString(i18n.language), 
+        villagesTrend: t("dampak_laporan.trend_up", { val: "3" }),
+        electricity: (2).toLocaleString(i18n.language), 
+        electricityTrend: t("dampak_laporan.trend_up", { val: "25" }),
+        totalDonation: `${t("dampak_laporan.currency")} 950${t("dampak_laporan.thousand")}+`,
+        donationTrend: t("dampak_laporan.trend_up", { val: "18" }),
         totalAmountRaw: 950000
       },
       chart: [
-        { name: t("dampak_laporan.transparency.categories.program"), value: 80, color: '#167ce1', amount: "AED 760.000" },
-        { name: t("dampak_laporan.transparency.categories.operational"), value: 12, color: '#7C3AED', amount: "AED 114.000" },
-        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 6, color: '#F43F5E', amount: "AED 57.000" },
-        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "AED 19.000" },
+        { name: t("dampak_laporan.transparency.categories.program"), value: 80, color: '#167ce1', amount: `${t("dampak_laporan.currency")} 760${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 12, color: '#7C3AED', amount: `${t("dampak_laporan.currency")} 114${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 6, color: '#F43F5E', amount: `${t("dampak_laporan.currency")} 57${t("dampak_laporan.thousand")}` },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: `${t("dampak_laporan.currency")} 19${t("dampak_laporan.thousand")}` },
       ],
       projects: [
         { id: "KJ-2025-0014", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[1] },
@@ -272,7 +292,9 @@ export default function DampakLaporan() {
                 </ResponsiveContainer>
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                   <p className="text-[11px] font-bold text-slate-400 mb-1">{t("dampak_laporan.transparency.total_funds")}</p>
-                  <p className="text-[20px] font-extrabold text-primary-deep tracking-tight">AED {currentData.stats.totalAmountRaw.toLocaleString()}</p>
+                  <p className="text-[20px] font-extrabold text-primary-deep tracking-tight">
+                    {t("dampak_laporan.currency")} {currentData.stats.totalAmountRaw.toLocaleString(i18n.language)}
+                  </p>
                 </div>
               </div>
 
@@ -319,7 +341,9 @@ export default function DampakLaporan() {
              
              <div className="mt-12 bg-blue-50/50 p-6 rounded-2xl flex justify-between items-center border border-blue-100">
                <span className="text-[18px] font-extrabold text-primary-deep">{t("dampak_laporan.transparency.total")}</span>
-               <span className="text-[24px] font-extrabold text-primary-deep tracking-tight">AED {currentData.stats.totalAmountRaw.toLocaleString()}</span>
+               <span className="text-[24px] font-extrabold text-primary-deep tracking-tight">
+                 {t("dampak_laporan.currency")} {currentData.stats.totalAmountRaw.toLocaleString(i18n.language)}
+               </span>
              </div>
           </div>
         </div>
@@ -453,7 +477,7 @@ export default function DampakLaporan() {
 
 function StatCard({ icon, value, label, sub, trend, trendLabel, highlight = false }: any) {
   return (
-    <div className={`bg-white border border-slate-100 rounded-3xl p-8 flex flex-col items-center text-center shadow-sm relative group hover:border-primary-deep/20 transition-all ${highlight ? 'ring-1 ring-primary-deep/5' : ''}`}>
+    <div className={`bg-white border border-slate-100 rounded-3xl p-4 flex flex-col items-center text-center shadow-sm relative group hover:border-primary-deep/20 transition-all ${highlight ? 'ring-1 ring-primary-deep/5' : ''}`}>
       <div className="w-14 h-14 bg-slate-50 rounded-full flex items-center justify-center mb-6 text-primary-deep shadow-inner group-hover:scale-110 transition-transform">
         {icon}
       </div>
