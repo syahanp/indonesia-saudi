@@ -265,7 +265,7 @@ export default function DampakLaporan() {
         </div>
 
         {/* Financial Transparency */}
-        <div className="grid lg:grid-cols-[1.1fr_1.3fr] gap-8 mb-20">
+        <div className="grid lg:grid-cols-[1.1fr_1.3fr] gap-4 mb-20">
           <div className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-sm relative overflow-hidden">
             <h3 className="text-[20px] font-bold text-primary-deep mb-1">{t("dampak_laporan.transparency.title")}</h3>
             <p className="text-[13px] font-bold text-slate-400 mb-10">{t("dampak_laporan.transparency.period_label", { period: tabs.find(t=>t.id === activePeriod)?.label })}</p>
@@ -302,7 +302,7 @@ export default function DampakLaporan() {
                 {currentData.chart.map((item, idx) => (
                   <div key={idx} className="flex justify-between items-center group cursor-pointer">
                     <div className="flex items-center gap-3">
-                      <div className="w-3.5 h-3.5 rounded-full shadow-sm" style={{ backgroundColor: item.color }}></div>
+                      <div className="w-4 h-4 shrink-0 rounded-full shadow-sm" style={{ backgroundColor: item.color }}></div>
                       <span className="text-[14px] font-bold text-slate-600 group-hover:text-primary-deep transition-colors">{item.name}</span>
                     </div>
                     <span className="text-[14px] font-extrabold text-slate-900">{item.value}%</span>
