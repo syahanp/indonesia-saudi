@@ -111,7 +111,7 @@ const Account: React.FC = () => {
           <div className="hidden lg:grid grid-cols-1 gap-4 w-full max-w-[280px]">
              <div className="bg-[#f8fbff] p-8 rounded-3xl border border-slate-100 text-center">
                 <p className="text-[12px] text-slate-400 font-extrabold uppercase tracking-wider mb-2">{t('account.total_donation')}</p>
-                <p className="text-2xl font-extrabold text-primary-deep">{user.totalDonation.toLocaleString()} <span className="text-sm font-bold">SAR</span></p>
+                <p className="text-2xl font-extrabold text-primary-deep">{user.totalDonation.toLocaleString()} <span className="text-sm font-bold">AED</span></p>
              </div>
           </div>
         </motion.div>
@@ -177,7 +177,7 @@ const Account: React.FC = () => {
                 <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
                    <p className="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest leading-none mb-1">{t('account.label_total')}</p>
                    <p className="text-2xl font-black text-primary-deep leading-none">{user.totalDonation.toLocaleString()}</p>
-                   <p className="text-[10px] font-extrabold text-primary-deep uppercase tracking-widest leading-none mt-1">SAR</p>
+                   <p className="text-[10px] font-extrabold text-primary-deep uppercase tracking-widest leading-none mt-1">AED</p>
                 </div>
               </div>
             </motion.div>
@@ -217,7 +217,7 @@ const Account: React.FC = () => {
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-[16px] font-extrabold text-[#0D2451]">{donation.amount.toLocaleString()} SAR</p>
+                        <p className="text-[16px] font-extrabold text-[#0D2451]">{donation.amount.toLocaleString()} AED</p>
                         <button className="text-[12px] font-bold text-primary-deep flex items-center gap-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity ml-auto">
                           {t('account.certificate')} <ChevronRight size={14} />
                         </button>

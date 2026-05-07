@@ -93,7 +93,7 @@ const Navbar = () => {
   const languages = [
     { code: 'id', name: 'Indonesian', flag: '🇮🇩' },
     { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'ar', name: 'Arabic', flag: '🇸🇦' },
+    { code: 'ar', name: 'Arabic', flag: '🇦🇪' },
   ];
 
   const handleDonasiNav = (e: React.MouseEvent) => {
@@ -111,11 +111,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-24">
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-20 h-20">
-              <img src="/bulan_sabit_biru_icon.png" alt="Bulan Sabit Biru Logo" className="w-full h-full object-contain" />
+              <img src="/bulan_sabit_biru_icon.png" alt={t('brand.first') + ' ' + t('brand.second')} className="w-full h-full object-contain" />
             </div>
             <div>
-              <h1 className="text-[24px] font-bold text-primary-deep leading-none uppercase tracking-wide">BULAN</h1>
-              <p className="text-[24px] font-extrabold text-primary-deep leading-none uppercase mt-0.5">SABIT BIRU</p>
+              <h1 className="text-[24px] font-bold text-primary-deep leading-none uppercase tracking-wide">{t("brand.first")}</h1>
+              <p className="text-[24px] font-extrabold text-primary-deep leading-none uppercase mt-0.5">{t("brand.second")}</p>
             </div>
           </Link>
           
@@ -195,7 +195,7 @@ const Navbar = () => {
 };
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
 
@@ -218,7 +218,7 @@ const Hero = () => {
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white lg:via-white/95 to-transparent"></div>
+        <div className={`absolute inset-0 ${i18n.language === 'ar' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-white via-white lg:via-white/95 to-transparent`}></div>
       </div>
     </div>
 
@@ -282,7 +282,7 @@ const Hero = () => {
         className="bg-white rounded-[2rem] p-8 lg:p-10 shadow-xl flex flex-col gap-8 border border-slate-100"
       >
         <h3 className="text-[22px] font-bold text-primary-deep flex items-center gap-3">
-          Dampak Kami <span className="text-primary-mid text-[13px] font-bold leading-none tracking-wide">(Update April 2025)</span>
+          {t("home_stats.title")} <span className="text-primary-mid text-[13px] font-bold leading-none tracking-wide">{t("home_stats.update_label")}</span>
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
@@ -292,8 +292,8 @@ const Hero = () => {
             </div>
             <div>
               <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">2.450+</p>
-              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">Penerima Manfaat</p>
-              <p className="text-[12px] text-slate-500 leading-tight">Di berbagai wilayah<br className="hidden lg:block"/>Indonesia</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">{t("home_stats.beneficiaries")}</p>
+              <p className="text-[12px] text-slate-500 leading-tight md:whitespace-pre-line">{t("home_stats.beneficiaries_sub").replace(' ', '\n')}</p>
             </div>
           </div>
 
@@ -303,8 +303,8 @@ const Hero = () => {
             </div>
             <div>
               <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">18</p>
-              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">Proyek Selesai</p>
-              <p className="text-[12px] text-slate-500 leading-tight">Jembatan & Listrik</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">{t("home_stats.projects_completed")}</p>
+              <p className="text-[12px] text-slate-500 leading-tight">{t("home_stats.projects_sub")}</p>
             </div>
           </div>
 
@@ -314,8 +314,8 @@ const Hero = () => {
             </div>
             <div>
               <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">12</p>
-              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">Desa Terdampak</p>
-              <p className="text-[12px] text-slate-500 leading-tight">Di 6 Provinsi</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">{t("home_stats.villages_impacted")}</p>
+              <p className="text-[12px] text-slate-500 leading-tight">{t("home_stats.villages_sub")}</p>
             </div>
           </div>
 
@@ -324,9 +324,9 @@ const Hero = () => {
               <Coins size={32} strokeWidth={1.5} />
             </div>
             <div>
-              <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">SAR 6.2M+</p>
-              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">{t("stats.collected")}</p>
-              <p className="text-[12px] text-slate-500 leading-tight">{t("stats.from_donors")}</p>
+              <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">{t("home_stats.collected")}</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">{t("home_stats.collected_label")}</p>
+              <p className="text-[12px] text-slate-500 leading-tight">{t("home_stats.from_donors")}</p>
             </div>
           </div>
         </div>
@@ -595,11 +595,11 @@ const Footer = () => {
         <div className="lg:col-span-2 space-y-6">
           <div className="flex items-center gap-3 mb-4">
             <div className="w-12 h-12">
-              <img src="/bulan_sabit_biru_icon.png" alt="Logo" className="w-full h-full object-contain brightness-0 invert" />
+              <img src="/bulan_sabit_biru_icon.png" alt={t('brand.first') + ' ' + t('brand.second')} className="w-full h-full object-contain brightness-0 invert" />
             </div>
             <div>
-              <p className="text-[14px] font-bold tracking-tight uppercase leading-none">BULAN</p>
-              <p className="text-[20px] font-extrabold tracking-tight uppercase leading-none mt-1">SABIT BIRU</p>
+              <p className="text-[14px] font-bold tracking-tight uppercase leading-none">{t("brand.first")}</p>
+              <p className="text-[20px] font-extrabold tracking-tight uppercase leading-none mt-1">{t("brand.second")}</p>
             </div>
           </div>
           <div className="space-y-1">
@@ -675,7 +675,7 @@ const Footer = () => {
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-[14px] font-bold text-white">{t("footer.saudi_box.title")}</h4>
                 <div className="w-8 h-5 rounded overflow-hidden">
-                  <img src="https://flagcdn.com/w80/sa.png" alt="SA" className="w-full h-full object-cover" />
+                  <img src="https://flagcdn.com/w80/ae.png" alt="AE" className="w-full h-full object-cover" />
                 </div>
               </div>
               <p className="text-[28px] font-bold text-white leading-tight mb-4" dir="rtl">{t("footer.saudi_box.thanks")}</p>

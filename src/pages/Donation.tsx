@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 import { 
   MapPin, 
   Users, 
@@ -25,6 +26,7 @@ import {
 } from "lucide-react";
 
 export default function Donation() {
+  const { t } = useTranslation();
   const [selectedNominal, setSelectedNominal] = useState<number | string>(250);
   const [paymentMethod, setPaymentMethod] = useState("credit");
 
@@ -149,7 +151,7 @@ export default function Donation() {
                       }`}
                     >
                       <p className={`text-[18px] font-bold mb-1 ${selectedNominal === opt.value ? "text-primary-deep" : "text-slate-900"}`}>
-                        SAR {opt.value}
+                        AED {opt.value}
                       </p>
                       <p className="text-[12px] font-medium text-slate-500">{opt.label}</p>
                       {selectedNominal === opt.value && (
@@ -208,8 +210,8 @@ export default function Donation() {
                     <label className="text-[13px] font-bold text-slate-700">Nomor Telepon</label>
                     <div className="flex gap-3">
                       <div className="flex items-center gap-2 px-4 py-4 rounded-xl border border-slate-100 bg-slate-50 text-sm font-bold shrink-0">
-                         <img src="https://flagcdn.com/w20/sa.png" alt="SA Flag" className="w-5" />
-                         <span>+966</span>
+                         <img src="https://flagcdn.com/w20/ae.png" alt="UAE Flag" className="w-5" />
+                         <span>+971</span>
                          <span className="text-slate-400 rotate-90">|</span>
                       </div>
                       <input 
@@ -315,8 +317,8 @@ export default function Donation() {
                 </div>
 
                 <div>
-                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Nominal Donasi</p>
-                  <p className="text-[20px] font-bold text-primary-deep">SAR {selectedNominal || 0}</p>
+                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">{t("proyek.detail.donation_nominal")}</p>
+                  <p className="text-[20px] font-bold text-primary-deep">AED {selectedNominal || 0}</p>
                 </div>
 
                 <div className="flex justify-between items-center text-[13px] pt-4 border-t border-slate-50">
@@ -326,7 +328,7 @@ export default function Donation() {
 
                 <div className="flex justify-between items-center pt-6 border-t border-slate-100">
                   <span className="text-[15px] font-bold text-primary-deep">Total Donasi</span>
-                  <span className="text-[22px] font-extrabold text-primary-deep">SAR {selectedNominal || 0}</span>
+                  <span className="text-[22px] font-extrabold text-primary-deep">AED {selectedNominal || 0}</span>
                 </div>
               </div>
             </div>

@@ -24,7 +24,7 @@ import { useTranslation } from "react-i18next";
 import { initialProjects } from "./Proyek";
 
 export default function ProgramDetail() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   
   const programKey = id?.includes('listrik') ? 'listrik' : 'jembatan';
@@ -70,15 +70,15 @@ export default function ProgramDetail() {
           <span className="mx-2">&gt;</span>
           <span className="hover:text-primary-deep transition-colors cursor-pointer">{t("proyek.label_program")}</span>
           <span className="mx-2">&gt;</span>
-          <span className="text-slate-800">{t("programs.jembatan.title")}</span>
+          <span className="text-slate-800">{programTitle}</span>
         </div>
       </div>
 
       {/* Hero Section */}
       <div className="relative pt-6 pb-32 lg:pb-48 mb-20">
         <div className="absolute inset-0 z-0">
-           <img src={programKey === 'listrik' ? "/listrik.png" : "/jembatan-gantung.png"} alt="Hero" className="w-full h-full object-cover object-right" />
-           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+           <img src={programKey === 'listrik' ? "/listrik.png" : "/jembatan-gantung.png"} alt="Hero" referrerPolicy="no-referrer" className="w-full h-full object-cover object-right" />
+           <div className={`absolute inset-0 ${i18n.language === 'ar' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-white via-white/90 to-transparent`}></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -243,9 +243,22 @@ export default function ProgramDetail() {
                 <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">{t("proyek.label_province")}</p>
                 <select className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] font-semibold text-slate-700 bg-[#f8f9fa] focus:outline-none focus:border-primary-deep focus:ring-1 focus:ring-primary-deep">
                   <option>{t("proyek.all_provinces")}</option>
-                  <option>Sulawesi Tengah</option>
-                  <option>Nusa Tenggara Timur</option>
+                  <option>Aceh</option>
+                  <option>Bali</option>
+                  <option>Jawa Barat</option>
+                  <option>Jawa Timur</option>
                   <option>Kalimantan Barat</option>
+                  <option>Kalimantan Timur</option>
+                  <option>Maluku</option>
+                  <option>Nusa Tenggara Barat</option>
+                  <option>Nusa Tenggara Timur</option>
+                  <option>Papua</option>
+                  <option>Riau</option>
+                  <option>Sulawesi Selatan</option>
+                  <option>Sulawesi Tengah</option>
+                  <option>Sulawesi Utara</option>
+                  <option>Sumatera Barat</option>
+                  <option>Sumatera Utara</option>
                 </select>
               </div>
 
@@ -271,9 +284,9 @@ export default function ProgramDetail() {
                     whileHover={{ y: -5 }}
                     className="relative bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm transition-all hover:shadow-xl group flex flex-col h-full"
                   >
-                    <Link to="/proyek/jembatan-desa-lembah-harapan" className="absolute inset-0 z-10" />
+                    <Link to={`/proyek/${p.id}`} className="absolute inset-0 z-10" />
                     <div className="relative h-[200px] shrink-0">
-                      <img src={p.img} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <img src={p.img} alt={p.title} referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                       <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-sm ${
                         p.status === 'Selesai' ? 'bg-primary-light text-primary-deep' : 
                         p.status === 'Perencanaan' ? 'bg-[#fef3c7] text-[#b45309]' :
@@ -284,14 +297,18 @@ export default function ProgramDetail() {
                     </div>
                     
                     <div className="p-6 flex flex-col flex-1">
-                      <h3 className="text-[15px] font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary-deep transition-colors">{p.title}</h3>
+                      <h3 className="text-[15px] font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary-deep transition-colors">
+                        {p.id ? t(`proyek.projects.${p.id}.title`) : p.title}
+                      </h3>
                       <div className="flex items-center gap-1.5 text-slate-400 text-[12px] mb-4">
                         <MapPin size={14} className="text-slate-400 shrink-0" />
-                        <span className="font-semibold text-slate-500">{p.loc}</span>
+                        <span className="font-semibold text-slate-500">
+                          {p.id ? t(`proyek.projects.${p.id}.loc`) : p.loc}
+                        </span>
                       </div>
                       
                       <p className="text-[13px] text-slate-500 mb-6 leading-relaxed font-medium flex-1">
-                        {p.desc}
+                        {p.id ? t(`proyek.projects.${p.id}.desc`) : p.desc}
                       </p>
 
                       <div className="space-y-4 pt-4 border-t border-slate-100 mt-auto">

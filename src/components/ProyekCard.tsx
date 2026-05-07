@@ -56,14 +56,18 @@ export default function ProyekCard({ project }: { project: ProyekProps }) {
       </div>
       
       <div className="p-6 flex flex-col flex-1 pt-8">
-        <h3 className="text-[17px] font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary-deep transition-colors">{p.title}</h3>
+        <h3 className="text-[17px] font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary-deep transition-colors">
+          {p.id ? t(`proyek.projects.${p.id}.title`) : p.title}
+        </h3>
         <div className="flex items-center gap-1.5 text-slate-400 text-[13px] mb-4">
           <MapPin size={14} className="text-slate-400 shrink-0" />
-          <span className="font-semibold text-slate-600">{p.loc}</span>
+          <span className="font-semibold text-slate-600">
+            {p.id ? t(`proyek.projects.${p.id}.loc`) : p.loc}
+          </span>
         </div>
         
         <p className="text-[13px] text-slate-600 mb-6 leading-relaxed font-medium flex-1">
-          {p.desc}
+          {p.id ? t(`proyek.projects.${p.id}.desc`) : p.desc}
         </p>
 
         <div className="space-y-4 pt-4 border-t border-slate-100 mt-auto">

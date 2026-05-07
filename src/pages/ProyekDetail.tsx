@@ -21,13 +21,22 @@ import {
   CheckCircle2,
   ListTodo
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { initialProjects } from "./Proyek";
 
 export default function ProyekDetail() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { id } = useParams<{ id: string }>();
   const genericImg = "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070";
+
+  const project = initialProjects.find(p => p.id === id) || initialProjects[0];
+  const p = project;
+
+  const title = p.id ? t(`proyek.projects.${p.id}.title`) : p.title;
+  const loc = p.id ? t(`proyek.projects.${p.id}.loc`) : p.loc;
+  const desc = p.id ? t(`proyek.projects.${p.id}.desc`) : p.desc;
 
   return (
     <div className="pt-24 pb-20">
@@ -35,7 +44,7 @@ export default function ProyekDetail() {
       <div className="relative pt-10 pb-16 lg:pb-16 mb-12">
         <div className="absolute inset-0 z-0">
            <img src="/jembatan-gantung.png" alt="Hero" className="w-full h-full object-cover object-center" />
-           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 lg:via-white/80 to-transparent"></div>
+           <div className={`absolute inset-0 ${i18n.language === 'ar' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-white via-white/95 lg:via-white/80 to-transparent`}></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -44,22 +53,22 @@ export default function ProyekDetail() {
             <span className="opacity-50">&gt;</span>
             <Link to="/proyek" className="hover:text-primary-deep transition-colors">{t("nav.proyek")}</Link>
             <span className="opacity-50">&gt;</span>
-            <span className="text-slate-900">Jembatan Desa Lembah Harapan</span>
+            <span className="text-slate-900">{title}</span>
           </div>
 
           <div className="max-w-2xl">
             <span className="inline-block px-4 py-2 rounded-xl text-[13px] font-bold text-primary-deep mb-6 bg-primary-light">
-                {t("proyek.status_berjalan")}
+                {p.status === 'Selesai' ? t("proyek.status_selesai") : p.status === 'Perencanaan' ? t("proyek.status_perencanaan") : t("proyek.status_berjalan")}
             </span>
             <h1 className="text-4xl lg:text-6xl font-bold text-primary-deep leading-[1.1] mb-6 font-display">
-              Jembatan Desa<br/>Lembah Harapan
+              {title}
             </h1>
             <div className="flex items-center gap-2 text-slate-800 mb-6 font-semibold text-[16px]">
               <MapPin size={20} className="text-slate-800 shrink-0" />
-              <span>Sulawesi Tengah</span>
+              <span>{loc}</span>
             </div>
             <p className="text-[15px] lg:text-[16px] text-slate-800 leading-relaxed font-semibold max-w-xl">
-              Pembangunan jembatan gantung untuk menghubungkan desa dengan akses sekolah, layanan kesehatan, dan aktivitas ekonomi masyarakat.
+              {desc}
             </p>
           </div>
 
@@ -71,7 +80,7 @@ export default function ProyekDetail() {
                  </div>
                  <div>
                    <p className="text-[10px] font-bold text-slate-500 mb-0.5">{t("proyek.detail.category")}</p>
-                   <p className="text-[13px] font-bold text-slate-900">{t("programs.jembatan.title")}</p>
+                   <p className="text-[13px] font-bold text-slate-900">{p.type === 'jembatan' ? t("programs.jembatan.title") : t("programs.listrik.title")}</p>
                  </div>
                </div>
                
@@ -83,7 +92,7 @@ export default function ProyekDetail() {
                  </div>
                  <div>
                    <p className="text-[10px] font-bold text-slate-500 mb-0.5">{t("proyek.detail.start_date")}</p>
-                   <p className="text-[13px] font-bold text-slate-900">Jan 2025</p>
+                   <p className="text-[13px] font-bold text-slate-900">{p.status === 'Selesai' ? '2024' : '2025'}</p>
                  </div>
                </div>
 
@@ -95,7 +104,7 @@ export default function ProyekDetail() {
                  </div>
                  <div>
                    <p className="text-[10px] font-bold text-slate-500 mb-0.5">{t("proyek.detail.end_date")}</p>
-                   <p className="text-[13px] font-bold text-slate-900">Mei 2025</p>
+                   <p className="text-[13px] font-bold text-slate-900">{p.status === 'Selesai' ? '2024' : '2025'}</p>
                  </div>
                </div>
 
@@ -107,7 +116,7 @@ export default function ProyekDetail() {
                  </div>
                  <div>
                    <p className="text-[10px] font-bold text-slate-500 mb-0.5">{t("proyek.detail.project_id")}</p>
-                   <p className="text-[13px] font-bold text-slate-900">KJ-2025-0012</p>
+                   <p className="text-[13px] font-bold text-slate-900">{p.id}</p>
                  </div>
                </div>
             </div>
@@ -132,9 +141,7 @@ export default function ProyekDetail() {
                   {t("proyek.detail.about_title")}
                 </h3>
                 <div className="text-[15px] text-slate-600 font-medium leading-relaxed bg-[#f8f9fa] p-8 rounded-3xl border border-slate-100">
-                  Desa Lembah Harapan selama ini hanya dapat diakses menggunakan rakit bambu yang berbahaya, 
-                  terutama saat musim hujan. Jembatan gantung ini akan menjadi akses utama yang aman dan andal 
-                  bagi lebih dari 350 warga untuk beraktivitas sehari-hari.
+                  {desc}
                 </div>
               </section>
 
@@ -155,7 +162,9 @@ export default function ProyekDetail() {
                       <div className="w-12 h-12 rounded-full bg-primary-deep text-white flex items-center justify-center border-4 border-white shadow-sm mb-3">
                         <CheckCircle2 size={20} />
                       </div>
-                      <p className="text-[12px] font-bold text-slate-900">{t("proyek.status_perencanaan")}</p>
+                      <p className="text-[12px] font-bold text-slate-900">
+                        {t("proyek.program_detail.planning_step")}
+                      </p>
                       <p className="text-[11px] font-medium text-slate-500">Des 2024</p>
                       <p className="text-[10px] font-bold text-primary-deep mt-1 tracking-wider uppercase">{t("proyek.status_selesai")}</p>
                     </div>
@@ -164,7 +173,9 @@ export default function ProyekDetail() {
                       <div className="w-12 h-12 rounded-full bg-primary-deep text-white flex items-center justify-center border-4 border-white shadow-sm mb-3">
                         <CheckCircle2 size={20} />
                       </div>
-                      <p className="text-[12px] font-bold text-slate-900">Penggalangan Dana</p>
+                      <p className="text-[12px] font-bold text-slate-900">
+                        {t("proyek.program_detail.funding_step")}
+                      </p>
                       <p className="text-[11px] font-medium text-slate-500">Jan 2025</p>
                       <p className="text-[10px] font-bold text-primary-deep mt-1 tracking-wider uppercase">{t("proyek.status_selesai")}</p>
                     </div>
@@ -173,7 +184,9 @@ export default function ProyekDetail() {
                       <div className="w-12 h-12 rounded-full bg-primary-deep text-white flex items-center justify-center border-4 border-primary-border shadow-md mb-3 ring-4 ring-primary-deep/10">
                         <History size={20} />
                       </div>
-                      <p className="text-[12px] font-bold text-slate-900">Pembangunan</p>
+                      <p className="text-[12px] font-bold text-slate-900">
+                        {t("proyek.program_detail.construction_step")}
+                      </p>
                       <p className="text-[11px] font-medium text-slate-500">Feb 2025 - Apr 2025</p>
                       <p className="text-[10px] font-bold text-[#f59e0b] mt-1 tracking-wider uppercase">{t("proyek.status_berjalan")}</p>
                     </div>
@@ -182,7 +195,9 @@ export default function ProyekDetail() {
                       <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center border-4 border-white shadow-sm mb-3">
                         <ListTodo size={20} />
                       </div>
-                      <p className="text-[12px] font-bold text-slate-900">Finishing</p>
+                      <p className="text-[12px] font-bold text-slate-900">
+                        {t("proyek.program_detail.finishing_step")}
+                      </p>
                       <p className="text-[11px] font-medium text-slate-500">Mei 2025</p>
                       <p className="text-[10px] font-bold text-slate-400 mt-1 tracking-wider uppercase">{t("proyek.detail.status_waiting")}</p>
                     </div>
@@ -191,7 +206,9 @@ export default function ProyekDetail() {
                       <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center border-4 border-white shadow-sm mb-3">
                          <Target size={20} />
                       </div>
-                      <p className="text-[12px] font-bold text-slate-900">{t("proyek.status_selesai")}</p>
+                      <p className="text-[12px] font-bold text-slate-900">
+                        {t("proyek.program_detail.completed_step")}
+                      </p>
                       <p className="text-[11px] font-medium text-slate-500">Mei 2025</p>
                       <p className="text-[10px] font-bold text-slate-400 mt-1 tracking-wider uppercase">{t("proyek.detail.status_waiting")}</p>
                     </div>
@@ -201,12 +218,12 @@ export default function ProyekDetail() {
                 {/* Overall bar */}
                 <div className="flex justify-between text-[13px] font-bold text-slate-700 mb-3 items-end">
                   <span>{t("proyek.detail.overall_progress")}</span>
-                  <span className="text-2xl font-bold text-slate-900 tracking-wider">80%</span>
+                  <span className="text-2xl font-bold text-slate-900 tracking-wider">{p.progress}%</span>
                 </div>
                 <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden shadow-inner">
                   <motion.div 
                     initial={{ width: 0 }}
-                    whileInView={{ width: `80%` }}
+                    whileInView={{ width: `${p.progress}%` }}
                     transition={{ duration: 1.2, ease: "circOut" }}
                     className="h-full bg-primary-deep"
                   />
@@ -268,31 +285,47 @@ export default function ProyekDetail() {
                     <Users size={24} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">350+</p>
-                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Warga Terbantu</p>
-                      <p className="text-[10px] text-slate-500 leading-tight">Akses aman setiap hari</p>
+                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">
+                        {t("proyek.detail.impact_items.beneficiaries.title")}
+                      </p>
+                      <p className="text-[10px] text-slate-500 leading-tight">
+                        {t("proyek.detail.impact_items.beneficiaries.desc")}
+                      </p>
                     </div>
                   </div>
                   <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
                     <GraduationCap size={24} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">120</p>
-                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Anak Sekolah</p>
-                      <p className="text-[10px] text-slate-500 leading-tight">Bisa berangkat sekolah dengan aman</p>
+                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">
+                        {t("proyek.detail.impact_items.students.title")}
+                      </p>
+                      <p className="text-[10px] text-slate-500 leading-tight">
+                        {t("proyek.detail.impact_items.students.desc")}
+                      </p>
                     </div>
                   </div>
                   <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
                     <Clock size={24} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                     <div>
                       <p className="text-[18px] font-bold text-slate-900 leading-none mb-1">2 Jam</p>
-                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Waktu Tempuh</p>
-                      <p className="text-[10px] text-slate-500 leading-tight">Lebih cepat ke sekolah dan fasilitas kesehatan</p>
+                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">
+                        {t("proyek.detail.impact_items.time.title")}
+                      </p>
+                      <p className="text-[10px] text-slate-500 leading-tight">
+                        {t("proyek.detail.impact_items.time.desc")}
+                      </p>
                     </div>
                   </div>
                   <div className="bg-[#f8f9fa] border border-slate-100 p-5 rounded-2xl flex items-start gap-4">
                     <TrendingUp size={24} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                     <div>
-                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">Peningkatan Ekonomi</p>
-                      <p className="text-[10px] text-slate-500 leading-tight">Mempermudah distribusi hasil pertanian dan aktivitas ekonomi</p>
+                      <p className="text-[12px] font-bold text-slate-700 leading-tight mb-1">
+                        {t("proyek.detail.impact_items.economy.title")}
+                      </p>
+                      <p className="text-[10px] text-slate-500 leading-tight">
+                        {t("proyek.detail.impact_items.economy.desc")}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -313,19 +346,19 @@ export default function ProyekDetail() {
                 <div className="space-y-6">
                   <div>
                     <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">{t("proyek.detail.funds_needed")}</p>
-                    <p className="text-3xl font-bold text-slate-900">SAR 420.000</p>
+                    <p className="text-3xl font-bold text-slate-900">{p.target.replace('SAR', 'AED')}</p>
                   </div>
                   
                   <div>
                     <div className="flex justify-between items-end mb-2">
                        <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">{t("proyek.detail.funds_collected")}</p>
-                       <p className="text-[14px] font-bold text-slate-900">(80%)</p>
+                       <p className="text-[14px] font-bold text-slate-900">({p.progress}%)</p>
                     </div>
-                    <p className="text-2xl font-bold text-slate-900 mb-3">SAR 336.000</p>
+                    <p className="text-2xl font-bold text-slate-900 mb-3">{p.terkumpul.replace('SAR', 'AED')}</p>
                     <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden shadow-inner">
                       <motion.div 
                         initial={{ width: 0 }}
-                        animate={{ width: `80%` }}
+                        animate={{ width: `${p.progress}%` }}
                         transition={{ duration: 1.5, ease: "circOut" }}
                         className="h-full bg-primary-deep"
                       />
@@ -334,26 +367,34 @@ export default function ProyekDetail() {
 
                   <div className="pt-4 border-t border-slate-100">
                     <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-1">{t("proyek.detail.remaining_funds")}</p>
-                    <p className="text-[16px] font-bold text-slate-900">SAR 84.000</p>
+                    <p className="text-[16px] font-bold text-slate-900">AED 84.000</p>
                   </div>
 
                   <div className="pt-6 border-t border-slate-100">
                     <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-4">{t("proyek.detail.funds_usage")}</p>
                     <ul className="space-y-3">
                       <li className="flex justify-between items-center text-[13px]">
-                        <span className="text-slate-600 font-medium">Konstruksi & Material</span>
+                        <span className="text-slate-600 font-medium">
+                          {t("proyek.detail.funds_usage_items.construction")}
+                        </span>
                         <span className="font-bold text-slate-900">78%</span>
                       </li>
                       <li className="flex justify-between items-center text-[13px]">
-                        <span className="text-slate-600 font-medium">Transportasi & Logistik</span>
+                        <span className="text-slate-600 font-medium">
+                          {t("proyek.detail.funds_usage_items.logistics")}
+                        </span>
                         <span className="font-bold text-slate-900">12%</span>
                       </li>
                       <li className="flex justify-between items-center text-[13px]">
-                        <span className="text-slate-600 font-medium">Tenaga Kerja Lokal</span>
+                        <span className="text-slate-600 font-medium">
+                          {t("proyek.detail.funds_usage_items.labor")}
+                        </span>
                         <span className="font-bold text-slate-900">7%</span>
                       </li>
                       <li className="flex justify-between items-center text-[13px]">
-                        <span className="text-slate-600 font-medium">Administrasi</span>
+                        <span className="text-slate-600 font-medium">
+                          {t("proyek.detail.funds_usage_items.admin")}
+                        </span>
                         <span className="font-bold text-slate-900">3%</span>
                       </li>
                     </ul>

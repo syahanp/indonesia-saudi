@@ -55,7 +55,7 @@ export default function Login() {
             >
               <h1 className="text-[44px] font-extrabold text-[#0D2451] leading-[1.1] mb-6">
                 {t('login.welcome')} <br />
-                <span className="text-primary-deep">Bulan Sabit Biru</span>
+                <span className="text-primary-deep">{t('brand.first')} {t('brand.second')}</span>
               </h1>
               
               <p className="text-[17px] font-semibold text-slate-600 mb-12">

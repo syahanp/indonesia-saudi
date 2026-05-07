@@ -22,7 +22,7 @@ import { useTranslation } from "react-i18next";
 import updatedImgBox from "../assets/images/regenerated_image_1778114589339.png";
 
 export default function TentangKami() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const genericImg = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=80";
 
   return (
@@ -31,7 +31,7 @@ export default function TentangKami() {
       <div className="relative pt-16 pb-32 lg:pb-48 mb-12">
         <div className="absolute inset-0 z-0">
            <img src={genericImg} alt="Hero" className="w-full h-full object-cover object-center" />
-           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent"></div>
+           <div className={`absolute inset-0 ${i18n.language === 'ar' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-white via-white/95 to-transparent`}></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -117,15 +117,15 @@ export default function TentangKami() {
                     alt="Indonesia Village" 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/80 to-white"></div>
+                  <div className={`absolute inset-0 ${i18n.language === 'ar' ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-white/10 via-white/80 to-white`}></div>
                 </div>
                 
                 <div className="relative z-10 p-10 lg:p-14 w-full">
                   <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
-                      <img src="https://flagcdn.com/w80/id.png" alt="Indonesia Flag" className="w-full h-full object-cover" />
+                      <img src="https://flagcdn.com/w80/id.png" alt={t("countries.indonesia")} className="w-full h-full object-cover" />
                     </div>
-                    <h3 className="text-3xl font-extrabold text-[#167ce1]">Indonesia</h3>
+                    <h3 className="text-3xl font-extrabold text-[#167ce1]">{t("countries.indonesia")}</h3>
                   </div>
                   
                   <p className="text-[15px] text-slate-700 font-bold mb-8 leading-relaxed max-w-[280px]">
@@ -183,22 +183,22 @@ export default function TentangKami() {
                 </p>
               </div>
 
-              {/* Saudi Side */}
+                {/* UAE Side */}
               <div className="relative h-full min-h-[500px] flex items-center">
                 <div className="absolute inset-0 z-0">
                   <img 
-                    src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=2070" 
-                    alt="Saudi Mecca" 
+                    src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=2070" 
+                    alt="Dubai UAE" 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-l from-white/10 via-white/80 to-white"></div>
+                  <div className={`absolute inset-0 ${i18n.language === 'ar' ? 'bg-gradient-to-r' : 'bg-gradient-to-l'} from-white/10 via-white/80 to-white`}></div>
                 </div>
                 
                 <div className="relative z-10 p-10 lg:p-14 w-full flex flex-col items-end text-right">
                   <div className="flex items-center gap-4 mb-6">
-                    <h3 className="text-3xl font-extrabold text-[#065f46]">Arab Saudi</h3>
+                    <h3 className="text-3xl font-extrabold text-[#065f46]">{t("countries.uae")}</h3>
                     <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
-                      <img src="https://flagcdn.com/w80/sa.png" alt="Saudi Flag" className="w-full h-full object-cover" />
+                      <img src="/uae-flag-round-brand.png" alt={t("countries.uae")} className="w-full h-full object-cover" />
                     </div>
                   </div>
                   
@@ -223,6 +223,54 @@ export default function TentangKami() {
             </div>
           </div>
         </div>
+
+        {/* Strategic Partnership Section */}
+        <section className="mb-32 py-16">
+          <div className="max-w-4xl mx-auto text-center px-4">
+            <div className="flex items-center justify-center gap-6 lg:gap-12 mb-10">
+              <div className="w-20 h-20 lg:w-28 lg:h-28 flex items-center justify-center p-2 bg-white rounded-2xl shadow-sm border border-slate-50">
+                <img src="/bulan_sabit_biru_icon.png" alt={t('brand.first') + ' ' + t('brand.second')} className="w-full h-full object-contain" />
+              </div>
+              <div className="w-10 h-[2px] bg-slate-200 rounded-full"></div>
+              <div className="w-20 h-20 lg:w-28 lg:h-28 flex items-center justify-center p-2 bg-white rounded-2xl shadow-sm border border-slate-50">
+                <img src="/bulan-sabit-merah.svg" alt="Bulan Sabit Merah" className="w-full h-full object-contain" />
+              </div>
+            </div>
+            
+            <span className="inline-block px-4 py-1.5 rounded-full bg-slate-100 text-slate-500 text-[11px] font-bold tracking-widest uppercase mb-6">
+              {t("tentang_kami.partnership.label")}
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-bold text-primary-deep mb-8 leading-tight font-display">
+              {t("tentang_kami.partnership.title")}
+            </h2>
+            <p className="text-[15px] lg:text-[16px] text-slate-600 leading-relaxed font-medium mb-12 max-w-2xl mx-auto">
+              {t("tentang_kami.partnership.desc")}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 text-left">
+              <div className="bg-white p-8 lg:p-10 rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/20">
+                <h4 className="text-[17px] font-bold text-primary-deep mb-4">{t("tentang_kami.partnership.mission_title")}</h4>
+                <p className="text-[13px] text-slate-500 leading-relaxed font-medium">
+                  {t("tentang_kami.partnership.mission_desc")}
+                </p>
+              </div>
+              <div className="bg-primary-deep p-8 lg:p-10 rounded-[2rem] text-white shadow-xl shadow-blue-900/20">
+                <h4 className="text-[17px] font-bold mb-6">{t("tentang_kami.partnership.label")}</h4>
+                <ul className="space-y-4">
+                  {Array.isArray(t("tentang_kami.partnership.items", { returnObjects: true })) && 
+                    (t("tentang_kami.partnership.items", { returnObjects: true }) as string[]).map((item, idx) => (
+                      <li key={idx} className="flex items-center gap-4 text-[13px] font-bold">
+                        <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                          <CheckCircle2 size={14} strokeWidth={3} className="text-white" />
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Nilai-Nilai Kami Section */}
         <section className="py-24 bg-white mb-16">

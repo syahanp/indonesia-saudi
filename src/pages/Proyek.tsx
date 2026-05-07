@@ -69,8 +69,8 @@ export const initialProjects = [
     loc: "Sulawesi Tengah",
     progress: 80,
     desc: "Pembangunan jembatan gantung untuk menghubungkan desa dengan akses sekolah dan layanan kesehatan.",
-    terkumpul: "SAR 420.000",
-    target: "SAR 525.000",
+    terkumpul: "AED 420.000",
+    target: "AED 525.000",
     status: "Berjalan",
     type: "jembatan",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_32 AM.png",
@@ -83,8 +83,8 @@ export const initialProjects = [
     loc: "Nusa Tenggara Barat",
     progress: 100,
     desc: "Program penyediaan listrik tenaga surya untuk 120 rumah di desa yang belum terjangkau listrik PLN.",
-    terkumpul: "SAR 310.000",
-    target: "SAR 310.000",
+    terkumpul: "AED 310.000",
+    target: "AED 310.000",
     status: "Selesai",
     type: "listrik",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_37 AM.png",
@@ -97,8 +97,8 @@ export const initialProjects = [
     loc: "Nusa Tenggara Timur",
     progress: 45,
     desc: "Pembangunan jembatan gantung sepanjang 120 meter untuk akses utama masyarakat.",
-    terkumpul: "SAR 180.000",
-    target: "SAR 400.000",
+    terkumpul: "AED 180.000",
+    target: "AED 400.000",
     status: "Berjalan",
     type: "jembatan",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_41 AM.png",
@@ -111,8 +111,8 @@ export const initialProjects = [
     loc: "Sulawesi Selatan",
     progress: 15,
     desc: "Rencana penyediaan listrik solar home system untuk 150 rumah di wilayah terpencil.",
-    terkumpul: "SAR 60.000",
-    target: "SAR 400.000",
+    terkumpul: "AED 60.000",
+    target: "AED 400.000",
     status: "Perencanaan",
     type: "listrik",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_46 AM.png",
@@ -125,8 +125,8 @@ export const initialProjects = [
     loc: "Kalimantan Barat",
     progress: 60,
     desc: "Pembangunan jembatan gantung untuk menghubungkan desa dengan pusat ekonomi dan pendidikan.",
-    terkumpul: "SAR 240.000",
-    target: "SAR 400.000",
+    terkumpul: "AED 240.000",
+    target: "AED 400.000",
     status: "Berjalan",
     type: "jembatan",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_52 AM.png",
@@ -139,8 +139,8 @@ export const initialProjects = [
     loc: "Maluku",
     progress: 10,
     desc: "Perencanaan instalasi listrik untuk 80 rumah di wilayah kepulauan.",
-    terkumpul: "SAR 25.000",
-    target: "SAR 250.000",
+    terkumpul: "AED 25.000",
+    target: "AED 250.000",
     status: "Perencanaan",
     type: "listrik",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_51_01 AM.png",
@@ -153,8 +153,8 @@ export const initialProjects = [
     loc: "Sumatera Utara",
     progress: 30,
     desc: "Renovasi jembatan utama untuk kelancaran transportasi warga antar desa.",
-    terkumpul: "SAR 150.000",
-    target: "SAR 500.000",
+    terkumpul: "AED 150.000",
+    target: "AED 500.000",
     status: "Berjalan",
     type: "jembatan",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_51_31 AM.png",
@@ -167,8 +167,8 @@ export const initialProjects = [
     loc: "Riau",
     progress: 100,
     desc: "Instalasi tenaga surya berkapasitas tinggi untuk penerangan desa di malam hari.",
-    terkumpul: "SAR 200.000",
-    target: "SAR 200.000",
+    terkumpul: "AED 200.000",
+    target: "AED 200.000",
     status: "Selesai",
     type: "listrik",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_32 AM.png",
@@ -181,8 +181,8 @@ export const initialProjects = [
     loc: "Jawa Barat",
     progress: 90,
     desc: "Akses vital bagi perekonomian warga yang terhambat kondisi sungai.",
-    terkumpul: "SAR 360.000",
-    target: "SAR 400.000",
+    terkumpul: "AED 360.000",
+    target: "AED 400.000",
     status: "Berjalan",
     type: "jembatan",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_37 AM.png",
@@ -195,8 +195,8 @@ export const initialProjects = [
     loc: "Sumatera Barat",
     progress: 10,
     desc: "Rencana pembangunan jembatan gantung pertama untuk pemukiman terpelosok.",
-    terkumpul: "SAR 30.000",
-    target: "SAR 300.000",
+    terkumpul: "AED 30.000",
+    target: "AED 300.000",
     status: "Perencanaan",
     type: "jembatan",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_41 AM.png",
@@ -209,8 +209,8 @@ export const initialProjects = [
     loc: "Jawa Timur",
     progress: 50,
     desc: "Proses pemasangan jalur listrik di kawasan pegunungan terisolir.",
-    terkumpul: "SAR 125.000",
-    target: "SAR 250.000",
+    terkumpul: "AED 125.000",
+    target: "AED 250.000",
     status: "Berjalan",
     type: "listrik",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_46 AM.png",
@@ -223,8 +223,8 @@ export const initialProjects = [
     loc: "Papua",
     progress: 100,
     desc: "Sistem pencahayaan desa menggunakan panel surya komunal.",
-    terkumpul: "SAR 450.000",
-    target: "SAR 450.000",
+    terkumpul: "AED 450.000",
+    target: "AED 450.000",
     status: "Selesai",
     type: "listrik",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_52 AM.png",
@@ -237,8 +237,8 @@ export const initialProjects = [
     loc: "Aceh",
     progress: 0,
     desc: "Perencanaan pengadaan jembatan bambu menjadi jembatan baja.",
-    terkumpul: "SAR 0",
-    target: "SAR 550.000",
+    terkumpul: "AED 0",
+    target: "AED 550.000",
     status: "Perencanaan",
     type: "jembatan",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_51_01 AM.png",
@@ -251,8 +251,8 @@ export const initialProjects = [
     loc: "Kalimantan Timur",
     progress: 75,
     desc: "Pengembangan infrastruktur listrik agar anak sekolah dapat belajar di malam hari.",
-    terkumpul: "SAR 225.000",
-    target: "SAR 300.000",
+    terkumpul: "AED 225.000",
+    target: "AED 300.000",
     status: "Berjalan",
     type: "listrik",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_51_31 AM.png",
@@ -265,8 +265,8 @@ export const initialProjects = [
     loc: "Sulawesi Utara",
     progress: 100,
     desc: "Menyatukan dua desa yang terpisah aliran sungai deras.",
-    terkumpul: "SAR 600.000",
-    target: "SAR 600.000",
+    terkumpul: "AED 600.000",
+    target: "AED 600.000",
     status: "Selesai",
     type: "jembatan",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_32 AM.png",
@@ -279,8 +279,8 @@ export const initialProjects = [
     loc: "Bali",
     progress: 20,
     desc: "Tahap awal pemasangan tiang listrik dan gardu induk desa.",
-    terkumpul: "SAR 40.000",
-    target: "SAR 200.000",
+    terkumpul: "AED 40.000",
+    target: "AED 200.000",
     status: "Berjalan",
     type: "listrik",
     img: "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_37 AM.png",
@@ -304,7 +304,10 @@ export default function Proyek() {
 
   const filteredGridProjects = useMemo(() => {
     return initialProjects.filter(p => {
-      if (search && !p.title.toLowerCase().includes(search.toLowerCase()) && !p.loc.toLowerCase().includes(search.toLowerCase())) return false;
+      const title = p.id ? t(`proyek.projects.${p.id}.title`) : p.title;
+      const loc = p.id ? t(`proyek.projects.${p.id}.loc`) : p.loc;
+
+      if (search && !title.toLowerCase().includes(search.toLowerCase()) && !loc.toLowerCase().includes(search.toLowerCase())) return false;
       
       if (program !== t("proyek.all_programs")) {
         if (program === t("programs.jembatan.title") && p.type !== 'jembatan') return false;
@@ -318,7 +321,7 @@ export default function Proyek() {
         if (currentStatus !== status) return false;
       }
       
-      if (provinsi !== t("proyek.all_provinces") && p.loc !== provinsi) return false;
+      if (provinsi !== t("proyek.all_provinces") && loc !== provinsi) return false;
       
       return true;
     });
@@ -620,7 +623,7 @@ export default function Proyek() {
                     <Marker key={p.id} position={[p.lat, p.lng]} icon={createMarkerIcon(p.type, p.status)}>
                       <Popup>
                         <div className="text-left w-48">
-                          <h4 className="font-bold text-slate-900 mb-1">{p.title}</h4>
+                          <h4 className="font-bold text-slate-900 mb-1">{p.id ? t(`proyek.projects.${p.id}.title`) : p.title}</h4>
                           <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase shadow-sm mb-2 ${
                             p.status === 'Selesai' ? 'bg-[#0f172a] text-white' : 
                             p.status === 'Perencanaan' ? 'bg-[#fef3c7] text-[#b45309]' :
@@ -628,7 +631,7 @@ export default function Proyek() {
                           }`}>
                             {p.status === 'Selesai' ? t("proyek.status_selesai") : p.status === 'Perencanaan' ? t("proyek.status_perencanaan") : t("proyek.status_berjalan")}
                           </span>
-                          <Link to="/proyek/jembatan-desa-lembah-harapan" className="block text-[12px] font-bold text-primary-deep mt-2 hover:underline">
+                          <Link to={`/proyek/${p.id}`} className="block text-[12px] font-bold text-primary-deep mt-2 hover:underline">
                             {t("proyek.labels.details")} &rarr;
                           </Link>
                         </div>

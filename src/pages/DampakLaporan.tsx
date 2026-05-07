@@ -29,6 +29,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { initialProjects } from "./Proyek";
 
 export default function DampakLaporan() {
   const { t } = useTranslation();
@@ -54,20 +55,23 @@ export default function DampakLaporan() {
         completed: "30+", completedTrend: "+ 8%",
         villages: "12", villagesTrend: "+ 9%",
         electricity: "18", electricityTrend: "+ 15%",
-        totalDonation: "SAR 6.2M+", donationTrend: "+ 10%",
+        totalDonation: "AED 6.2M+", donationTrend: "+ 10%",
         totalAmountRaw: 6200000
       },
       chart: [
-        { name: t("dampak_laporan.transparency.categories.program"), value: 83, color: '#167ce1', amount: "SAR 5.146.000" },
-        { name: t("dampak_laporan.transparency.categories.operational"), value: 10, color: '#7C3AED', amount: "SAR 620.000" },
-        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "SAR 310.000" },
-        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "SAR 124.000" },
+        { name: t("dampak_laporan.transparency.categories.program"), value: 83, color: '#167ce1', amount: "AED 5.146.000" },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 10, color: '#7C3AED', amount: "AED 620.000" },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "AED 310.000" },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "AED 124.000" },
       ],
       projects: [
-        { title: "Jembatan Desa Lembah Harapan", loc: "Sulawesi Tengah", progress: 80, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[0] },
-        { title: "Listrik Masuk Desa Suka Maju", loc: "Nusa Tenggara Barat", progress: 100, status: t("proyek.status_selesai"), statusColor: "bg-green-50 text-green-600", img: projectAssets[1] },
-        { title: "Jembatan Desa Watu Mori", loc: "Nusa Tenggara Timur", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[2] },
-        { title: "Listrik Masuk Desa Bintang Timur", loc: "Sulawesi Selatan", progress: 60, status: t("proyek.status_perencanaan"), statusColor: "bg-sky-50 text-sky-600", img: projectAssets[3] },
+        { id: "KJ-2025-0012", progress: 80, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[0] },
+        { id: "KJ-2025-0013", progress: 100, status: t("proyek.status_selesai"), statusColor: "bg-green-50 text-green-600", img: projectAssets[1] },
+        { id: "KJ-2025-0014", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[2] },
+        { id: "KJ-2025-0015", progress: 60, status: t("proyek.status_perencanaan"), statusColor: "bg-sky-50 text-sky-600", img: projectAssets[3] },
+        { id: "KJ-2025-0016", progress: 30, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[4] },
+        { id: "KJ-2025-0017", progress: 10, status: t("proyek.status_perencanaan"), statusColor: "bg-sky-50 text-sky-600", img: projectAssets[5] },
+        { id: "KJ-2025-0018", progress: 55, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[6] },
       ]
     },
     '12m': {
@@ -76,18 +80,18 @@ export default function DampakLaporan() {
         completed: "14+", completedTrend: "+ 10%",
         villages: "5", villagesTrend: "+ 7%",
         electricity: "8", electricityTrend: "+ 12%",
-        totalDonation: "SAR 3.5M+", donationTrend: "+ 11%",
+        totalDonation: "AED 3.5M+", donationTrend: "+ 11%",
         totalAmountRaw: 3500000
       },
       chart: [
-        { name: t("dampak_laporan.transparency.categories.program"), value: 85, color: '#167ce1', amount: "SAR 2.975.000" },
-        { name: t("dampak_laporan.transparency.categories.operational"), value: 8, color: '#7C3AED', amount: "SAR 280.000" },
-        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "SAR 175.000" },
-        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "SAR 70.000" },
+        { name: t("dampak_laporan.transparency.categories.program"), value: 85, color: '#167ce1', amount: "AED 2.975.000" },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 8, color: '#7C3AED', amount: "AED 280.000" },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "AED 175.000" },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "AED 70.000" },
       ],
       projects: [
-        { title: "Jembatan Desa Lembah Harapan", loc: "Sulawesi Tengah", progress: 80, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[4] },
-        { title: "Listrik Masuk Desa Suka Maju", loc: "Nusa Tenggara Barat", progress: 100, status: t("proyek.status_selesai"), statusColor: "bg-green-50 text-green-600", img: projectAssets[5] },
+        { id: "KJ-2025-0012", progress: 80, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[4] },
+        { id: "KJ-2025-0013", progress: 100, status: t("proyek.status_selesai"), statusColor: "bg-green-50 text-green-600", img: projectAssets[5] },
       ]
     },
     '6m': {
@@ -96,18 +100,18 @@ export default function DampakLaporan() {
         completed: "8+", completedTrend: "+ 12%",
         villages: "3", villagesTrend: "+ 5%",
         electricity: "4", electricityTrend: "+ 20%",
-        totalDonation: "SAR 1.8M+", donationTrend: "+ 14%",
+        totalDonation: "AED 1.8M+", donationTrend: "+ 14%",
         totalAmountRaw: 1800000
       },
       chart: [
-        { name: t("dampak_laporan.transparency.categories.program"), value: 82, color: '#167ce1', amount: "SAR 1.476.000" },
-        { name: t("dampak_laporan.transparency.categories.operational"), value: 11, color: '#7C3AED', amount: "SAR 198.000" },
-        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "SAR 90.000" },
-        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "SAR 36.000" },
+        { name: t("dampak_laporan.transparency.categories.program"), value: 82, color: '#167ce1', amount: "AED 1.476.000" },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 11, color: '#7C3AED', amount: "AED 198.000" },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "AED 90.000" },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "AED 36.000" },
       ],
       projects: [
-        { title: "Jembatan Desa Watu Mori", loc: "Nusa Tenggara Timur", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[6] },
-        { title: "Listrik Masuk Desa Bintang Timur", loc: "Sulawesi Selatan", progress: 60, status: t("proyek.status_perencanaan"), statusColor: "bg-sky-50 text-sky-600", img: projectAssets[0] },
+        { id: "KJ-2025-0014", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[6] },
+        { id: "KJ-2025-0015", progress: 60, status: t("proyek.status_perencanaan"), statusColor: "bg-sky-50 text-sky-600", img: projectAssets[0] },
       ]
     },
     '3m': {
@@ -116,17 +120,17 @@ export default function DampakLaporan() {
         completed: "4+", completedTrend: "+ 15%",
         villages: "2", villagesTrend: "+ 3%",
         electricity: "2", electricityTrend: "+ 25%",
-        totalDonation: "SAR 950K+", donationTrend: "+ 18%",
+        totalDonation: "AED 950K+", donationTrend: "+ 18%",
         totalAmountRaw: 950000
       },
       chart: [
-        { name: t("dampak_laporan.transparency.categories.program"), value: 80, color: '#167ce1', amount: "SAR 760.000" },
-        { name: t("dampak_laporan.transparency.categories.operational"), value: 12, color: '#7C3AED', amount: "SAR 114.000" },
-        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 6, color: '#F43F5E', amount: "SAR 57.000" },
-        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "SAR 19.000" },
+        { name: t("dampak_laporan.transparency.categories.program"), value: 80, color: '#167ce1', amount: "AED 760.000" },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 12, color: '#7C3AED', amount: "AED 114.000" },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 6, color: '#F43F5E', amount: "AED 57.000" },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "AED 19.000" },
       ],
       projects: [
-        { title: "Jembatan Desa Watu Mori", loc: "Nusa Tenggara Timur", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[1] },
+        { id: "KJ-2025-0014", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[1] },
       ]
     }
   };
@@ -177,10 +181,10 @@ export default function DampakLaporan() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-8">
+              <div className="flex items-center justify-between gap-8">
               <div className="flex items-center gap-2 text-[12px] font-semibold text-slate-400">
                 <Clock size={14} /> 
-                <span>{t("dampak_laporan.data_until", { date: "30 April 2025" })}</span>
+                <span>{t("dampak_laporan.data_until", { date: `30 ${t("dampak_laporan.months.april")} 2025` })}</span>
                 <Info size={14} className="text-slate-300 ml-1" />
               </div>
               <div className="flex gap-3">
@@ -268,7 +272,7 @@ export default function DampakLaporan() {
                 </ResponsiveContainer>
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                   <p className="text-[11px] font-bold text-slate-400 mb-1">{t("dampak_laporan.transparency.total_funds")}</p>
-                  <p className="text-[20px] font-extrabold text-primary-deep tracking-tight">SAR {currentData.stats.totalAmountRaw.toLocaleString()}</p>
+                  <p className="text-[20px] font-extrabold text-primary-deep tracking-tight">AED {currentData.stats.totalAmountRaw.toLocaleString()}</p>
                 </div>
               </div>
 
@@ -315,7 +319,7 @@ export default function DampakLaporan() {
              
              <div className="mt-12 bg-blue-50/50 p-6 rounded-2xl flex justify-between items-center border border-blue-100">
                <span className="text-[18px] font-extrabold text-primary-deep">{t("dampak_laporan.transparency.total")}</span>
-               <span className="text-[24px] font-extrabold text-primary-deep tracking-tight">SAR {currentData.stats.totalAmountRaw.toLocaleString()}</span>
+               <span className="text-[24px] font-extrabold text-primary-deep tracking-tight">AED {currentData.stats.totalAmountRaw.toLocaleString()}</span>
              </div>
           </div>
         </div>
@@ -383,19 +387,22 @@ export default function DampakLaporan() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50">
-                  {currentData.projects.map((proj, idx) => (
-                    <TableRow 
-                      key={idx}
-                      img={proj.img}
-                      title={proj.title}
-                      loc={proj.loc}
-                      type={proj.title.toLowerCase().includes('jembatan') ? t("programs.jembatan.title") : t("programs.listrik.title")}
-                      progress={proj.progress}
-                      status={proj.status}
-                      statusColor={proj.statusColor}
-                      progColor="bg-primary-deep"
-                    />
-                  ))}
+                  {currentData.projects.map((proj: any, idx) => {
+                    const projectMeta = initialProjects.find(p => p.id === proj.id);
+                    return (
+                      <TableRow 
+                        key={idx}
+                        img={proj.img}
+                        title={t(`proyek.projects.${proj.id}.title`)}
+                        loc={t(`proyek.projects.${proj.id}.loc`)}
+                        type={projectMeta?.type === 'jembatan' ? t("programs.jembatan.title") : t("programs.listrik.title")}
+                        progress={proj.progress}
+                        status={proj.status}
+                        statusColor={proj.statusColor}
+                        progColor="bg-primary-deep"
+                      />
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

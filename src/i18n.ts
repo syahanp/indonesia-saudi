@@ -20,12 +20,34 @@ i18n
             tentang_kami: "Tentang Kami",
             donasi_sekarang: "Donasi Sekarang",
           },
+          brand: {
+            first: "BULAN",
+            second: "SABIT BIRU",
+            full: "Yayasan BULAN SABIT BIRU"
+          },
+          countries: {
+            indonesia: "Indonesia",
+            uae: "Uni Emirat Arab"
+          },
           hero: {
-            badge: "Didukung oleh para donatur dari Arab Saudi",
+            badge: "Didukung oleh para donatur dari Uni Emirat Arab",
             title: "Mewujudkan Dampak Nyata bagi Masyarakat yang Membutuhkan",
             subtitle: "Bersama para donatur, kami menghadirkan akses infrastruktur, energi, dan peluang bagi masyarakat di pelosok Indonesia.",
             cta_primary: "Donasi Sekarang",
             cta_secondary: "Pelajari Lebih Lanjut",
+          },
+          home_stats: {
+            title: "Dampak Kami",
+            update_label: "(Update April 2025)",
+            beneficiaries: "Penerima Manfaat",
+            beneficiaries_sub: "Di berbagai wilayah Indonesia",
+            projects_completed: "Proyek Selesai",
+            projects_sub: "Jembatan & Listrik",
+            villages_impacted: "Desa Terdampak",
+            villages_sub: "Di 6 Provinsi",
+            collected: "AED 6.2M+",
+            collected_label: "Donasi Terkumpul",
+            from_donors: "Dari para donatur"
           },
           what_we_do: {
             title: "Apa yang Kami Lakukan",
@@ -92,8 +114,8 @@ i18n
             terms: "Syarat & Ketentuan",
             privacy: "Kebijakan Privasi",
             saudi_box: {
-              title: "Dukung program kami dari Arab Saudi",
-              subtitle: "Informasi donasi lokal untuk donatur di Kerajaan Arab Saudi",
+              title: "Dukung program kami dari Uni Emirat Arab",
+              subtitle: "Informasi donasi lokal untuk donatur di Uni Emirat Arab",
               thanks: "شكراً لدعمكم المستمر"
             }
           },
@@ -150,10 +172,22 @@ i18n
               support_desc: "Bantuan Anda akan mempercepat penyelesaian proyek dan memberikan manfaat bagi lebih banyak masyarakat.",
               share_project: "Bagikan Proyek",
               donors_support: "Didukung oleh Para Donatur",
-              donors_thanks: "Terima kasih kepada para donatur dari Arab Saudi dan semua pihak yang telah berkontribusi.",
+              donors_thanks: "Terima kasih kepada para donatur dari Uni Emirat Arab dan semua pihak yang telah berkontribusi.",
               view_all_donors: "Lihat Semua Donatur",
               other_donors: "+ {{count}} Donatur Lainnya",
               status_waiting: "Menunggu",
+              impact_items: {
+                beneficiaries: { title: "Warga Terbantu", desc: "Akses aman setiap hari" },
+                students: { title: "Anak Sekolah", desc: "Bisa berangkat sekolah dengan aman" },
+                time: { title: "Waktu Tempuh", desc: "Lebih cepat ke sekolah dan fasilitas kesehatan" },
+                economy: { title: "Peningkatan Ekonomi", desc: "Mempermudah distribusi hasil pertanian dan aktivitas ekonomi" }
+              },
+              funds_usage_items: {
+                construction: "Konstruksi & Material",
+                logistics: "Transportasi & Logistik",
+                labor: "Tenaga Kerja Lokal",
+                admin: "Administrasi"
+              },
               quote_text: '"Dan apa saja yang kamu infakkan, maka Allah akan menggantinya... Dan Dialah Pemberi rezeki yang sebaik-baiknya."',
               quote_ref: "(QS. Saba: 39)",
               investment_text: "Setiap donasi adalah investasi akhirat dan harapan baru bagi mereka."
@@ -187,6 +221,24 @@ i18n
               construction_step: "Pembangunan",
               finishing_step: "Finishing",
               completed_step: "Selesai"
+            },
+            projects: {
+              "KJ-2025-0012": { title: "Jembatan Desa Lembah Harapan", loc: "Sulawesi Tengah", desc: "Pembangunan jembatan gantung untuk menghubungkan desa dengan akses sekolah dan layanan kesehatan." },
+              "KJ-2025-0013": { title: "Listrik Masuk Desa Suka Maju", loc: "Nusa Tenggara Barat", desc: "Program penyediaan listrik tenaga surya untuk 120 rumah di desa yang belum terjangkau listrik PLN." },
+              "KJ-2025-0014": { title: "Jembatan Desa Watu Mori", loc: "Nusa Tenggara Timur", desc: "Pembangunan jembatan gantung sepanjang 120 meter untuk akses utama masyarakat." },
+              "KJ-2025-0015": { title: "Listrik Masuk Desa Bintang Timur", loc: "Sulawesi Selatan", desc: "Rencana penyediaan listrik solar home system untuk 150 rumah di wilayah terpencil." },
+              "KJ-2025-0016": { title: "Jembatan Desa Mekar Jaya", loc: "Kalimantan Barat", desc: "Pembangunan jembatan gantung untuk menghubungkan desa dengan pusat ekonomi dan pendidikan." },
+              "KJ-2025-0017": { title: "Listrik Masuk Desa Sinar Harapan", loc: "Maluku", desc: "Perencanaan instalasi listrik untuk 80 rumah di wilayah kepulauan." },
+              "KJ-2025-0018": { title: "Jembatan Sungai Deli", loc: "Sumatera Utara", desc: "Renovasi jembatan utama untuk kelancaran transportasi warga antar desa." },
+              "KJ-2025-0019": { title: "Listrik Masuk Desa Siak", loc: "Riau", desc: "Instalasi tenaga surya berkapasitas tinggi untuk penerangan desa di malam hari." },
+              "KJ-2025-0020": { title: "Jembatan Gantung Garut Selatan", loc: "Jawa Barat", desc: "Akses vital bagi perekonomian warga yang terhambat kondisi sungai." },
+              "KJ-2025-0021": { title: "Jembatan Anak Air", loc: "Sumatera Barat", desc: "Rencana pembangunan jembatan gantung pertama untuk pemukiman terpelosok." },
+              "KJ-2025-0022": { title: "Listrik Masuk Desa Ngadas", loc: "Jawa Timur", desc: "Proses pemasangan jalur listrik di kawasan pegunungan terisolir." },
+              "KJ-2025-0023": { title: "Penerangan Distrik Sentani", loc: "Papua", desc: "Sistem pencahayaan desa menggunakan panel surya komunal." },
+              "KJ-2025-0024": { title: "Jembatan Gantung Meulaboh", loc: "Aceh", desc: "Perencanaan pengadaan jembatan bambu menjadi jembatan baja." },
+              "KJ-2025-0025": { title: "Listrik Masuk Desa Mahakam", loc: "Kalimantan Timur", desc: "Pengembangan infrastruktur listrik agar anak sekolah dapat belajar di malam hari." },
+              "KJ-2025-0026": { title: "Jembatan Minahasa", loc: "Sulawesi Utara", desc: "Menyatukan dua desa yang terpisah aliran sungai deras." },
+              "KJ-2025-0027": { title: "Listrik Masuk Desa Kintamani", loc: "Bali", desc: "Tahap awal pemasangan tiang listrik dan gardu induk desa." }
             }
           },
           dampak_laporan: {
@@ -283,8 +335,8 @@ i18n
           },
           tentang_kami: {
             hero: {
-              title: "Menghubungkan Kebaikan dari Arab Saudi untuk Indonesia",
-              subtitle: "Yayasan Bulan Sabit Biru menjembatani dukungan para donatur dari Arab Saudi untuk menghadirkan perubahan nyata bagi masyarakat di pelosok Indonesia."
+              title: "Menghubungkan Kebaikan dari Uni Emirat Arab untuk Indonesia",
+              subtitle: "Yayasan Bulan Sabit Biru menjembatani dukungan para donatur dari Uni Emirat Arab untuk menghadirkan perubahan nyata bagi masyarakat di pelosok Indonesia."
             },
             stats: {
               since: "Sejak",
@@ -302,8 +354,8 @@ i18n
                 "Peluang ekonomi terbatas"
               ],
               center_title: "Kami menghubungkan keduanya menjadi dampak nyata.",
-              center_desc: "Kebaikan dari para donatur di Arab Saudi kami salurkan secara amanah, transparan, dan tepat sasaran untuk membangun masa depan yang lebih baik bagi masyarakat Indonesia.",
-              sa_title: "Para donatur dari Arab Saudi memiliki kekuatan luar biasa:",
+              center_desc: "Kebaikan dari para donatur di Uni Emirat Arab kami salurkan secara amanah, transparan, dan tepat sasaran untuk membangun masa depan yang lebih baik bagi masyarakat Indonesia.",
+              sa_title: "Para donatur dari Uni Emirat Arab memiliki kekuatan luar biasa:",
               sa_list: [
                 "Semangat berbagi yang tinggi",
                 "Donasi berkelanjutan",
@@ -340,6 +392,14 @@ i18n
               desc: "Setiap dukungan Anda adalah harapan baru bagi mereka yang membutuhkan.",
               view_projects: "Lihat Proyek",
               donate_now: "Donasi Sekarang"
+            },
+            partnership: {
+              title: "Kemitraan Strategis",
+              desc: "Yayasan Bulan Sabit Biru bangga berkolaborasi dengan Bulan Sabit Merah dalam berbagai misi kemanusiaan dan pembangunan di seluruh wilayah Indonesia.",
+              label: "Kolaborasi Kemanusiaan",
+              mission_title: "Misi Bersama Kami",
+              mission_desc: "Menyatukan sumber daya dan keahlian untuk memberikan dampak yang lebih luas bagi keselamatan dan kesejahteraan masyarakat yang membutuhkan.",
+              items: ["Mitigasi Bencana", "Penyaluran Logistik Terpadu", "Program Kesehatan Masyarakat"]
             }
           },
           login: {
@@ -393,7 +453,7 @@ i18n
             edit_profile: "Edit Profil",
             logout: "Keluar",
             loyal_donor: "Donatur Loyal",
-            total_donation: "Total Donasi (SAR)",
+            total_donation: "Total Donasi (AED)",
             donation_impact: "Dampak Donasi Berdasarkan Kategori",
             stats_desc: "Distribusi kontribusi Anda pada berbagai program pembangunan.",
             recent_history: "Riwayat Donasi Terbaru",
@@ -426,12 +486,34 @@ i18n
             tentang_kami: "About Us",
             donasi_sekarang: "Donate Now",
           },
+          brand: {
+            first: "BLUE",
+            second: "CRESCENT",
+            full: "Blue Crescent Foundation"
+          },
+          countries: {
+            indonesia: "Indonesia",
+            uae: "United Arab Emirates"
+          },
           hero: {
-            badge: "Supported by donors from Saudi Arabia",
+            badge: "Supported by donors from the United Arab Emirates",
             title: "Realizing Real Impact for People in Need",
             subtitle: "Together with donors, we provide access to infrastructure, energy, and opportunities for people in remote areas of Indonesia.",
             cta_primary: "Donate Now",
             cta_secondary: "Learn More",
+          },
+          home_stats: {
+            title: "Our Impact",
+            update_label: "(Update April 2025)",
+            beneficiaries: "Beneficiaries",
+            beneficiaries_sub: "In various regions of Indonesia",
+            projects_completed: "Projects Completed",
+            projects_sub: "Bridges & Electricity",
+            villages_impacted: "Villages Impacted",
+            villages_sub: "In 6 Provinces",
+            collected: "AED 6.2M+",
+            collected_label: "Donations Collected",
+            from_donors: "From our donors"
           },
           what_we_do: {
             title: "What We Do",
@@ -475,8 +557,8 @@ i18n
             view_all_projects: "View all projects"
           },
           about_section: {
-            title: "About BLUE CRESCENT Foundation",
-            desc: "BLUE CRESCENT Foundation is a non-profit organization committed to improving the quality of life of communities in remote areas through infrastructure development and community development programs.",
+            title: "About Blue Crescent Foundation",
+            desc: "Blue Crescent Foundation is a non-profit organization committed to improving the quality of life of communities in remote areas through infrastructure development and community development programs.",
             learn_more: "Learn More",
             trust_title: "100% Transparency",
             trust_desc: "Every donation is used according to the program objectives and is accountable.",
@@ -489,17 +571,17 @@ i18n
             brand_line1: "Share Today,",
             brand_line2: "Give Hope Tomorrow",
             about_title: "About Us",
-            about_desc: "BLUE CRESCENT Foundation is committed to building infrastructure and empowering communities in remote Indonesia.",
+            about_desc: "Blue Crescent Foundation is committed to building infrastructure and empowering communities in remote Indonesia.",
             learn_more: "Read More",
             quick_links: "Quick Links",
             info: "Information",
             support: "Support",
-            copyright: "© 2025 BLUE CRESCENT Foundation. All Rights Reserved.",
+            copyright: "© 2025 Blue Crescent Foundation. All Rights Reserved.",
             terms: "Terms & Conditions",
             privacy: "Privacy Policy",
             saudi_box: {
-              title: "Support our programs from Saudi Arabia",
-              subtitle: "Local donation information for donors in the Kingdom of Saudi Arabia",
+              title: "Support our programs from the United Arab Emirates",
+              subtitle: "Local donation information for donors in the United Arab Emirates",
               thanks: "شكراً لدعمكم المستمر"
             }
           },
@@ -556,10 +638,22 @@ i18n
               support_desc: "Your help will speed up the completion of the project and benefit more people.",
               share_project: "Share Project",
               donors_support: "Supported by Donors",
-              donors_thanks: "Thanks to donors from Saudi Arabia and everyone who has contributed.",
+              donors_thanks: "Thanks to donors from the United Arab Emirates and everyone who has contributed.",
               view_all_donors: "View All Donors",
               other_donors: "+ {{count}} Other Donors",
               status_waiting: "Waiting",
+              impact_items: {
+                beneficiaries: { title: "Citizens Helped", desc: "Safe access every day" },
+                students: { title: "School Children", desc: "Can go to school safely" },
+                time: { title: "Travel Time", desc: "Faster to schools and health facilities" },
+                economy: { title: "Economic Improvement", desc: "Eases distribution of crops and economic activities" }
+              },
+              funds_usage_items: {
+                construction: "Construction & Materials",
+                logistics: "Transportation & Logistics",
+                labor: "Local Labor",
+                admin: "Administration"
+              },
               quote_text: '"And whatever you spend in expenses, He will replace it... And He is the best of providers."',
               quote_ref: "(QS. Saba: 39)",
               investment_text: "Every donation is an investment for the hereafter and a new hope for them."
@@ -593,6 +687,24 @@ i18n
               construction_step: "Construction",
               finishing_step: "Finishing",
               completed_step: "Completed"
+            },
+            projects: {
+              "KJ-2025-0012": { title: "Lembah Harapan Village Bridge", loc: "Central Sulawesi", desc: "Construction of a suspension bridge to connect the village with access to schools and health services." },
+              "KJ-2025-0013": { title: "Electricity for Suka Maju Village", loc: "West Nusa Tenggara", desc: "Solar power provision program for 120 houses in a village not yet reached by PLN electricity." },
+              "KJ-2025-0014": { title: "Watu Mori Village Bridge", loc: "East Nusa Tenggara", desc: "Construction of a 120-meter suspension bridge for primary community access." },
+              "KJ-2025-0015": { title: "Electricity for Bintang Timur Village", loc: "South Sulawesi", desc: "Solar home system provision plan for 150 houses in a remote area." },
+              "KJ-2025-0016": { title: "Mekar Jaya Village Bridge", loc: "West Kalimantan", desc: "Construction of a suspension bridge to connect the village with economic and educational centers." },
+              "KJ-2025-0017": { title: "Electricity for Sinar Harapan Village", loc: "Maluku", desc: "Electrical installation planning for 80 houses in island territories." },
+              "KJ-2025-0018": { title: "Deli River Bridge", loc: "North Sumatra", desc: "Renovation of the main bridge for the smooth transportation of residents between villages." },
+              "KJ-2025-0019": { title: "Electricity for Siak Village", loc: "Riau", desc: "High-capacity solar installation for village lighting at night." },
+              "KJ-2025-0020": { title: "South Garut Suspension Bridge", loc: "West Java", desc: "Vital access for residents' economy hindered by river conditions." },
+              "KJ-2025-0021": { title: "Anak Air Bridge", loc: "West Sumatra", desc: "Plan for the first suspension bridge for an isolated settlement." },
+              "KJ-2025-0022": { title: "Electricity for Ngadas Village", loc: "East Java", desc: "Installation process of electricity lines in a remote mountainous area." },
+              "KJ-2025-0023": { title: "Sentani District Lighting", loc: "Papua", desc: "Village lighting system using communal solar panels." },
+              "KJ-2025-0024": { title: "Meulaboh Suspension Bridge", loc: "Aceh", desc: "Planning to upgrade a bamboo bridge into a steel bridge." },
+              "KJ-2025-0025": { title: "Electricity for Mahakam Village", loc: "East Kalimantan", desc: "Development of electrical infrastructure for schoolchildren to study at night." },
+              "KJ-2025-0026": { title: "Minahasa Bridge", loc: "North Sulawesi", desc: "Uniting two villages separated by a strong river current." },
+              "KJ-2025-0027": { title: "Electricity for Kintamani Village", loc: "Bali", desc: "Early stage of installing utility poles and village power substation." }
             }
           },
           dampak_laporan: {
@@ -689,8 +801,8 @@ i18n
           },
           tentang_kami: {
             hero: {
-              title: "Connecting Kindness from Saudi Arabia for Indonesia",
-              subtitle: "BLUE CRESCENT Foundation bridges the support of donors from Saudi Arabia to bring real change to communities in remote Indonesia."
+              title: "Connecting Kindness from United Arab Emirates for Indonesia",
+              subtitle: "Blue Crescent Foundation bridges the support of donors from the United Arab Emirates to bring real change to communities in remote Indonesia."
             },
             stats: {
               since: "Since",
@@ -708,8 +820,8 @@ i18n
                 "Limited economic opportunities"
               ],
               center_title: "We connect both into a real impact.",
-              center_desc: "The kindness of donors in Saudi Arabia we distribute with integrity, transparency, and targeted to build a better future for the Indonesian people.",
-              sa_title: "Donors from Saudi Arabia have extraordinary power:",
+              center_desc: "The kindness of donors in the United Arab Emirates we distribute with integrity, transparency, and targeted to build a better future for the Indonesian people.",
+              sa_title: "Donors from the United Arab Emirates have extraordinary power:",
               sa_list: [
                 "High spirit of sharing",
                 "Sustainable donations",
@@ -735,7 +847,7 @@ i18n
             journey: {
               title: "Our Journey",
               timeline: [
-                { year: "2016", title: "Founding", desc: "BLUE CRESCENT Foundation was established with a vision to bring real change to remote communities." },
+                { year: "2016", title: "Founding", desc: "Blue Crescent Foundation was established with a vision to bring real change to remote communities." },
                 { year: "2017 – 2019", title: "First Steps", desc: "Focus on basic infrastructure development and humanitarian aid in various remote areas." },
                 { year: "2020 – 2022", title: "Expanding", desc: "Programs expanded to more provinces and involved more local partners." },
                 { year: "2023 – Present", title: "Sustainable Impact", desc: "Continuing to innovate and commit to realizing long-term impact for the Indonesian people." }
@@ -746,11 +858,19 @@ i18n
               desc: "Every support from you is a new hope for those in need.",
               view_projects: "View Projects",
               donate_now: "Donate Now"
+            },
+            partnership: {
+              title: "Strategic Partnership",
+              desc: "Blue Crescent Foundation is proud to collaborate with the Red Crescent in various humanitarian and development missions across Indonesia.",
+              label: "Humanitarian Collaboration",
+              mission_title: "Our Shared Mission",
+              mission_desc: "Uniting resources and expertise to provide a broader impact on the safety and well-being of communities in need.",
+              items: ["Disaster Mitigation", "Integrated Logistics Distribution", "Community Health Programs"]
             }
           },
           login: {
             welcome: "Welcome to",
-            subtitle: "Log in to continue your journey of kindness together with BLUE CRESCENT Foundation.",
+            subtitle: "Log in to continue your journey of kindness together with Blue Crescent Foundation.",
             features: {
               secure: {
                 title: "Safe & Trusted",
@@ -799,7 +919,7 @@ i18n
             edit_profile: "Edit Profile",
             logout: "Logout",
             loyal_donor: "Loyal Donor",
-            total_donation: "Total Donation (SAR)",
+            total_donation: "Total Donation (AED)",
             donation_impact: "Donation Impact by Category",
             stats_desc: "Distribution of your contributions across various development programs.",
             recent_history: "Recent Donation History",
@@ -832,12 +952,34 @@ i18n
             tentang_kami: "من نحن",
             donasi_sekarang: "تبرع الآن",
           },
+          brand: {
+            first: "الهلال",
+            second: "الأزرق",
+            full: "مؤسسة الهلال الأزرق"
+          },
+          countries: {
+            indonesia: "إندونيسيا",
+            uae: "الإمارات العربية المتحدة"
+          },
           hero: {
-            badge: "بدعم من المتبرعين من المملكة العربية السعودية",
+            badge: "بدعم من المتبرعين من الإمارات العربية المتحدة",
             title: "تحقيق تأثير حقيقي للأشخاص المحتاجين",
             subtitle: "مع المتبرعين، نوفر الوصول إلى البنية التحتية والطاقة والفرص للأشخاص في المناطق النائية في إندونيسيا.",
             cta_primary: "تبرع الآن",
             cta_secondary: "تعلم المزيد",
+          },
+          home_stats: {
+            title: "أثرنا",
+            update_label: "(تحديث أبريل 2025)",
+            beneficiaries: "المستفيدون",
+            beneficiaries_sub: "في مختلف مناطق إندونيسيا",
+            projects_completed: "مشاريع مكتملة",
+            projects_sub: "الجسور والكهرباء",
+            villages_impacted: "القرى المتأثرة",
+            villages_sub: "في 6 محافظات",
+            collected: "+6.2 مليون د.إ",
+            collected_label: "التبرعات المجموعة",
+            from_donors: "من متبرعينا"
           },
           what_we_do: {
             title: "ماذا نفعل",
@@ -904,8 +1046,8 @@ i18n
             terms: "الشروط والأحكام",
             privacy: "سياسة الخصوصية",
             saudi_box: {
-              title: "ادعم برامجنا من المملكة العربية السعودية",
-              subtitle: "معلومات التبرع المحلي للمتبرعين في المملكة العربية السعودية",
+              title: "ادعم برامجنا من الإمارات العربية المتحدة",
+              subtitle: "معلومات التبرع المحلي للمتبرعين في الإمارات العربية المتحدة",
               thanks: "شكراً لدعمكم المستمر"
             }
           },
@@ -962,10 +1104,22 @@ i18n
               support_desc: "ستسرع مساعدتك في استكمال المشروع وتفيد المزيد من الناس.",
               share_project: "مشاركة المشروع",
               donors_support: "بدعم من المتبرعين",
-              donors_thanks: "شكراً للمتبرعين من المملكة العربية السعودية وكل من ساهم.",
+              donors_thanks: "شكراً للمتبرعين من الإمارات العربية المتحدة وكل من ساهم.",
               view_all_donors: "عرض جميع المتبرعين",
               other_donors: "+ {{count}} متبرعين آخرين",
               status_waiting: "قيد الانتظار",
+              impact_items: {
+                beneficiaries: { title: "مواطنون مستفيدون", desc: "وصول آمن يومياً" },
+                students: { title: "طلاب المدارس", desc: "يمكنهم الذهاب للمدرسة بأمان" },
+                time: { title: "وقت السفر", desc: "أسرع للمدارس والمرافق الصحية" },
+                economy: { title: "التحسين الاقتصادي", desc: "يسهل توزيع المحاصيل والأنشطة الاقتصادية" }
+              },
+              funds_usage_items: {
+                construction: "البناء والمواد",
+                logistics: "النقل والخدمات اللوجستية",
+                labor: "العمالة المحلية",
+                admin: "الإدارة"
+              },
               quote_text: '"وَمَا أَنفَقْتُم مِّن شَيْءٍ فَهُوَ يُخْلِفُهُ ۖ وَهُوَ خَيْرُ الرَّازِقِينَ"',
               quote_ref: "(سورة سبأ: ٣٩)",
               investment_text: "كل تبرع هو استثمار للآخرة وأمل جديد لهم."
@@ -999,6 +1153,24 @@ i18n
               construction_step: "بناء",
               finishing_step: "تشطيب",
               completed_step: "مكتمل"
+            },
+            projects: {
+              "KJ-2025-0012": { title: "جسر قرية ليمباه هرابان", loc: "سولاويزي الوسطى", desc: "بناء جسر معلق لربط القرية بسبل الوصول إلى المدارس والخدمات الصحية." },
+              "KJ-2025-0013": { title: "الكهرباء لقرية سوكا ماجو", loc: "نوسا تينجارا الغربية", desc: "برنامج توفير الطاقة الشمسية لـ 120 منزلاً في قرية لم تصلها كهرباء PLN بعد." },
+              "KJ-2025-0014": { title: "جسر قرية واتو موري", loc: "نوسا تينجارا الشرقية", desc: "بناء جسر معلق بطول 120 متراً ليكون منفذ الوصول الرئيسي للمجتمع." },
+              "KJ-2025-0015": { title: "الكهرباء لقرية بينتانج تيمور", loc: "سولاويزي الجنوبية", desc: "خطة لتوفير نظام منزلي شمسي لـ 150 منزلاً في منطقة نائية." },
+              "KJ-2025-0016": { title: "جسر قرية ميكار جايا", loc: "كاليمانتان الغربية", desc: "بناء جسر معلق لربط القرية بالمراكز الاقتصادية والتعليمية." },
+              "KJ-2025-0017": { title: "الكهرباء لقرية سينار هرابان", loc: "مالوكو", desc: "تخطيط تركيب الكهرباء لـ 80 منزلاً في المناطق الجزرية." },
+              "KJ-2025-0018": { title: "جسر نهر ديلي", loc: "سومطرة الشمالية", desc: "تجديد الجسر الرئيسي لتسهيل تنقل السكان بين القرى." },
+              "KJ-2025-0019": { title: "الكهرباء لقرية سياك", loc: "رياو", desc: "تركيب نظام شمسي عالي السعة لإنارة القرية ليلاً." },
+              "KJ-2025-0020": { title: "جسر غاروت الجنوبي المعلق", loc: "جاوة الغربية", desc: "منفذ وصول حيوي لاقتصاد السكان الذي تعوقه ظروف النهر." },
+              "KJ-2025-0021": { title: "جسر عيناك أير", loc: "سومطرة الغربية", desc: "خطة لأول جسر معلق لتجمع سكني معزول." },
+              "KJ-2025-0022": { title: "الكهرباء لقرية نجاداس", loc: "جاوة الشرقية", desc: "عملية تركيب خطوط الكهرباء في منطقة جبلية نائية." },
+              "KJ-2025-0023": { title: "إنارة منطقة سينتاني", loc: "بابوا", desc: "نظام إنارة القرية باستخدام ألواح شمسية جماعية." },
+              "KJ-2025-0024": { title: "جسر مولابوه المعلق", loc: "آتشيه", desc: "التخطيط لترقية جسر من الخيزران إلى جسر فولاذي." },
+              "KJ-2025-0025": { title: "الكهرباء لقرية ماهاكام", loc: "كاليمانتان الشرقية", desc: "تطوير البنية التحتية الكهربائية ليتمكن أطفال المدارس من الدراسة ليلاً." },
+              "KJ-2025-0026": { title: "جسر ميناهاسا", loc: "سولاويزي الشمالية", desc: "توحيد قريتين يفصلهما تيار نهري قوي." },
+              "KJ-2025-0027": { title: "الكهرباء لقرية كينتاماني", loc: "بالي", desc: "المرحلة المبكرة من تركيب أعمدة الإنارة ومحطة فرعية للكهرباء في القرية." }
             }
           },
           dampak_laporan: {
@@ -1095,8 +1267,8 @@ i18n
           },
           tentang_kami: {
             hero: {
-              title: "ربط الخير من المملكة العربية السعودية لإندونيسيا",
-              subtitle: "تعتبر مؤسسة الهلال الأزرق جسراً لدعم المتبرعين من المملكة العربية السعودية لإحداث تغيير حقيقي للمجتمعات في المناطق النائية في إندونيسيا."
+              title: "ربط الخير من الإمارات العربية المتحدة لإندونيسيا",
+              subtitle: "تعتبر مؤسسة الهلال الأزرق جسراً لدعم المتبرعين من الإمارات العربية المتحدة لإحداث تغيير حقيقي للمجتمعات في المناطق النائية في إندونيسيا."
             },
             stats: {
               since: "منذ",
@@ -1114,8 +1286,8 @@ i18n
                 "فرص اقتصادية محدودة"
               ],
               center_title: "نحن نربط الاثنين لنحدث تأثيراً حقيقياً.",
-              center_desc: "نوزع خير المتبرعين في المملكة العربية السعودية بأمانة وشفافية واستهداف لبناء مستقبل أفضل للشعب الإندونيسي.",
-              sa_title: "المتبرعون من المملكة العربية السعودية يمتلكون قوة استثنائية:",
+              center_desc: "نوزع خير المتبرعين في الإمارات العربية المتحدة بأمانة وشفافية واستهداف لبناء مستقبل أفضل للشعب الإندونيسي.",
+              sa_title: "المتبرعون من الإمارات العربية المتحدة يمتلكون قوة استثنائية:",
               sa_list: [
                 "روح العطاء العالية",
                 "تبرعات مستدامة",
@@ -1152,6 +1324,14 @@ i18n
               desc: "كل دعم منكم هو أمل جديد لمن هم في أمس الحاجة إليه.",
               view_projects: "عرض المشاريع",
               donate_now: "تبرع الآن"
+            },
+            partnership: {
+              title: "شراكة استراتيجية",
+              desc: "تفخر مؤسسة الهلال الأزرق بالتعاون مع الهلال الأحمر في مختلف المهمات الإنسانية والتنموية في جميع أنحاء إندونيسيا.",
+              label: "تعاون إنساني",
+              mission_title: "مهمتنا المشتركة",
+              mission_desc: "تويد الموارد والخبرات لتوفير تأثير أوسع على سلامة ورفاهية المجتمعات المحتاجة.",
+              items: ["تخفيف الكوارث", "توزيع الخدمات اللوجستية المتكامله", "برامج الصحة المجتمعية"]
             }
           },
           login: {
@@ -1205,7 +1385,7 @@ i18n
             edit_profile: "تعديل الملف الشخصي",
             logout: "تسجيل الخروج",
             loyal_donor: "متبرع مخلص",
-            total_donation: "إجمالي التبرعات (ر.س)",
+            total_donation: "إجمالي التبرعات (د.إ)",
             donation_impact: "تأثير التبرعات حسب الفئة",
             stats_desc: "توزيع مساهماتك عبر برامج التنمية المختلفة.",
             recent_history: "تاريخ التبرعات الأخير",
