@@ -15,78 +15,51 @@ import {
   LayoutGrid,
   Map,
   Check,
-  History
+  History,
+  Zap
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
+import { initialProjects } from "./Proyek";
 
 export default function ProgramDetail() {
   const { t } = useTranslation();
-  const genericImg = "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070";
+  const { id } = useParams();
+  
+  const programKey = id?.includes('listrik') ? 'listrik' : 'jembatan';
+  const programTitle = t(`programs.${programKey}.title`);
+  const programIcon = programKey === 'listrik' ? <Zap size={32} className="text-primary-deep" strokeWidth={1.5} /> : <Milestone size={32} className="text-primary-deep" strokeWidth={1.5} />;
+  const programSummary = t(`programs.${programKey}.desc`);
 
-  const projects = [
-    {
-      title: "Jembatan Desa Lembah Harapan",
-      loc: "Sulawesi Tengah",
-      progress: 80,
-      desc: "Pembangunan jembatan gantung untuk menghubungkan desa dengan akses sekolah dan layanan kesehatan.",
-      terkumpul: "SAR 336.000",
-      target: "SAR 420.000",
-      status: "Berjalan",
-      img: genericImg
-    },
-    {
-      title: "Jembatan Desa Watu Mori",
-      loc: "Nusa Tenggara Timur",
-      progress: 45,
-      desc: "Pembangunan jembatan gantung sepanjang 120 meter untuk akses utama masyarakat.",
-      terkumpul: "SAR 180.000",
-      target: "SAR 400.000",
-      status: "Berjalan",
-      img: genericImg
-    },
-    {
-      title: "Jembatan Desa Suka Makmur",
-      loc: "Kalimantan Barat",
-      progress: 100,
-      desc: "Jembatan selesai dibangun dan telah dimanfaatkan oleh warga sejak Jan 2025.",
-      terkumpul: "SAR 310.000",
-      target: "SAR 310.000",
-      status: "Selesai",
-      img: genericImg
-    },
-    {
-      title: "Jembatan Desa Sungai Berkat",
-      loc: "Sulawesi Selatan",
-      progress: 10,
-      desc: "Perencanaan pembangunan jembatan gantung untuk akses warga menuju pasar dan sekolah.",
-      terkumpul: "SAR 20.000",
-      target: "SAR 250.000",
-      status: "Perencanaan",
-      img: genericImg
-    },
-    {
-      title: "Jembatan Desa Mekar Jaya",
-      loc: "Kalimantan Selatan",
-      progress: 60,
-      desc: "Jembatan dengan panjang 80 meter untuk menghubungkan dua wilayah desa.",
-      terkumpul: "SAR 240.000",
-      target: "SAR 400.000",
-      status: "Berjalan",
-      img: genericImg
-    },
-    {
-      title: "Jembatan Desa Bintang Timur",
-      loc: "Sulawesi Tenggara",
-      progress: 15,
-      desc: "Perencanaan pembangunan jembatan gantung untuk membuka akses ekonomi warga.",
-      terkumpul: "SAR 30.000",
-      target: "SAR 200.000",
-      status: "Perencanaan",
-      img: genericImg
-    }
+  const heroStats = programKey === 'jembatan' ? [
+    { icon: <Milestone size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />, val: "12", label: t("programs.jembatan.label1") },
+    { icon: <Milestone size={32} className="text-slate-400 shrink-0" strokeWidth={1.5} />, val: "4", label: t("programs.jembatan.label2"), subIcon: true },
+    { icon: <Users size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />, val: "1.850+", label: t("programs.jembatan.label3") }
+  ] : [
+    { icon: <Zap size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />, val: "6", label: t("programs.listrik.label1") },
+    { icon: <Zap size={32} className="text-slate-400 shrink-0" strokeWidth={1.5} />, val: "2", label: t("programs.listrik.label2"), subIcon: true },
+    { icon: <Users size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />, val: "600+", label: t("programs.listrik.label3") }
   ];
+
+  const mainImpactStats = programKey === 'jembatan' ? [
+    { icon: <Milestone size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "12", label: t("programs.jembatan.label1") },
+    { icon: <Milestone size={28} className="text-slate-400" strokeWidth={1.5} />, val: "4", label: t("programs.jembatan.label2"), subIcon: true },
+    { icon: <Users size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "1.850+", label: t("programs.jembatan.label3") },
+    { icon: <UsersRound size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "350+", label: t("proyek.program_detail.family_connected") },
+    { icon: <MapPin size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "6", label: t("tentang_kami.stats.provinces") },
+    { icon: <Building size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "20+", label: t("proyek.program_detail.villages_impacted") }
+  ] : [
+    { icon: <Zap size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "6", label: t("programs.listrik.label1") },
+    { icon: <Zap size={28} className="text-slate-400" strokeWidth={1.5} />, val: "2", label: t("programs.listrik.label2"), subIcon: true },
+    { icon: <Users size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "600+", label: t("programs.listrik.label3") },
+    { icon: <UsersRound size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "120+", label: t("proyek.program_detail.family_connected") },
+    { icon: <MapPin size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "3", label: t("tentang_kami.stats.provinces") },
+    { icon: <Building size={28} className="text-primary-deep" strokeWidth={1.5} />, val: "8+", label: t("proyek.program_detail.villages_impacted") }
+  ];
+
+  const projects = initialProjects.filter(p => p.type === programKey);
+  const genericImg = "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070";
 
   return (
     <div className="pt-24 pb-20">
@@ -95,7 +68,7 @@ export default function ProgramDetail() {
         <div className="text-[13px] text-slate-500 mb-10 font-medium">
           <Link to="/" className="hover:text-primary-deep transition-colors">{t("nav.beranda")}</Link>
           <span className="mx-2">&gt;</span>
-          <span className="hover:text-primary-deep transition-colors cursor-pointer">Program</span>
+          <span className="hover:text-primary-deep transition-colors cursor-pointer">{t("proyek.label_program")}</span>
           <span className="mx-2">&gt;</span>
           <span className="text-slate-800">{t("programs.jembatan.title")}</span>
         </div>
@@ -104,58 +77,41 @@ export default function ProgramDetail() {
       {/* Hero Section */}
       <div className="relative pt-6 pb-32 lg:pb-48 mb-20">
         <div className="absolute inset-0 z-0">
-           <img src="/jembatan-gantung.png" alt="Hero" className="w-full h-full object-cover object-right" />
+           <img src={programKey === 'listrik' ? "/listrik.png" : "/jembatan-gantung.png"} alt="Hero" className="w-full h-full object-cover object-right" />
            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl">
-            <p className="text-sm font-bold text-slate-600 tracking-widest uppercase mb-4">{t("program_detail.label")}</p>
+            <p className="text-sm font-bold text-slate-600 tracking-widest uppercase mb-4">{t("proyek.program_detail.label")}</p>
             <h1 className="text-5xl lg:text-6xl font-bold text-primary-deep leading-[1.1] mb-6 font-display">
-              {t("programs.jembatan.title")}
+              {programTitle}
             </h1>
             <p className="text-[18px] text-slate-800 leading-relaxed font-semibold mb-6 max-w-xl">
-              {t("programs.jembatan.desc")}
+              {programSummary}
             </p>
             <p className="text-[14px] text-slate-600 leading-relaxed font-medium max-w-lg mb-12">
-              Kami membangun jembatan gantung di desa-desa terpencil untuk mengatasi keterisoliran dan membuka akses menuju kehidupan yang lebih baik.
+               {t("proyek.program_detail.hero_desc")}
             </p>
             
             {/* Stats row */}
             <div className="flex flex-wrap gap-8 lg:gap-12 items-center">
-              <div className="flex items-center gap-3">
-                <Milestone size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
-                <div>
-                   <p className="text-2xl font-bold text-slate-900 leading-none">12</p>
-                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{t("programs.jembatan.label1")}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="relative">
-                  <Milestone size={32} className="text-slate-400 shrink-0" strokeWidth={1.5} />
-                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-primary-deep rounded-full flex items-center justify-center">
-                    <History size={10} className="text-white" />
+              {heroStats.map((s, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <div className="relative">
+                    {s.icon}
+                    {s.subIcon && (
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-primary-deep rounded-full flex items-center justify-center">
+                        <History size={10} className="text-white" />
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-slate-900 leading-none">{s.val}</p>
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{s.label}</p>
                   </div>
                 </div>
-                <div>
-                   <p className="text-2xl font-bold text-slate-900 leading-none">4</p>
-                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{t("programs.jembatan.label2")}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Users size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
-                <div>
-                   <p className="text-2xl font-bold text-slate-900 leading-none">1.850+</p>
-                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{t("programs.jembatan.label3")}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <MapPin size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
-                <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">6</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{t("tentang_kami.stats.provinces")}</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -165,39 +121,39 @@ export default function ProgramDetail() {
         {/* Tentang Program & Manfaat */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <div className="bg-white rounded-[2rem] p-10 border border-slate-100 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">{t("program_detail.about_title")}</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">{t("proyek.program_detail.about_title")}</h3>
             <div className="space-y-6 text-[14px] text-slate-600 leading-relaxed font-medium">
               <p>
-                {t("program_detail.about_p1")}
+                {t("proyek.program_detail.about_p1")}
               </p>
               <p>
-                {t("program_detail.about_p2")}
+                {t("proyek.program_detail.about_p2")}
               </p>
             </div>
           </div>
 
           <div className="bg-[#f8f9fa] rounded-[2rem] p-10 border border-slate-100 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">{t("program_detail.main_benefits")}</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">{t("proyek.program_detail.main_benefits")}</h3>
             <ul className="space-y-4">
               <li className="flex gap-4 items-start">
                 <GraduationCap size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit1")}</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("proyek.program_detail.benefit1")}</span>
               </li>
               <li className="flex gap-4 items-start">
                 <HeartPulse size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit2")}</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("proyek.program_detail.benefit2")}</span>
               </li>
               <li className="flex gap-4 items-start">
                 <Activity size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit3")}</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("proyek.program_detail.benefit3")}</span>
               </li>
               <li className="flex gap-4 items-start">
                 <UsersRound size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit4")}</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("proyek.program_detail.benefit4")}</span>
               </li>
               <li className="flex gap-4 items-start">
                 <Building size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit5")}</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("proyek.program_detail.benefit5")}</span>
               </li>
             </ul>
           </div>
@@ -205,55 +161,28 @@ export default function ProgramDetail() {
 
         {/* Dampak Program Banner */}
         <div className="bg-white rounded-[2rem] p-10 border border-slate-100 shadow-sm">
-           <h3 className="text-lg font-bold text-slate-900 mb-8 font-display">{t("program_detail.program_impact")}</h3>
+           <h3 className="text-lg font-bold text-slate-900 mb-8 font-display">{t("proyek.program_detail.program_impact")}</h3>
            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 divide-x divide-slate-100">
-              <div className="flex flex-col gap-3">
-                <Milestone size={28} className="text-primary-deep" strokeWidth={1.5} />
-                <div>
-                   <p className="text-2xl font-bold text-slate-900 leading-none">12</p>
-                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("programs.jembatan.label1").split(' ').join('<br/>')}</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-3 pl-8">
-                <div className="relative w-max">
-                  <Milestone size={28} className="text-slate-400" strokeWidth={1.5} />
-                  <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-primary-deep rounded-full flex items-center justify-center">
-                    <History size={8} className="text-white" />
+              {mainImpactStats.map((s, idx) => (
+                <div key={idx} className={`flex flex-col gap-3 ${idx !== 0 ? 'pl-8' : ''}`}>
+                  <div className="relative w-max">
+                    {s.icon}
+                    {s.subIcon && (
+                      <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-primary-deep rounded-full flex items-center justify-center">
+                        <History size={8} className="text-white" />
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-slate-900 leading-none">{s.val}</p>
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">
+                      {s.label.split(' ').map((word, i, arr) => (
+                        <span key={i}>{word}{i < arr.length - 1 && <br />}</span>
+                      ))}
+                    </p>
                   </div>
                 </div>
-                <div>
-                   <p className="text-2xl font-bold text-slate-900 leading-none">4</p>
-                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("programs.jembatan.label2").split(' ').join('<br/>')}</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-3 pl-8">
-                <Users size={28} className="text-primary-deep" strokeWidth={1.5} />
-                <div>
-                   <p className="text-2xl font-bold text-slate-900 leading-none">1.850+</p>
-                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("programs.jembatan.label3").split(' ').join('<br/>')}</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-3 pl-8">
-                <UsersRound size={28} className="text-primary-deep" strokeWidth={1.5} />
-                 <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">350+</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("program_detail.family_connected").split(' ').join('<br/>')}</p>
-                </div>
-              </div>
-               <div className="flex flex-col gap-3 pl-8">
-                <MapPin size={28} className="text-primary-deep" strokeWidth={1.5} />
-                <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">6</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("tentang_kami.stats.provinces")}<br/>&nbsp;</p>
-                </div>
-              </div>
-               <div className="flex flex-col gap-3 pl-8">
-                <Building size={28} className="text-primary-deep" strokeWidth={1.5} />
-                 <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">20+</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("program_detail.villages_impacted").split(' ').join('<br/>')}</p>
-                </div>
-              </div>
+              ))}
            </div>
         </div>
 
@@ -261,18 +190,18 @@ export default function ProgramDetail() {
         <div className="pt-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-slate-200 pb-6">
             <div>
-              <h2 className="text-[26px] font-bold text-slate-900 mb-2 font-display">{t("program_detail.projects_in_program", { title: t("programs.jembatan.title") })}</h2>
-              <p className="text-slate-500 text-sm font-medium">{t("program_detail.projects_subtitle", { title: t("programs.jembatan.title") })}</p>
+              <h2 className="text-[26px] font-bold text-slate-900 mb-2 font-display">{t("proyek.program_detail.projects_in_program", { title: programTitle })}</h2>
+              <p className="text-slate-500 text-sm font-medium">{t("proyek.program_detail.projects_subtitle", { title: programTitle })}</p>
             </div>
             
             <div className="flex items-center gap-4 mt-6 md:mt-0">
-              <span className="text-xs font-bold text-slate-500">{t("program_detail.view_label")}</span>
+              <span className="text-xs font-bold text-slate-500">{t("proyek.program_detail.view_label")}</span>
               <div className="flex bg-[#f1f5f9] rounded-lg p-1 border border-slate-200">
                 <button className="flex items-center gap-2 px-3 py-1.5 bg-white shadow-sm rounded text-xs font-bold text-slate-800">
-                  <LayoutGrid size={14} /> {t("program_detail.view_grid")}
+                  <LayoutGrid size={14} /> {t("proyek.program_detail.view_grid")}
                 </button>
                 <button className="flex items-center gap-2 px-3 py-1.5 rounded text-xs font-bold text-slate-500 hover:text-slate-800">
-                  <Map size={14} /> {t("program_detail.view_map")}
+                  <Map size={14} /> {t("proyek.program_detail.view_map")}
                 </button>
               </div>
             </div>
@@ -388,7 +317,7 @@ export default function ProgramDetail() {
                           </div>
                         </div>
 
-                        <Link to="/proyek/jembatan-desa-lembah-harapan" className="relative z-20 flex items-center gap-2 text-[13px] font-bold text-slate-800 hover:text-primary-deep group/btn transition-colors pt-2">
+                        <Link to={`/proyek/${p.id}`} className="relative z-20 flex items-center gap-2 text-[13px] font-bold text-slate-800 hover:text-primary-deep group/btn transition-colors pt-2">
                           {t("proyek.labels.details")} <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                         </Link>
                       </div>
@@ -399,7 +328,7 @@ export default function ProgramDetail() {
 
               <div className="flex justify-center">
                 <button className="flex items-center gap-2 px-6 py-3 border border-slate-200 rounded-full text-sm font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all bg-white shadow-sm">
-                  {t("program_detail.load_more_projects")} <ChevronRight size={16} className="rotate-90" />
+                  {t("proyek.program_detail.load_more_projects")} <ChevronRight size={16} className="rotate-90" />
                 </button>
               </div>
             </div>
@@ -415,16 +344,16 @@ export default function ProgramDetail() {
                <Heart size={32} className="text-primary-deep" strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">{t("program_detail.support_banner_title", { title: t("programs.jembatan.title") })}</h3>
-              <p className="text-[13px] text-slate-600 font-medium">{t("program_detail.support_banner_desc", { title: t("programs.jembatan.title") })}</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">{t("proyek.program_detail.support_banner_title", { title: programTitle })}</h3>
+              <p className="text-[13px] text-slate-600 font-medium">{t("proyek.program_detail.support_banner_desc", { title: programTitle })}</p>
             </div>
           </div>
           <div className="flex gap-4 shrink-0 w-full md:w-auto">
-            <button className="flex-1 md:flex-none bg-primary-deep text-white px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:bg-primary-dark transition-all shadow-md hover:shadow-lg">
+            <button className="flex-1 md:flex-none bg-[#e11d48] text-white px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:opacity-90 transition-all shadow-md hover:shadow-lg">
               <Heart size={16} /> {t("nav.donasi_sekarang")}
             </button>
             <button className="flex-1 md:flex-none bg-white text-primary-deep border border-slate-200 px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:border-primary-deep hover:bg-slate-50 transition-all shadow-sm">
-              {t("program_detail.how_to_donate")}
+              {t("proyek.program_detail.how_to_donate")}
             </button>
           </div>
         </div>
