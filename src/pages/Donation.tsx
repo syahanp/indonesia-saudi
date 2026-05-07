@@ -47,7 +47,7 @@ export default function Donation() {
           <span className="opacity-50">&gt;</span>
           <Link to="/proyek" className="hover:text-primary-deep transition-colors">Proyek</Link>
           <span className="opacity-50">&gt;</span>
-          <Link to="/proyek/1" className="hover:text-primary-deep transition-colors">Listrik Masuk Desa Suka Maju</Link>
+          <Link to="/proyek/1" className="hover:text-primary-deep transition-colors">Listrik Suka Maju</Link>
           <span className="opacity-50">&gt;</span>
           <span className="text-primary-deep">Donasi</span>
         </div>
@@ -61,7 +61,7 @@ export default function Donation() {
               Proyek Listrik
             </span>
             <h1 className="text-4xl lg:text-5xl font-bold text-primary-deep leading-tight mb-4">
-              Listrik Masuk<br />Desa Suka Maju
+              Listrik<br />Desa Suka Maju
             </h1>
             <div className="flex items-center gap-2 text-slate-500 mb-6 text-[14px] font-medium">
               <MapPin size={18} />

@@ -54,7 +54,7 @@ i18n
               label3: "Penerima Manfaat"
             },
             listrik: {
-              title: "Listrik Masuk Desa",
+              title: "Listrik",
               desc: "Menyediakan akses listrik yang andal untuk desa-desa yang belum terjangkau.",
               label1: "Desa Teraliri Listrik",
               label2: "Proyek Berjalan",
@@ -459,7 +459,7 @@ i18n
               label3: "Beneficiaries"
             },
             listrik: {
-              title: "Rural Electrification",
+              title: "Electricity",
               desc: "Providing reliable electricity access for remote villages.",
               label1: "Electrified Villages",
               label2: "Ongoing Projects",
@@ -864,7 +864,7 @@ i18n
               label3: "المستفيدون"
             },
             listrik: {
-              title: "كهربة الريف",
+              title: "الكهرباء",
               desc: "توفير وصول موثوق للكهرباء للقرى البعيدة.",
               label1: "قرى مكهربة",
               label2: "مشاريع جارية",

@@ -46,6 +46,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -707,6 +717,7 @@ export default function App() {
 
   return (
     <AuthProvider>
+      <ScrollToTop />
       <div className={`min-h-screen flex flex-col font-sans ${direction === 'rtl' ? 'font-arabic' : ''}`} dir={direction}>
         <Navbar />
         <main className="flex-grow">

@@ -32,21 +32,113 @@ import { useTranslation } from "react-i18next";
 
 export default function DampakLaporan() {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState(t("dampak_laporan.periods.all"));
-  const genericImg = "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070";
-
-  const chartData = [
-    { name: t("dampak_laporan.transparency.categories.program"), value: 83, color: '#167ce1' },
-    { name: t("dampak_laporan.transparency.categories.operational"), value: 10, color: '#7C3AED' },
-    { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E' },
-    { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24' },
+  const periodKeys = ['all', '3m', '6m', '12m'] as const;
+  type PeriodKey = typeof periodKeys[number];
+  
+  const [activePeriod, setActivePeriod] = useState<PeriodKey>('all');
+  
+  const projectAssets = [
+    "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_32 AM.png",
+    "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_37 AM.png",
+    "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_41 AM.png",
+    "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_46 AM.png",
+    "/proyek-asset/ChatGPT Image May 7, 2026, 02_50_52 AM.png",
+    "/proyek-asset/ChatGPT Image May 7, 2026, 02_51_01 AM.png",
+    "/proyek-asset/ChatGPT Image May 7, 2026, 02_51_31 AM.png",
   ];
 
+  const reportData = {
+    all: {
+      stats: {
+        beneficiaries: "10.000+", beneficiariesTrend: "+ 12%",
+        completed: "30+", completedTrend: "+ 8%",
+        villages: "12", villagesTrend: "+ 9%",
+        electricity: "18", electricityTrend: "+ 15%",
+        totalDonation: "SAR 6.2M+", donationTrend: "+ 10%",
+        totalAmountRaw: 6200000
+      },
+      chart: [
+        { name: t("dampak_laporan.transparency.categories.program"), value: 83, color: '#167ce1', amount: "SAR 5.146.000" },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 10, color: '#7C3AED', amount: "SAR 620.000" },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "SAR 310.000" },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "SAR 124.000" },
+      ],
+      projects: [
+        { title: "Jembatan Desa Lembah Harapan", loc: "Sulawesi Tengah", progress: 80, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[0] },
+        { title: "Listrik Masuk Desa Suka Maju", loc: "Nusa Tenggara Barat", progress: 100, status: t("proyek.status_selesai"), statusColor: "bg-green-50 text-green-600", img: projectAssets[1] },
+        { title: "Jembatan Desa Watu Mori", loc: "Nusa Tenggara Timur", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[2] },
+        { title: "Listrik Masuk Desa Bintang Timur", loc: "Sulawesi Selatan", progress: 60, status: t("proyek.status_perencanaan"), statusColor: "bg-sky-50 text-sky-600", img: projectAssets[3] },
+      ]
+    },
+    '12m': {
+      stats: {
+        beneficiaries: "6.200+", beneficiariesTrend: "+ 15%",
+        completed: "14+", completedTrend: "+ 10%",
+        villages: "5", villagesTrend: "+ 7%",
+        electricity: "8", electricityTrend: "+ 12%",
+        totalDonation: "SAR 3.5M+", donationTrend: "+ 11%",
+        totalAmountRaw: 3500000
+      },
+      chart: [
+        { name: t("dampak_laporan.transparency.categories.program"), value: 85, color: '#167ce1', amount: "SAR 2.975.000" },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 8, color: '#7C3AED', amount: "SAR 280.000" },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "SAR 175.000" },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "SAR 70.000" },
+      ],
+      projects: [
+        { title: "Jembatan Desa Lembah Harapan", loc: "Sulawesi Tengah", progress: 80, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[4] },
+        { title: "Listrik Masuk Desa Suka Maju", loc: "Nusa Tenggara Barat", progress: 100, status: t("proyek.status_selesai"), statusColor: "bg-green-50 text-green-600", img: projectAssets[5] },
+      ]
+    },
+    '6m': {
+      stats: {
+        beneficiaries: "3.400+", beneficiariesTrend: "+ 18%",
+        completed: "8+", completedTrend: "+ 12%",
+        villages: "3", villagesTrend: "+ 5%",
+        electricity: "4", electricityTrend: "+ 20%",
+        totalDonation: "SAR 1.8M+", donationTrend: "+ 14%",
+        totalAmountRaw: 1800000
+      },
+      chart: [
+        { name: t("dampak_laporan.transparency.categories.program"), value: 82, color: '#167ce1', amount: "SAR 1.476.000" },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 11, color: '#7C3AED', amount: "SAR 198.000" },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 5, color: '#F43F5E', amount: "SAR 90.000" },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "SAR 36.000" },
+      ],
+      projects: [
+        { title: "Jembatan Desa Watu Mori", loc: "Nusa Tenggara Timur", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[6] },
+        { title: "Listrik Masuk Desa Bintang Timur", loc: "Sulawesi Selatan", progress: 60, status: t("proyek.status_perencanaan"), statusColor: "bg-sky-50 text-sky-600", img: projectAssets[0] },
+      ]
+    },
+    '3m': {
+      stats: {
+        beneficiaries: "1.800+", beneficiariesTrend: "+ 22%",
+        completed: "4+", completedTrend: "+ 15%",
+        villages: "2", villagesTrend: "+ 3%",
+        electricity: "2", electricityTrend: "+ 25%",
+        totalDonation: "SAR 950K+", donationTrend: "+ 18%",
+        totalAmountRaw: 950000
+      },
+      chart: [
+        { name: t("dampak_laporan.transparency.categories.program"), value: 80, color: '#167ce1', amount: "SAR 760.000" },
+        { name: t("dampak_laporan.transparency.categories.operational"), value: 12, color: '#7C3AED', amount: "SAR 114.000" },
+        { name: t("dampak_laporan.transparency.categories.fundraising"), value: 6, color: '#F43F5E', amount: "SAR 57.000" },
+        { name: t("dampak_laporan.transparency.categories.reserve"), value: 2, color: '#FBBF24', amount: "SAR 19.000" },
+      ],
+      projects: [
+        { title: "Jembatan Desa Watu Mori", loc: "Nusa Tenggara Timur", progress: 45, status: t("proyek.status_berjalan"), statusColor: "bg-blue-50 text-blue-600", img: projectAssets[1] },
+      ]
+    }
+  };
+
+  const currentData = reportData[activePeriod];
+  const genericImg = "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070";
+
   const tabs = [
-    t("dampak_laporan.periods.all"),
-    t("dampak_laporan.periods.last3"),
-    t("dampak_laporan.periods.last6"),
-    t("dampak_laporan.periods.last12")
+    { id: 'all' as PeriodKey, label: t("dampak_laporan.periods.all") },
+    { id: '3m' as PeriodKey, label: t("dampak_laporan.periods.last3") },
+    { id: '6m' as PeriodKey, label: t("dampak_laporan.periods.last6") },
+    { id: '12m' as PeriodKey, label: t("dampak_laporan.periods.last12") }
   ];
 
   return (
@@ -70,16 +162,16 @@ export default function DampakLaporan() {
               <div className="flex bg-white rounded-xl border border-slate-100 p-1.5 shadow-sm gap-1">
                 {tabs.map((tab) => (
                   <button 
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
+                    key={tab.id}
+                    onClick={() => setActivePeriod(tab.id)}
                     className={`px-5 py-2.5 rounded-lg text-[13px] font-bold transition-all flex items-center gap-2 ${
-                      activeTab === tab 
+                      activePeriod === tab.id 
                       ? "bg-primary-deep text-white shadow-md shadow-primary-deep/20" 
                       : "text-slate-500 hover:text-slate-800"
                     }`}
                   >
-                    {tab === t("dampak_laporan.periods.all") && <Clock size={14} className={activeTab === tab ? "text-white" : "text-primary-deep"} />}
-                    {tab}
+                    {tab.id === 'all' && <Clock size={14} className={activePeriod === tab.id ? "text-white" : "text-primary-deep"} />}
+                    {tab.label}
                   </button>
                 ))}
               </div>
@@ -107,42 +199,42 @@ export default function DampakLaporan() {
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-5 mb-16">
           <StatCard 
             icon={<Users size={22} />}
-            value="10.000+"
+            value={currentData.stats.beneficiaries}
             label={t("dampak_laporan.stats.beneficiaries")}
             sub={t("dampak_laporan.stats.beneficiaries_sub")}
-            trend="+ 12%"
+            trend={currentData.stats.beneficiariesTrend}
             trendLabel={t("dampak_laporan.stats.from_previous")}
           />
           <StatCard 
             icon={<CheckCircle2 size={22} />}
-            value="30+"
+            value={currentData.stats.completed}
             label={t("dampak_laporan.stats.completed")}
             sub={t("dampak_laporan.stats.completed_sub")}
-            trend="+ 8%"
+            trend={currentData.stats.completedTrend}
             trendLabel={t("dampak_laporan.stats.from_previous")}
           />
           <StatCard 
             icon={<MapPin size={22} />}
-            value="12"
+            value={currentData.stats.villages}
             label={t("dampak_laporan.stats.villages")}
             sub={t("dampak_laporan.stats.villages_sub")}
-            trend="+ 9%"
+            trend={currentData.stats.villagesTrend}
             trendLabel={t("dampak_laporan.stats.from_previous")}
           />
           <StatCard 
             icon={<Zap size={22} />}
-            value="18"
+            value={currentData.stats.electricity}
             label={t("dampak_laporan.stats.electricity")}
             sub={t("dampak_laporan.stats.electricity_sub")}
-            trend="+ 15%"
+            trend={currentData.stats.electricityTrend}
             trendLabel={t("dampak_laporan.stats.from_previous")}
           />
           <StatCard 
             icon={<Coins size={22} />}
-            value="SAR 6.2M+"
+            value={currentData.stats.totalDonation}
             label={t("dampak_laporan.stats.total_donation")}
             sub={t("dampak_laporan.stats.donors_sub")}
-            trend="+ 10%"
+            trend={currentData.stats.donationTrend}
             trendLabel={t("dampak_laporan.stats.from_previous")}
             highlight
           />
@@ -152,14 +244,14 @@ export default function DampakLaporan() {
         <div className="grid lg:grid-cols-[1.1fr_1.3fr] gap-8 mb-20">
           <div className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-sm relative overflow-hidden">
             <h3 className="text-[20px] font-bold text-primary-deep mb-1">{t("dampak_laporan.transparency.title")}</h3>
-            <p className="text-[13px] font-bold text-slate-400 mb-10">{t("dampak_laporan.transparency.period_label", { period: t("dampak_laporan.periods.all") })}</p>
+            <p className="text-[13px] font-bold text-slate-400 mb-10">{t("dampak_laporan.transparency.period_label", { period: tabs.find(t=>t.id === activePeriod)?.label })}</p>
             
             <div className="flex flex-col md:flex-row items-center gap-12 mb-10">
               <div className="relative w-64 h-64 shrink-0">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
-                      data={chartData}
+                      data={currentData.chart}
                       cx="50%"
                       cy="50%"
                       innerRadius={80}
@@ -168,7 +260,7 @@ export default function DampakLaporan() {
                       stroke="none"
                       dataKey="value"
                     >
-                      {chartData.map((entry, index) => (
+                      {currentData.chart.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
@@ -176,12 +268,12 @@ export default function DampakLaporan() {
                 </ResponsiveContainer>
                 <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                   <p className="text-[11px] font-bold text-slate-400 mb-1">{t("dampak_laporan.transparency.total_funds")}</p>
-                  <p className="text-[20px] font-extrabold text-primary-deep tracking-tight">SAR 6.200.000</p>
+                  <p className="text-[20px] font-extrabold text-primary-deep tracking-tight">SAR {currentData.stats.totalAmountRaw.toLocaleString()}</p>
                 </div>
               </div>
 
               <div className="space-y-4 w-full">
-                {chartData.map((item, idx) => (
+                {currentData.chart.map((item, idx) => (
                   <div key={idx} className="flex justify-between items-center group cursor-pointer">
                     <div className="flex items-center gap-3">
                       <div className="w-3.5 h-3.5 rounded-full shadow-sm" style={{ backgroundColor: item.color }}></div>
@@ -207,48 +299,23 @@ export default function DampakLaporan() {
              <div className="space-y-8">
                <h3 className="text-[18px] font-extrabold text-primary-deep">{t("dampak_laporan.transparency.usage_details")}</h3>
                <div className="space-y-8">
-                 <div className="flex justify-between items-center group">
-                   <div className="flex items-center gap-5">
-                     <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-primary-deep group-hover:bg-primary-light transition-colors shadow-sm">
-                      <HeartHandshake size={20} />
+                 {currentData.chart.map((item, idx) => (
+                   <div key={idx} className="flex justify-between items-center group">
+                     <div className="flex items-center gap-5">
+                       <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center group-hover:bg-primary-light transition-colors shadow-sm" style={{ color: item.color }}>
+                         {idx === 0 ? <HeartHandshake size={20} /> : idx === 1 ? <Settings size={20} /> : idx === 2 ? <Megaphone size={20} /> : <BriefcaseBusiness size={20} />}
+                       </div>
+                       <span className="text-[15px] font-bold text-slate-700">{item.name}</span>
                      </div>
-                     <span className="text-[15px] font-bold text-slate-700">{t("dampak_laporan.transparency.categories.program")}</span>
+                     <span className="text-[15px] font-extrabold text-slate-900 tracking-tight">{item.amount}</span>
                    </div>
-                   <span className="text-[15px] font-extrabold text-slate-900 tracking-tight">SAR 5.146.000</span>
-                 </div>
-                 <div className="flex justify-between items-center group">
-                   <div className="flex items-center gap-5">
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-50 transition-colors shadow-sm">
-                      <Settings size={20} />
-                     </div>
-                     <span className="text-[15px] font-bold text-slate-700">{t("dampak_laporan.transparency.categories.operational")}</span>
-                   </div>
-                   <span className="text-[15px] font-extrabold text-slate-900 tracking-tight">SAR 620.000</span>
-                 </div>
-                 <div className="flex justify-between items-center group">
-                   <div className="flex items-center gap-5">
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-rose-500 group-hover:bg-rose-50 transition-colors shadow-sm">
-                      <Megaphone size={20} />
-                     </div>
-                     <span className="text-[15px] font-bold text-slate-700">{t("dampak_laporan.transparency.categories.fundraising")}</span>
-                   </div>
-                   <span className="text-[15px] font-extrabold text-slate-900 tracking-tight">SAR 310.000</span>
-                 </div>
-                 <div className="flex justify-between items-center group">
-                   <div className="flex items-center gap-5">
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-amber-500 group-hover:bg-amber-50 transition-colors shadow-sm">
-                      <BriefcaseBusiness size={20} />
-                     </div>
-                     <span className="text-[15px] font-bold text-slate-700">{t("dampak_laporan.transparency.categories.reserve")}</span>
-                   </div>
-                   <span className="text-[15px] font-extrabold text-slate-900 tracking-tight">SAR 124.000</span>
-                 </div>
+                 ))}
                </div>
              </div>
              
              <div className="mt-12 bg-blue-50/50 p-6 rounded-2xl flex justify-between items-center border border-blue-100">
                <span className="text-[18px] font-extrabold text-primary-deep">{t("dampak_laporan.transparency.total")}</span>
-               <span className="text-[24px] font-extrabold text-primary-deep tracking-tight">SAR 6.200.000</span>
+               <span className="text-[24px] font-extrabold text-primary-deep tracking-tight">SAR {currentData.stats.totalAmountRaw.toLocaleString()}</span>
              </div>
           </div>
         </div>
@@ -316,46 +383,19 @@ export default function DampakLaporan() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50">
-                  <TableRow 
-                    img={genericImg}
-                    title="Jembatan Desa Lembah Harapan"
-                    loc="Sulawesi Tengah"
-                    type={t("programs.jembatan.title")}
-                    progress={80}
-                    status={t("proyek.status_berjalan")}
-                    statusColor="bg-blue-50 text-blue-600"
-                    progColor="bg-primary-deep"
-                  />
-                  <TableRow 
-                    img={genericImg}
-                    title="Listrik Masuk Desa Suka Maju"
-                    loc="Nusa Tenggara Barat"
-                    type={t("programs.listrik.title")}
-                    progress={100}
-                    status={t("proyek.status_selesai")}
-                    statusColor="bg-green-50 text-green-600"
-                    progColor="bg-primary-deep"
-                  />
-                  <TableRow 
-                    img={genericImg}
-                    title="Jembatan Desa Watu Mori"
-                    loc="Nusa Tenggara Timur"
-                    type={t("programs.jembatan.title")}
-                    progress={45}
-                    status={t("proyek.status_berjalan")}
-                    statusColor="bg-blue-50 text-blue-600"
-                    progColor="bg-primary-deep"
-                  />
-                  <TableRow 
-                    img={genericImg}
-                    title="Listrik Masuk Desa Bintang Timur"
-                    loc="Sulawesi Selatan"
-                    type={t("programs.listrik.title")}
-                    progress={60}
-                    status={t("proyek.status_perencanaan")}
-                    statusColor="bg-sky-50 text-sky-600"
-                    progColor="bg-primary-deep"
-                  />
+                  {currentData.projects.map((proj, idx) => (
+                    <TableRow 
+                      key={idx}
+                      img={proj.img}
+                      title={proj.title}
+                      loc={proj.loc}
+                      type={proj.title.toLowerCase().includes('jembatan') ? t("programs.jembatan.title") : t("programs.listrik.title")}
+                      progress={proj.progress}
+                      status={proj.status}
+                      statusColor={proj.statusColor}
+                      progColor="bg-primary-deep"
+                    />
+                  ))}
                 </tbody>
               </table>
             </div>
