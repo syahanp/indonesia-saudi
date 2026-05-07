@@ -4,12 +4,18 @@
  */
 
 import { motion } from "motion/react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import TentangKami from "./pages/TentangKami";
 import ProgramDetail from "./pages/ProgramDetail";
 import Proyek, { initialProjects } from "./pages/Proyek";
 import ProyekDetail from "./pages/ProyekDetail";
+import Donation from "./pages/Donation";
 import DampakLaporan from "./pages/DampakLaporan";
+import Login from "./pages/Login";
+import Account from "./pages/Account";
 import ProyekCard from "./components/ProyekCard";
 import { 
   ArrowRight, 
@@ -31,14 +37,63 @@ import {
   Moon,
   Home as HomeIcon,
   Coins,
-  Phone
+  Phone,
+  Sprout,
+  User,
+  ChevronLeft
 } from "lucide-react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+  const { user, isAuthenticated } = useAuth();
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const isTentangKami = location.pathname === "/tentang-kami";
   const isProyek = location.pathname.startsWith("/proyek");
   const isDampakLaporan = location.pathname === "/dampak-laporan";
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+    setIsLangOpen(false);
+  };
+
+  const navItems = [
+    { key: "beranda", label: t("nav.beranda"), path: "/" },
+    { key: "proyek", label: t("nav.proyek"), path: "/proyek" },
+    { key: "dampak_laporan", label: t("nav.dampak_laporan"), path: "/dampak-laporan" },
+    { key: "tentang_kami", label: t("nav.tentang_kami"), path: "/tentang-kami" },
+  ];
+
+  const languages = [
+    { code: 'id', name: 'Indonesian', flag: '🇮🇩' },
+    { code: 'en', name: 'English', flag: '🇺🇸' },
+    { code: 'ar', name: 'Arabic', flag: '🇸🇦' },
+  ];
+
+  const handleDonasiNav = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      navigate("/donasi");
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
@@ -49,41 +104,78 @@ const Navbar = () => {
               <img src="/bulan_sabit_biru_icon.png" alt="Bulan Sabit Biru Logo" className="w-full h-full object-contain" />
             </div>
             <div>
-              <h1 className="text-[20px] font-bold text-primary-deep leading-none uppercase tracking-wide">BULAN</h1>
-              <p className="text-[20px] font-extrabold text-primary-deep leading-none uppercase tracking-widest mt-0.5">SABIT BIRU</p>
-              <p className="text-[10px] text-slate-500 font-semibold tracking-wider mt-1">Berbagi untuk Negeri</p>
+              <h1 className="text-[24px] font-bold text-primary-deep leading-none uppercase tracking-wide">BULAN</h1>
+              <p className="text-[24px] font-extrabold text-primary-deep leading-none uppercase mt-0.5">SABIT BIRU</p>
             </div>
           </Link>
           
           <div className="hidden lg:flex items-center gap-10">
-            {["Beranda", "Proyek", "Dampak & Laporan", "Tentang Kami"].map((item) => {
-              const isActive = (item === "Tentang Kami" && isTentangKami) || 
-                               (item === "Proyek" && isProyek) || 
-                               (item === "Dampak & Laporan" && isDampakLaporan) || 
-                               (item === "Beranda" && !isTentangKami && !isProyek && !isDampakLaporan && location.pathname === "/");
-              const path = item === "Tentang Kami" ? "/tentang-kami" : 
-                           item === "Proyek" ? "/proyek" : 
-                           item === "Dampak & Laporan" ? "/dampak-laporan" : 
-                           item === "Beranda" ? "/" : `/#${item.toLowerCase().replace(/ /g, "-")}`;
+            {navItems.map((item) => {
+              const isActive = (item.key === "tentang_kami" && isTentangKami) || 
+                               (item.key === "proyek" && isProyek) || 
+                               (item.key === "dampak_laporan" && isDampakLaporan) || 
+                               (item.key === "beranda" && !isTentangKami && !isProyek && !isDampakLaporan && location.pathname === "/");
+              
               return (
                 <Link 
-                  key={item} 
-                  to={path}
+                  key={item.key} 
+                  to={item.path}
                   className={`text-[13px] font-bold transition-all ${isActive ? "text-primary-deep border-b-2 border-primary-deep pb-2" : "text-slate-600 hover:text-primary-deep"}`}
                 >
-                  {item}
+                  {item.label}
                 </Link>
               )
             })}
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary-deep hover:border-primary-deep transition-all">
-              <Globe size={18} />
-            </button>
-            <button className="bg-primary-deep text-white px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary-deep/20 hover:-translate-y-0.5">
+            <div className="relative" ref={dropdownRef}>
+              <button 
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="h-10 px-3 rounded-full border border-slate-200 flex items-center gap-2 text-slate-600 hover:text-primary-deep hover:border-primary-deep transition-all font-bold text-sm"
+                id="language-toggle-btn"
+              >
+                <div className="w-5 h-5 rounded-full overflow-hidden flex items-center justify-center bg-slate-50 text-xs">
+                  {languages.find(l => l.code === i18n.language)?.flag || languages[0].flag}
+                </div>
+                <span className="uppercase text-[11px] tracking-wider">{i18n.language}</span>
+              </button>
+              
+              {isLangOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-slate-100 rounded-2xl shadow-xl py-2 z-[110]">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`w-full flex items-center gap-3 px-4 py-2 text-left text-sm font-bold hover:bg-slate-50 transition-colors ${i18n.language === lang.code ? "text-primary-deep" : "text-slate-600"}`}
+                    >
+                      <span className="text-lg">{lang.flag}</span>
+                      {lang.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            
+            {isAuthenticated ? (
+              <Link to="/akun" className="flex items-center gap-3 pl-2 pr-4 py-1.5 rounded-full border border-slate-100 hover:bg-slate-50 transition-all group">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+                  <img src={user?.avatar} alt={user?.name} className="w-full h-full object-cover" />
+                </div>
+                <span className="text-[12px] font-bold text-slate-700 group-hover:text-primary-deep hidden md:inline">{user?.name.split(' ')[0]}</span>
+              </Link>
+            ) : (
+              <Link to="/login" className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:text-primary-deep hover:border-primary-deep transition-all">
+                <User size={18} />
+              </Link>
+            )}
+
+            <button 
+              onClick={handleDonasiNav}
+              className="bg-[#e11d48] text-white px-6 py-3 rounded-full text-sm font-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-lg shadow-pink-500/20 hover:-translate-y-0.5 cursor-pointer"
+            >
               <Heart size={16} fill="currentColor" />
-              <span className="hidden sm:inline">Donasi</span>
+              <span className="hidden sm:inline">{t("nav.donasi_sekarang")}</span>
             </button>
           </div>
         </div>
@@ -92,16 +184,31 @@ const Navbar = () => {
   );
 };
 
-const Hero = () => (
+const Hero = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const handleDonationClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      navigate('/donasi');
+    } else {
+      navigate('/login');
+    }
+  };
+
+  return (
   <section className="relative pt-20">
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070" 
+          src="/landing-hero.png" 
           alt="Children on bridge" 
+          referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 lg:via-white/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white lg:via-white/95 to-transparent"></div>
       </div>
     </div>
 
@@ -114,17 +221,17 @@ const Hero = () => (
           className="flex items-center gap-2 bg-primary-light text-primary-deep px-4 py-1.5 rounded-full w-fit mb-6 border border-primary-deep/10"
         >
           <Users size={14} />
-          <span className="text-xs font-semibold">Didukung oleh para donatur dari Arab Saudi</span>
+          <span className="text-xs font-semibold">{t("hero.badge")}</span>
         </motion.div>
         
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl lg:text-7xl font-bold text-primary-deep leading-[1.1] mb-8"
-        >
-          Mewujudkan Dampak Nyata bagi Masyarakat yang Membutuhkan
-        </motion.h1>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl lg:text-7xl font-bold text-primary-deep leading-[1.1] mb-8"
+          >
+            {t("hero.title")}
+          </motion.h1>
         
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -132,7 +239,7 @@ const Hero = () => (
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg"
         >
-          Bersama para donatur, kami menghadirkan akses infrastruktur, energi, dan peluang bagi masyarakat di pelosok Indonesia.
+          {t("hero.subtitle")}
         </motion.p>
         
         <motion.div 
@@ -143,12 +250,15 @@ const Hero = () => (
         >
           <Link to="/proyek" className="btn-primary">
             <Globe size={18} />
-            Lihat Proyek
+            {t("hero.cta_secondary")}
           </Link>
-          <Link to="/proyek" className="btn-secondary">
+          <button 
+            onClick={handleDonationClick}
+            className="btn-secondary cursor-pointer"
+          >
             <Heart size={18} className="text-primary-deep" />
-            Donasi Sekarang
-          </Link>
+            {t("hero.cta_primary")}
+          </button>
         </motion.div>
       </div>
     </div>
@@ -205,40 +315,42 @@ const Hero = () => (
             </div>
             <div>
               <p className="text-[28px] font-bold text-slate-900 leading-none mb-1.5">SAR 6.2M+</p>
-              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">Donasi Terkumpul</p>
-              <p className="text-[12px] text-slate-500 leading-tight">Dari para donatur</p>
+              <p className="text-[14px] font-bold text-slate-800 mb-0.5 leading-tight">{t("stats.collected")}</p>
+              <p className="text-[12px] text-slate-500 leading-tight">{t("stats.from_donors")}</p>
             </div>
           </div>
         </div>
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 const ProgramSection = () => {
+  const { t } = useTranslation();
   const programs = [
     {
       id: "1",
-      title: "Jembatan Gantung",
-      desc: "Menghubungkan masyarakat dengan akses ke pendidikan, layanan kesehatan, dan aktivitas ekonomi.",
+      title: t("programs.jembatan.title"),
+      desc: t("programs.jembatan.desc"),
       stats: [
-        { label: "Jembatan Terbangun", val: "12" },
-        { label: "Proyek Berjalan", val: "4" },
-        { label: "Penerima Manfaat", val: "1.850+" },
+        { label: t("programs.jembatan.label1"), val: "12" },
+        { label: t("programs.jembatan.label2"), val: "4" },
+        { label: t("programs.jembatan.label3"), val: "1.850+" },
       ],
-      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070",
+      img: "/jembatan-gantung.png",
       icon: <Milestone className="text-primary-deep" size={24} />
     },
     {
       id: "2",
-      title: "Listrik Masuk Desa",
-      desc: "Menyediakan akses listrik yang andal untuk desa-desa yang belum terjangkau.",
+      title: t("programs.listrik.title"),
+      desc: t("programs.listrik.desc"),
       stats: [
-        { label: "Desa Teraliri Listrik", val: "6" },
-        { label: "Proyek Berjalan", val: "2" },
-        { label: "Rumah Tangga Terdampak", val: "600+" },
+        { label: t("programs.listrik.label1"), val: "6" },
+        { label: t("programs.listrik.label2"), val: "2" },
+        { label: t("programs.listrik.label3"), val: "600+" },
       ],
-      img: "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070",
+      img: "/listrik.png",
       icon: <Zap className="text-primary-deep" size={24} />
     }
   ];
@@ -248,13 +360,13 @@ const ProgramSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-12">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display text-2xl lg:text-3xl">Program Kami</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display text-2xl lg:text-3xl">{t("programs.title")}</h2>
             <p className="text-slate-600 max-w-xl text-sm leading-relaxed">
-              Kami berfokus pada pembangunan infrastruktur dasar yang membuka akses dan meningkatkan kualitas hidup masyarakat.
+              {t("programs.subtitle")}
             </p>
           </div>
           <a href="#" className="flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-primary-deep transition-colors group">
-            Lihat semua program <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            {t("programs.view_all")} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
 
@@ -266,7 +378,12 @@ const ProgramSection = () => {
             >
               {/* Image Area */}
               <div className="relative h-[340px]">
-                <img src={p.img} alt={p.title} className="w-full h-full object-cover" />
+                <img 
+                  src={p.img} 
+                  alt={p.title} 
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover" 
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                 
                 {/* Icon Circle */}
@@ -304,11 +421,6 @@ const ProgramSection = () => {
   );
 };
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import { ChevronLeft } from "lucide-react";
-
 const NextArrow = (props: any) => {
   const { onClick } = props;
   return (
@@ -334,6 +446,7 @@ const PrevArrow = (props: any) => {
 };
 
 const ProgressSection = () => {
+  const { t } = useTranslation();
   const settings = {
     dots: true,
     infinite: false,
@@ -364,11 +477,11 @@ const ProgressSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-12">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display text-2xl lg:text-3xl">Perkembangan Terbaru</h2>
-            <p className="text-slate-600 text-sm leading-relaxed">Lihat bagaimana dukungan Anda memberikan perubahan nyata di lapangan.</p>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4 font-display text-2xl lg:text-3xl">{t("stats.latest_progress")}</h2>
+            <p className="text-slate-600 text-sm leading-relaxed">{t("stats.progress_desc")}</p>
           </div>
           <Link to="/proyek" className="flex items-center gap-2 text-sm font-semibold text-slate-900 hover:text-primary-deep transition-colors group">
-            Lihat semua proyek <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            {t("stats.view_all_projects")} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -386,130 +499,191 @@ const ProgressSection = () => {
   );
 };
 
-const AboutSection = () => (
-  <section className="py-24 bg-[#f1f3f1]">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        <div className="bg-white/50 p-8 lg:p-12 rounded-[2rem] border border-white flex items-center justify-center">
-           <img src="https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070" alt="About" className="max-w-full h-auto rounded-3xl" />
-        </div>
-        
-        <div className="space-y-12">
-          <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Tentang Yayasan Bulan Sabit Biru</h2>
-            <p className="text-slate-600 leading-relaxed mb-6">
-              Yayasan Bulan Sabit Biru adalah organisasi nirlaba yang berkomitmen meningkatkan kualitas hidup masyarakat di daerah terpencil melalui pembangunan infrastruktur dan program pengembangan komunitas.
-            </p>
-            <button className="flex items-center gap-2 text-primary-deep font-bold border-b-2 border-primary-deep pb-1 hover:text-primary-mid hover:border-primary-mid transition-all">
-              Pelajari Lebih Lanjut <ArrowRight size={18} />
-            </button>
+const AboutSection = () => {
+  const { t } = useTranslation();
+  return (
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#f1f7ff] rounded-[2rem] p-8 lg:p-12 flex flex-col lg:flex-row items-center lg:items-start gap-12 relative overflow-hidden border border-blue-50">
+          {/* Logo */}
+          <div className="shrink-0 w-48 h-48 lg:w-64 lg:h-64 flex items-center justify-center">
+            <img 
+              src="/bulan_sabit_biru_icon.png" 
+              alt="Logo" 
+              className="w-full h-full object-contain"
+            />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary-deep shadow-sm">
-                <ShieldCheck size={20} />
-              </div>
-              <h4 className="font-bold text-slate-800">Transparansi 100%</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Setiap donasi digunakan sesuai tujuan program dan dapat dipertanggungjawabkan.
+          <div className="flex-grow">
+          {/* Main Info */}
+            <div>
+              <h2 className="text-2xl font-bold text-primary-deep mb-6 leading-tight">{t("about_section.title")}</h2>
+              <p className="text-slate-600 text-sm leading-relaxed mb-10">
+                {t("about_section.desc")}
               </p>
             </div>
-            
-            <div className="space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary-deep shadow-sm">
-                <Users size={20} />
+
+            <div className="flex-grow flex flex-col xl:flex-row gap-10 xl:gap-16">
+            {/* Features Grid */}
+            <div className="flex-grow grid grid-cols-1 md:grid-cols-3 gap-8 lg:pt-2">
+              <div className="flex flex-col items-start space-y-4">
+                <div className="text-primary-deep">
+                  <ShieldCheck size={48} strokeWidth={1} />
+                </div>
+                <h4 className="text-[15px] font-bold text-primary-deep">{t("about_section.trust_title")}</h4>
+                <p className="text-[12px] text-slate-500 font-medium leading-relaxed">
+                  {t("about_section.trust_desc")}
+                </p>
               </div>
-              <h4 className="font-bold text-slate-800">Berbasis Komunitas</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Kami bekerja bersama masyarakat lokal untuk menciptakan dampak yang berkelanjutan.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary-deep shadow-sm">
-                <TrendingUp size={20} />
+
+              <div className="flex flex-col items-start space-y-4">
+                <div className="text-primary-deep">
+                  <Users size={48} strokeWidth={1} />
+                </div>
+                <h4 className="text-[15px] font-bold text-primary-deep">{t("about_section.reach_title")}</h4>
+                <p className="text-[12px] text-slate-500 font-medium leading-relaxed">
+                   {t("about_section.reach_desc")}
+                </p>
               </div>
-              <h4 className="font-bold text-slate-800">Dampak Berkelanjutan</h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Kami menghadirkan solusi jangka panjang untuk manfaat bagi generasi mendatang.
-              </p>
+
+              <div className="flex flex-col items-start space-y-4">
+                <div className="text-primary-deep">
+                  <Sprout size={48} strokeWidth={1} />
+                </div>
+                <h4 className="text-[15px] font-bold text-primary-deep">{t("about_section.impact_title")}</h4>
+                <p className="text-[12px] text-slate-500 font-medium leading-relaxed">
+                  {t("about_section.impact_desc")}
+                </p>
+              </div>
             </div>
+          </div>
+
+          <div className="mt-4">
+          <Link 
+                to="/tentang-kami" 
+                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-xl border border-primary-deep/40 bg-white shadow-sm text-primary-deep font-bold text-sm hover:bg-slate-50 transition-all group"
+              >
+                {t("about_section.learn_more")} 
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+          </div>
+          
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
-const Footer = () => (
-  <footer className="bg-primary-dark text-white pt-24 pb-12 overflow-hidden relative border-t border-primary-deep">
+const Footer = () => {
+  const { t } = useTranslation();
+  return (
+    <footer className="bg-primary-darkest text-white pt-24 pb-12 overflow-hidden relative">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-16 mb-20 items-start">
-        {/* Brand */}
-         <div className="col-span-2 lg:col-span-1 space-y-6">
-          <div className="flex items-center gap-3">
-             <div className="w-12 h-12 bg-white shadow-inner rounded-xl flex items-center justify-center border border-primary-border/20 p-2">
-                <img src="/bulan_sabit_biru_icon.png" alt="Bulan Sabit Biru Logo" className="w-full h-full object-contain" />
-              </div>
-              <div>
-                <p className="text-[18px] font-bold tracking-wide uppercase leading-none text-white">BULAN</p>
-                <p className="text-[18px] font-extrabold tracking-widest uppercase leading-none mt-0.5 text-white">SABIT BIRU</p>
-                <p className="text-[10px] text-slate-300 font-medium tracking-wider mt-1 block">Berbagi untuk Negeri</p>
-              </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-20 items-start">
+        {/* Brand & Logo */}
+        <div className="lg:col-span-2 space-y-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-12 h-12">
+              <img src="/bulan_sabit_biru_icon.png" alt="Logo" className="w-full h-full object-contain brightness-0 invert" />
+            </div>
+            <div>
+              <p className="text-[14px] font-bold tracking-tight uppercase leading-none">BULAN</p>
+              <p className="text-[20px] font-extrabold tracking-tight uppercase leading-none mt-1">SABIT BIRU</p>
+            </div>
           </div>
-        </div>
-
-        {/* Tautan Cepat */}
-        <div className="space-y-6">
-          <h4 className="text-[15px] font-bold text-white mb-6">Tautan Cepat</h4>
-          <ul className="space-y-4 text-[13px] text-slate-300 font-medium">
-            <li><Link to="/" className="hover:text-white transition-colors">Beranda</Link></li>
-            <li><Link to="/proyek" className="hover:text-white transition-colors">Proyek</Link></li>
-            <li><Link to="/dampak-laporan" className="hover:text-white transition-colors">Dampak & Laporan</Link></li>
-            <li><Link to="/tentang-kami" className="hover:text-white flex items-center gap-2 group transition-colors">
-              Tentang Kami <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link></li>
-          </ul>
-        </div>
-
-        {/* Hubungi Kami */}
-        <div className="space-y-6">
-          <h4 className="text-[15px] font-bold text-white mb-6">Hubungi Kami</h4>
-          <ul className="space-y-4 text-[13px] text-slate-300 font-medium">
-            <li className="flex gap-3 items-center"><Phone size={16} className="text-primary-light"/> +62 21 1234 5678</li>
-            <li className="flex gap-3 items-center"><Mail size={16} className="text-primary-light"/> info@yayasanbulansabitbiru.org</li>
-            <li className="flex gap-3 items-start"><MapPin size={16} className="text-primary-light shrink-0 mt-0.5"/> 
-              <span className="leading-relaxed">Jl. Kebon Nanas No. 10<br/>Jakarta Selatan 12345</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Ikuti Kami */}
-        <div className="space-y-6">
-          <h4 className="text-[15px] font-bold text-white mb-6">Ikuti Kami</h4>
-          <div className="flex gap-4">
+          <div className="space-y-1">
+            <p className="text-[13px] text-slate-300 font-medium">{t("footer.brand_line1")}</p>
+            <p className="text-[13px] text-slate-300 font-medium">{t("footer.brand_line2")}</p>
+          </div>
+          <div className="flex gap-4 pt-4">
             {[Facebook, Instagram, Youtube, Mail].map((Icon, idx) => (
-              <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 hover:border-white transition-all text-slate-300 hover:text-white">
-                <Icon size={18} strokeWidth={1.5} />
+              <a key={idx} href="#" className="text-white hover:text-primary-light transition-colors">
+                <Icon size={22} strokeWidth={1.5} />
               </a>
             ))}
           </div>
         </div>
 
-        {/* Didukung oleh */}
-        <div className="col-span-2 lg:col-span-1 border border-white/10 p-6 rounded-2xl bg-white/5 backdrop-blur-sm self-stretch flex flex-col justify-center">
-          <h4 className="text-[13px] font-bold text-white mb-4 leading-relaxed">Didukung oleh para donatur<br/>dari Arab Saudi <span className="bg-brand-accent text-[10px] px-1.5 py-0.5 rounded ml-2 font-bold !text-white align-middle">SA</span></h4>
-          <p className="text-xl font-bold font-serif text-brand-accent text-right mt-2 drop-shadow-sm" style={{fontFamily: "Arial, sans-serif"}}>شكراً لدعمكم المستمر</p>
+        {/* Tentang Kami */}
+        <div className="lg:col-span-2 space-y-6">
+          <h4 className="text-[14px] font-bold text-white uppercase tracking-wider">{t("footer.about_title")}</h4>
+          <p className="text-[12px] text-slate-300 leading-relaxed font-medium">
+            {t("footer.about_desc")}
+          </p>
+          <Link to="/tentang-kami" className="text-[12px] font-bold text-white flex items-center gap-2 hover:translate-x-1 transition-transform">
+            {t("footer.learn_more")} <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        {/* Tautan Cepat */}
+        <div className="lg:col-span-2 space-y-6">
+          <h4 className="text-[14px] font-bold text-white uppercase tracking-wider">{t("footer.quick_links")}</h4>
+          <ul className="space-y-4 text-[13px] text-slate-300 font-medium">
+            <li><Link to="/" className="hover:text-white transition-colors">{t("nav.beranda")}</Link></li>
+            <li><Link to="/proyek" className="hover:text-white transition-colors">{t("nav.proyek")}</Link></li>
+            <li><Link to="/program" className="hover:text-white transition-colors">{t("nav.proyek")}</Link></li>
+            <li><Link to="/dampak-laporan" className="hover:text-white transition-colors">{t("nav.dampak_laporan")}</Link></li>
+            <li><Link to="/tentang-kami" className="hover:text-white transition-colors">{t("nav.tentang_kami")}</Link></li>
+          </ul>
+        </div>
+
+        {/* Informasi */}
+        <div className="lg:col-span-2 space-y-6">
+          <h4 className="text-[14px] font-bold text-white uppercase tracking-wider">{t("footer.info")}</h4>
+          <ul className="space-y-5 text-[13px] text-slate-300 font-medium">
+            <li className="flex gap-3 items-center">
+              <Phone size={18} className="text-white shrink-0"/> 
+              <span>+62 21 1234 5678</span>
+            </li>
+            <li className="flex gap-3 items-center">
+              <Mail size={18} className="text-white shrink-0"/> 
+              <span>info@bulansabitbiru.org</span>
+            </li>
+            <li className="flex gap-3 items-start">
+              <MapPin size={18} className="text-white shrink-0 mt-0.5"/> 
+              <span className="leading-relaxed">Jl. Kebon Nanas No. 10<br/>Jakarta Selatan 12345</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Dukungan */}
+        <div className="lg:col-span-1 space-y-6">
+          <h4 className="text-[14px] font-bold text-white uppercase tracking-wider">{t("footer.support")}</h4>
+          <ul className="space-y-4 text-[13px] text-slate-300 font-medium">
+            <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
+            <li><a href="#" className="hover:text-white transition-colors">{t("footer.privacy")}</a></li>
+            <li><a href="#" className="hover:text-white transition-colors">{t("footer.terms")}</a></li>
+            <li><a href="#" className="hover:text-white transition-colors">Hubungi Kami</a></li>
+          </ul>
+        </div>
+
+        {/* Saudi Box */}
+        <div className="lg:col-span-3">
+          <div className="border border-white/20 p-8 rounded-3xl bg-white/5 backdrop-blur-sm h-full flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <h4 className="text-[14px] font-bold text-white">{t("footer.saudi_box.title")}</h4>
+                <div className="w-8 h-5 rounded overflow-hidden">
+                  <img src="https://flagcdn.com/w80/sa.png" alt="SA" className="w-full h-full object-cover" />
+                </div>
+              </div>
+              <p className="text-[28px] font-bold text-white leading-tight mb-4" dir="rtl">{t("footer.saudi_box.thanks")}</p>
+            </div>
+            <div className="space-y-1">
+              <p className="text-[12px] text-slate-300 font-medium">{t("footer.saudi_box.subtitle")}</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center md:items-center text-center text-[11px] font-medium tracking-wide text-slate-400">
-        <p>© 2025 Yayasan Bulan Sabit Biru. Semua Hak Dilindungi.</p>
+      <div className="pt-8 border-t border-white/10 flex justify-center text-center text-[13px] font-medium text-slate-400">
+        <p>{t("footer.copyright")}</p>
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 const Home = () => {
   return (
@@ -523,21 +697,34 @@ const Home = () => {
 };
 
 export default function App() {
+  const { i18n } = useTranslation();
+  const direction = i18n.language === 'ar' ? 'rtl' : 'ltr';
+
+  useEffect(() => {
+    document.documentElement.dir = direction;
+    document.documentElement.lang = i18n.language;
+  }, [direction, i18n.language]);
+
   return (
-    <div className="min-h-screen flex flex-col font-sans">
-      <Navbar />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/tentang-kami" element={<TentangKami />} />
-          <Route path="/program/:id" element={<ProgramDetail />} />
-          <Route path="/proyek" element={<Proyek />} />
-          <Route path="/proyek/:id" element={<ProyekDetail />} />
-          <Route path="/dampak-laporan" element={<DampakLaporan />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <AuthProvider>
+      <div className={`min-h-screen flex flex-col font-sans ${direction === 'rtl' ? 'font-arabic' : ''}`} dir={direction}>
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/tentang-kami" element={<TentangKami />} />
+            <Route path="/program/:id" element={<ProgramDetail />} />
+            <Route path="/proyek" element={<Proyek />} />
+            <Route path="/proyek/:id" element={<ProyekDetail />} />
+            <Route path="/donasi" element={<Donation />} />
+            <Route path="/dampak-laporan" element={<DampakLaporan />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/akun" element={<Account />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </AuthProvider>
   );
 }
 

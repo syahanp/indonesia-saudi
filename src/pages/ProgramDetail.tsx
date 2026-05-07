@@ -19,8 +19,10 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 export default function ProgramDetail() {
+  const { t } = useTranslation();
   const genericImg = "https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&q=80&w=2070";
 
   const projects = [
@@ -91,29 +93,29 @@ export default function ProgramDetail() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumbs */}
         <div className="text-[13px] text-slate-500 mb-10 font-medium">
-          <Link to="/" className="hover:text-primary-deep transition-colors">Beranda</Link>
+          <Link to="/" className="hover:text-primary-deep transition-colors">{t("nav.beranda")}</Link>
           <span className="mx-2">&gt;</span>
           <span className="hover:text-primary-deep transition-colors cursor-pointer">Program</span>
           <span className="mx-2">&gt;</span>
-          <span className="text-slate-800">Jembatan Gantung</span>
+          <span className="text-slate-800">{t("programs.jembatan.title")}</span>
         </div>
       </div>
 
       {/* Hero Section */}
       <div className="relative pt-6 pb-32 lg:pb-48 mb-20">
         <div className="absolute inset-0 z-0">
-           <img src={genericImg} alt="Hero" className="w-full h-full object-cover object-right" />
+           <img src="/jembatan-gantung.png" alt="Hero" className="w-full h-full object-cover object-right" />
            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-2xl">
-            <p className="text-sm font-bold text-slate-600 tracking-widest uppercase mb-4">PROGRAM</p>
+            <p className="text-sm font-bold text-slate-600 tracking-widest uppercase mb-4">{t("program_detail.label")}</p>
             <h1 className="text-5xl lg:text-6xl font-bold text-primary-deep leading-[1.1] mb-6 font-display">
-              Jembatan Gantung
+              {t("programs.jembatan.title")}
             </h1>
             <p className="text-[18px] text-slate-800 leading-relaxed font-semibold mb-6 max-w-xl">
-              Menghubungkan masyarakat dengan akses pendidikan, layanan kesehatan, dan peluang ekonomi.
+              {t("programs.jembatan.desc")}
             </p>
             <p className="text-[14px] text-slate-600 leading-relaxed font-medium max-w-lg mb-12">
               Kami membangun jembatan gantung di desa-desa terpencil untuk mengatasi keterisoliran dan membuka akses menuju kehidupan yang lebih baik.
@@ -124,8 +126,8 @@ export default function ProgramDetail() {
               <div className="flex items-center gap-3">
                 <Milestone size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                 <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">12</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Jembatan Terbangun</p>
+                   <p className="text-2xl font-bold text-slate-900 leading-none">12</p>
+                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{t("programs.jembatan.label1")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -136,22 +138,22 @@ export default function ProgramDetail() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">4</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Proyek Berjalan</p>
+                   <p className="text-2xl font-bold text-slate-900 leading-none">4</p>
+                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{t("programs.jembatan.label2")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Users size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                 <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">1.850+</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Penerima Manfaat</p>
+                   <p className="text-2xl font-bold text-slate-900 leading-none">1.850+</p>
+                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{t("programs.jembatan.label3")}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin size={32} className="text-primary-deep shrink-0" strokeWidth={1.5} />
                 <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">6</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">Provinsi</p>
+                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mt-1">{t("tentang_kami.stats.provinces")}</p>
                 </div>
               </div>
             </div>
@@ -163,39 +165,39 @@ export default function ProgramDetail() {
         {/* Tentang Program & Manfaat */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <div className="bg-white rounded-[2rem] p-10 border border-slate-100 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">Tentang Program Ini</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">{t("program_detail.about_title")}</h3>
             <div className="space-y-6 text-[14px] text-slate-600 leading-relaxed font-medium">
               <p>
-                Banyak desa di Indonesia masih terpisah oleh sungai, lembah, atau jurang yang tidak memiliki akses jembatan yang aman. Kondisi ini menyulitkan anak-anak untuk pergi ke sekolah, warga mendapatkan layanan kesehatan, dan petani untuk memasarkan hasil panen.
+                {t("program_detail.about_p1")}
               </p>
               <p>
-                Program Jembatan Gantung hadir untuk memberikan solusi berkelanjutan dengan membangun jembatan yang kuat, aman, dan dapat dimanfaatkan oleh masyarakat dalam jangka panjang.
+                {t("program_detail.about_p2")}
               </p>
             </div>
           </div>
 
           <div className="bg-[#f8f9fa] rounded-[2rem] p-10 border border-slate-100 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">Manfaat Utama</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-6 font-display">{t("program_detail.main_benefits")}</h3>
             <ul className="space-y-4">
               <li className="flex gap-4 items-start">
                 <GraduationCap size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">Akses pendidikan lebih mudah bagi anak-anak</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit1")}</span>
               </li>
               <li className="flex gap-4 items-start">
                 <HeartPulse size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">Akses layanan kesehatan lebih cepat dan aman</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit2")}</span>
               </li>
               <li className="flex gap-4 items-start">
                 <Activity size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">Peningkatan aktivitas ekonomi dan perdagangan</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit3")}</span>
               </li>
               <li className="flex gap-4 items-start">
                 <UsersRound size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">Mempererat konektivitas antar desa</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit4")}</span>
               </li>
               <li className="flex gap-4 items-start">
                 <Building size={20} className="text-primary-deep shrink-0 mt-0.5" />
-                <span className="text-[14px] text-slate-700 font-medium">Mendorong pembangunan wilayah secara menyeluruh</span>
+                <span className="text-[14px] text-slate-700 font-medium">{t("program_detail.benefit5")}</span>
               </li>
             </ul>
           </div>
@@ -203,13 +205,13 @@ export default function ProgramDetail() {
 
         {/* Dampak Program Banner */}
         <div className="bg-white rounded-[2rem] p-10 border border-slate-100 shadow-sm">
-           <h3 className="text-lg font-bold text-slate-900 mb-8 font-display">Dampak Program</h3>
+           <h3 className="text-lg font-bold text-slate-900 mb-8 font-display">{t("program_detail.program_impact")}</h3>
            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 divide-x divide-slate-100">
               <div className="flex flex-col gap-3">
                 <Milestone size={28} className="text-primary-deep" strokeWidth={1.5} />
                 <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">12</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Jembatan<br/>Terbangun</p>
+                   <p className="text-2xl font-bold text-slate-900 leading-none">12</p>
+                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("programs.jembatan.label1").split(' ').join('<br/>')}</p>
                 </div>
               </div>
               <div className="flex flex-col gap-3 pl-8">
@@ -220,36 +222,36 @@ export default function ProgramDetail() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">4</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Proyek<br/>Berjalan</p>
+                   <p className="text-2xl font-bold text-slate-900 leading-none">4</p>
+                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("programs.jembatan.label2").split(' ').join('<br/>')}</p>
                 </div>
               </div>
               <div className="flex flex-col gap-3 pl-8">
                 <Users size={28} className="text-primary-deep" strokeWidth={1.5} />
                 <div>
-                  <p className="text-2xl font-bold text-slate-900 leading-none">1.850+</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Penerima<br/>Manfaat</p>
+                   <p className="text-2xl font-bold text-slate-900 leading-none">1.850+</p>
+                   <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("programs.jembatan.label3").split(' ').join('<br/>')}</p>
                 </div>
               </div>
               <div className="flex flex-col gap-3 pl-8">
                 <UsersRound size={28} className="text-primary-deep" strokeWidth={1.5} />
                  <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">350+</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Keluarga<br/>Terhubung</p>
+                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("program_detail.family_connected").split(' ').join('<br/>')}</p>
                 </div>
               </div>
                <div className="flex flex-col gap-3 pl-8">
                 <MapPin size={28} className="text-primary-deep" strokeWidth={1.5} />
                 <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">6</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Provinsi<br/>&nbsp;</p>
+                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("tentang_kami.stats.provinces")}<br/>&nbsp;</p>
                 </div>
               </div>
                <div className="flex flex-col gap-3 pl-8">
                 <Building size={28} className="text-primary-deep" strokeWidth={1.5} />
                  <div>
                   <p className="text-2xl font-bold text-slate-900 leading-none">20+</p>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">Desa<br/>Terdampak</p>
+                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 leading-tight">{t("program_detail.villages_impacted").split(' ').join('<br/>')}</p>
                 </div>
               </div>
            </div>
@@ -259,18 +261,18 @@ export default function ProgramDetail() {
         <div className="pt-12">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-slate-200 pb-6">
             <div>
-              <h2 className="text-[26px] font-bold text-slate-900 mb-2 font-display">Proyek dalam Program Jembatan Gantung</h2>
-              <p className="text-slate-500 text-sm font-medium">Daftar proyek jembatan gantung yang sedang kami kerjakan di berbagai wilayah Indonesia.</p>
+              <h2 className="text-[26px] font-bold text-slate-900 mb-2 font-display">{t("program_detail.projects_in_program", { title: t("programs.jembatan.title") })}</h2>
+              <p className="text-slate-500 text-sm font-medium">{t("program_detail.projects_subtitle", { title: t("programs.jembatan.title") })}</p>
             </div>
             
             <div className="flex items-center gap-4 mt-6 md:mt-0">
-              <span className="text-xs font-bold text-slate-500">Tampilan</span>
+              <span className="text-xs font-bold text-slate-500">{t("program_detail.view_label")}</span>
               <div className="flex bg-[#f1f5f9] rounded-lg p-1 border border-slate-200">
                 <button className="flex items-center gap-2 px-3 py-1.5 bg-white shadow-sm rounded text-xs font-bold text-slate-800">
-                  <LayoutGrid size={14} /> Grid
+                  <LayoutGrid size={14} /> {t("program_detail.view_grid")}
                 </button>
                 <button className="flex items-center gap-2 px-3 py-1.5 rounded text-xs font-bold text-slate-500 hover:text-slate-800">
-                  <Map size={14} /> Peta
+                  <Map size={14} /> {t("program_detail.view_map")}
                 </button>
               </div>
             </div>
@@ -279,39 +281,39 @@ export default function ProgramDetail() {
           <div className="grid lg:grid-cols-[280px_1fr] gap-8 items-start">
             {/* Filters Sidebar */}
             <div className="bg-white border text-sm border-slate-200 rounded-2xl p-6 shadow-sm sticky top-28">
-              <h3 className="font-bold text-slate-900 text-base mb-6">Filter Proyek</h3>
+              <h3 className="font-bold text-slate-900 text-base mb-6">{t("proyek.filter_title")}</h3>
               
               <div className="mb-6">
-                <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">Status</p>
+                <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">{t("proyek.label_status")}</p>
                 <div className="space-y-3">
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="w-4 h-4 rounded bg-primary-deep flex items-center justify-center">
                       <Check size={12} className="text-white" />
                     </div>
-                    <span className="font-semibold text-slate-800 text-[13px]">Semua Status</span>
+                    <span className="font-semibold text-slate-800 text-[13px]">{t("proyek.all_statuses")}</span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-primary-deep transition-colors bg-white"></div>
                     <div className="w-2 h-2 rounded-full bg-[#f59e0b]"></div>
-                    <span className="font-semibold text-slate-600 text-[13px]">Perencanaan</span>
+                    <span className="font-semibold text-slate-600 text-[13px]">{t("proyek.status_perencanaan")}</span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-primary-deep transition-colors bg-white"></div>
                     <div className="w-2 h-2 rounded-full bg-[#22c55e]"></div>
-                    <span className="font-semibold text-slate-600 text-[13px]">Berjalan</span>
+                    <span className="font-semibold text-slate-600 text-[13px]">{t("proyek.status_berjalan")}</span>
                   </label>
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="w-4 h-4 rounded border border-slate-300 group-hover:border-primary-deep transition-colors bg-white"></div>
                     <div className="w-2 h-2 rounded-full bg-[#0f172a]"></div>
-                    <span className="font-semibold text-slate-600 text-[13px]">Selesai</span>
+                    <span className="font-semibold text-slate-600 text-[13px]">{t("proyek.status_selesai")}</span>
                   </label>
                 </div>
               </div>
 
               <div className="mb-6">
-                <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">Provinsi</p>
+                <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">{t("proyek.label_province")}</p>
                 <select className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] font-semibold text-slate-700 bg-[#f8f9fa] focus:outline-none focus:border-primary-deep focus:ring-1 focus:ring-primary-deep">
-                  <option>Semua Provinsi</option>
+                  <option>{t("proyek.all_provinces")}</option>
                   <option>Sulawesi Tengah</option>
                   <option>Nusa Tenggara Timur</option>
                   <option>Kalimantan Barat</option>
@@ -319,15 +321,15 @@ export default function ProgramDetail() {
               </div>
 
               <div className="mb-8">
-                <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">Cari Proyek</p>
+                <p className="font-bold text-[11px] text-slate-500 uppercase tracking-widest mb-4">{t("proyek.label_search")}</p>
                 <div className="relative">
-                  <input type="text" placeholder="Cari nama proyek..." className="w-full border border-slate-200 rounded-lg pl-3 pr-9 py-2.5 text-[13px] font-semibold text-slate-700 bg-[#f8f9fa] focus:outline-none focus:border-primary-deep focus:ring-1 focus:ring-primary-deep" />
+                  <input type="text" placeholder={t("proyek.search_placeholder")} className="w-full border border-slate-200 rounded-lg pl-3 pr-9 py-2.5 text-[13px] font-semibold text-slate-700 bg-[#f8f9fa] focus:outline-none focus:border-primary-deep focus:ring-1 focus:ring-primary-deep" />
                   <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 </div>
               </div>
 
               <button className="w-full flex items-center justify-center gap-2 border border-slate-200 rounded-lg py-2.5 text-[12px] font-bold text-slate-600 hover:bg-slate-50 transition-colors">
-                <RotateCcw size={14} /> Reset Filter
+                <RotateCcw size={14} /> {t("proyek.reset_filter")}
               </button>
             </div>
 
@@ -348,7 +350,7 @@ export default function ProgramDetail() {
                         p.status === 'Perencanaan' ? 'bg-[#fef3c7] text-[#b45309]' :
                         'bg-primary-light text-primary-deep'
                       }`}>
-                        {p.status}
+                        {p.status === 'Selesai' ? t("proyek.status_selesai") : p.status === 'Perencanaan' ? t("proyek.status_perencanaan") : t("proyek.status_berjalan")}
                       </div>
                     </div>
                     
@@ -366,12 +368,12 @@ export default function ProgramDetail() {
                       <div className="space-y-4 pt-4 border-t border-slate-100 mt-auto">
                         <div className="space-y-2">
                           <div className="flex justify-between text-[11px] font-bold">
-                            <span className="text-slate-500">Dana Terkumpul</span>
-                            <span className="text-slate-500">Total Kebutuhan</span>
+                            <span className="text-slate-500">{t("proyek.labels.collected")}</span>
+                            <span className="text-slate-500">{t("proyek.labels.target")}</span>
                           </div>
                           <div className="flex justify-between text-[13px] font-bold text-slate-900 mb-2">
-                            <span>{p.terkumpul}</span>
-                            <span>{p.target}</span>
+                             <span>{p.terkumpul}</span>
+                             <span>{p.target}</span>
                           </div>
                           <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
                             <motion.div 
@@ -387,7 +389,7 @@ export default function ProgramDetail() {
                         </div>
 
                         <Link to="/proyek/jembatan-desa-lembah-harapan" className="relative z-20 flex items-center gap-2 text-[13px] font-bold text-slate-800 hover:text-primary-deep group/btn transition-colors pt-2">
-                          Lihat Detail <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                          {t("proyek.labels.details")} <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                         </Link>
                       </div>
                     </div>
@@ -397,7 +399,7 @@ export default function ProgramDetail() {
 
               <div className="flex justify-center">
                 <button className="flex items-center gap-2 px-6 py-3 border border-slate-200 rounded-full text-sm font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all bg-white shadow-sm">
-                  Lihat Lebih Banyak Proyek <ChevronRight size={16} className="rotate-90" />
+                  {t("program_detail.load_more_projects")} <ChevronRight size={16} className="rotate-90" />
                 </button>
               </div>
             </div>
@@ -413,16 +415,16 @@ export default function ProgramDetail() {
                <Heart size={32} className="text-primary-deep" strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Dukung Program Jembatan Gantung</h3>
-              <p className="text-[13px] text-slate-600 font-medium">Setiap donasi Anda membantu kami membangun lebih banyak jembatan<br className="hidden md:block"/> dan menghubungkan lebih banyak harapan.</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">{t("program_detail.support_banner_title", { title: t("programs.jembatan.title") })}</h3>
+              <p className="text-[13px] text-slate-600 font-medium">{t("program_detail.support_banner_desc", { title: t("programs.jembatan.title") })}</p>
             </div>
           </div>
           <div className="flex gap-4 shrink-0 w-full md:w-auto">
             <button className="flex-1 md:flex-none bg-primary-deep text-white px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:bg-primary-dark transition-all shadow-md hover:shadow-lg">
-              <Heart size={16} /> Donasi Sekarang
+              <Heart size={16} /> {t("nav.donasi_sekarang")}
             </button>
             <button className="flex-1 md:flex-none bg-white text-primary-deep border border-slate-200 px-6 py-3.5 rounded-full text-sm font-bold flex justify-center items-center gap-2 hover:border-primary-deep hover:bg-slate-50 transition-all shadow-sm">
-              Lihat Cara Berdonasi
+              {t("program_detail.how_to_donate")}
             </button>
           </div>
         </div>
