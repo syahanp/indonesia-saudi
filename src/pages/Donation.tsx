@@ -242,7 +242,7 @@ export default function Donation() {
 
                 <div className="space-y-3">
                   {[
-                    { id: "credit", label: "Kartu Kredit / Debit", icons: ["visa", "mastercard", "mada"] },
+                    { id: "credit", label: "Kartu Kredit / Debit", icons: ["visa", "mastercard"] },
                     { id: "apple", label: "Apple Pay / Google Pay", icons: ["applepay", "googlepay"] },
                     { id: "transfer", label: "Bank Transfer", icons: ["bank"] },
                     { id: "sadad", label: "SADAD / Pembayaran Instan", icons: ["sadad"] },
@@ -272,16 +272,15 @@ export default function Donation() {
                       </div>
                       <div className="flex gap-2">
                         {method.id === "credit" && (
-                          <div className="flex gap-1.5 grayscale opacity-70">
-                            <div className="w-8 h-5 bg-slate-100 rounded text-[8px] flex items-center justify-center font-bold text-slate-400">VISA</div>
-                            <div className="w-8 h-5 bg-slate-100 rounded text-[8px] flex items-center justify-center font-bold text-slate-400">MC</div>
-                            <div className="w-8 h-5 bg-slate-100 rounded text-[8px] flex items-center justify-center font-bold text-slate-400">mada</div>
+                          <div className="flex gap-2 items-center">
+                            <img src="/src/assets/images/regenerated_image_1778134100035.svg" alt="Visa" className="h-4 opacity-80" />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 opacity-80" />
                           </div>
                         )}
                         {method.id === "apple" && (
-                          <div className="flex gap-1.5 grayscale opacity-70">
-                            <div className="w-8 h-5 bg-slate-100 rounded text-[8px] flex items-center justify-center font-bold text-slate-400 text-[6px]">Apple Pay</div>
-                            <div className="w-8 h-5 bg-slate-100 rounded text-[8px] flex items-center justify-center font-bold text-slate-400 text-[6px]">Google Pay</div>
+                          <div className="flex gap-2 items-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" className="h-4 opacity-80" />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="Google Pay" className="h-4 opacity-80" />
                           </div>
                         )}
                          {method.id === "transfer" && <Landmark size={18} className="text-slate-400" />}
